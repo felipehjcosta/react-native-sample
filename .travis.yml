@@ -19,9 +19,10 @@ before_install:
   
 install:
   - yarn install
+  - yarn add codecov --dev
 
 script:
   - yarn run test
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - codecov
