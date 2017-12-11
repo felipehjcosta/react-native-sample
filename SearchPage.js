@@ -4,7 +4,7 @@ import {
   Text
 } from 'react-native';
 
-class PropertyFinder extends React.Component {
+class SearchPage extends React.Component {
   render() {
     return (
       <View>
@@ -16,4 +16,4 @@ class PropertyFinder extends React.Component {
   }
 }
 
-module.exports = PropertyFinder;
+module.exports = SearchPage;
