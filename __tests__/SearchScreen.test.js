@@ -10,11 +10,11 @@ import { expect } from 'chai';
 import renderer from 'react-test-renderer';
 
 
-import SearchPage from '../SearchPage';
+import SearchScreen from '../SearchScreen';
 
-describe('<SearchPage>', () => {
+describe('<SearchScreen>', () => {
   beforeEach(() => {
-    wrapper = shallow(<SearchPage></SearchPage>)
+    wrapper = shallow(<SearchScreen></SearchScreen>)
   });
   
   it('should be a View component', () => {

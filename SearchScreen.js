@@ -4,7 +4,7 @@ import {
   Text
 } from 'react-native';
 
-class SearchPage extends React.Component {
+class SearchScreen extends React.Component {
   render() {
     return (
       <View>
@@ -16,4 +16,4 @@ class SearchPage extends React.Component {
   }
 }
 
-module.exports = SearchPage;
+module.exports = SearchScreen;

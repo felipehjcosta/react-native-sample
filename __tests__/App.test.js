@@ -11,14 +11,14 @@ import renderer from 'react-test-renderer';
 
 
 import App from '../App';
-import SearchPage from '../SearchPage';
+import SearchScreen from '../SearchScreen';
 
 describe('<App>', () => {
   beforeEach(() => {
     wrapper = shallow(<App></App>)
   });
   
-  it('should be a SearchPage component', () => {
-    expect(wrapper.type()).to.equal(SearchPage)
+  it('should be a SearchScreen component', () => {
+    expect(wrapper.type()).to.equal(SearchScreen)
   });
 });

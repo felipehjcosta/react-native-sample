@@ -6,13 +6,13 @@ import {
   View
 } from 'react-native';
 
-import SearchPage from './SearchPage';
+import SearchScreen from './SearchScreen';
 
 export default class App extends Component<{}> {
   render() {
     return (
-      <SearchPage>
-      </SearchPage>
+      <SearchScreen>
+      </SearchScreen>
     );
   }
 }
