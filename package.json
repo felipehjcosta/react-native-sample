@@ -1,5 +1,5 @@
 {
-  "name": "marvelapp",
+  "name": "PropertyFinder",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,21 +10,18 @@
     "chai": "^4.1.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-native": "0.51.0",
-    "react-navigation": "^1.0.0-beta.21"
+    "react-native": "0.51.0"
   },
   "devDependencies": {
     "babel-jest": "21.2.0",
     "babel-preset-react-native": "4.0.0",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
-    "jest": "21.2.1",
+    "jest": "^21.2.1",
     "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "16.0.0"
   },
   "jest": {
-    "preset": "react-native",
-    "coverageDirectory": "./coverage/",
-    "collectCoverage": true
+    "preset": "react-native"
   }
 }
