@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { 
-  View, Text
+  View, 
+  Text,
+  TextInput
 } from 'react-native';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -22,6 +24,17 @@ describe('<SearchScreen>', () => {
   });
   
   it('should have a call to action', () => {
-    expect(wrapper.contains(<Text>Search for houses to buy!</Text>)).to.equal(true)
+    expect(wrapper.containsMatchingElement(<Text>Search for houses to buy!</Text>)).to.equal(true)
+  });
+  
+  it('should have a description message', () => {
+    expect(wrapper
+           .containsMatchingElement(<Text>Search by place-name, postcode or search near your location.</Text>))
+      .to
+      .equal(true)
+  });
+  
+  it('should have 1 TextInput components', () => {
+    expect(wrapper.find(TextInput)).to.have.length(1);
   });
 });
