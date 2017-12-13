@@ -3,7 +3,8 @@ import {
   View,
   StyleSheet,
   Text,
-  TextInput
+  TextInput,
+  TouchableHighlight
 } from 'react-native';
 
 var styles = StyleSheet.create({
@@ -23,6 +24,23 @@ var styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'stretch'
   },
+  buttonText: {
+    fontSize: 18,
+    color: 'white',
+    alignSelf: 'center'
+  },
+  button: {
+    height: 36,
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: '#48BBEC',
+    borderColor: '#48BBEC',
+    borderWidth: 1,
+    borderRadius: 8,
+    marginBottom: 10,
+    alignSelf: 'stretch',
+    justifyContent: 'center'
+  },
   searchInput: {
     height: 36,
     padding: 4,
@@ -37,6 +55,14 @@ var styles = StyleSheet.create({
 })
 
 class SearchScreen extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchString: 'london'
+    };
+  }
+  
   render() {
     return (
       <View style={styles.container}>
@@ -49,7 +75,12 @@ class SearchScreen extends React.Component {
         <View style={styles.flowRight}>
           <TextInput
             style={styles.searchInput}
+            value={this.state.searchString}
             placeholder='Search via name or postcode'/>
+          <TouchableHighlight style={styles.button}
+              underlayColor='#99d9f4'>
+            <Text style={styles.buttonText}>Go</Text>
+          </TouchableHighlight>
         </View>
       </View>
     );

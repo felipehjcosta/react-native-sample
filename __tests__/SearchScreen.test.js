@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { 
   View, 
   Text,
-  TextInput
+  TextInput,
+  TouchableHighlight
 } from 'react-native';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -34,7 +35,12 @@ describe('<SearchScreen>', () => {
       .equal(true)
   });
   
-  it('should have 1 TextInput components', () => {
-    expect(wrapper.find(TextInput)).to.have.length(1);
+  it('should have input with text', () => {
+    expect(wrapper.containsMatchingElement(<TextInput value="london"/>)).to.equal(true);
   });
+  
+  it('should have a submit button', () => {
+    expect(wrapper.find(TouchableHighlight).containsMatchingElement(<Text>Go</Text>)).to.equal(true);
+  });
+  
 });
