@@ -47,4 +47,11 @@ describe('<SearchScreen>', () => {
     expect(wrapper.find(TouchableHighlight).containsMatchingElement(<Text>Location</Text>)).to.equal(true);
   });
   
+  it('should change sarched location when the user types a new one', () => {
+    const event = {nativeEvent: {text: "liverpool"}};
+    wrapper.find('[value="london"]').first().simulate('change', event);
+    
+    expect(wrapper.containsMatchingElement(<TextInput value="liverpool"/>)).to.equal(true);
+  });
+  
 });

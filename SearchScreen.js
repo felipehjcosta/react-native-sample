@@ -74,6 +74,10 @@ class SearchScreen extends React.Component {
     };
   }
   
+  onSearchTextChanged(event) {
+    this.setState({ searchString: event.nativeEvent.text });
+  }
+  
   render() {
     return (
       <View style={styles.container}>
@@ -87,6 +91,7 @@ class SearchScreen extends React.Component {
           <TextInput
             style={styles.searchInput}
             value={this.state.searchString}
+            onChange={this.onSearchTextChanged.bind(this)}
             placeholder='Search via name or postcode'/>
           <TouchableHighlight style={styles.button}
               underlayColor='#99d9f4'>
