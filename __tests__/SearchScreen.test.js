@@ -43,4 +43,8 @@ describe('<SearchScreen>', () => {
     expect(wrapper.find(TouchableHighlight).containsMatchingElement(<Text>Go</Text>)).to.equal(true);
   });
   
+  it('should have a location button', () => {
+    expect(wrapper.find(TouchableHighlight).containsMatchingElement(<Text>Location</Text>)).to.equal(true);
+  });
+  
 });

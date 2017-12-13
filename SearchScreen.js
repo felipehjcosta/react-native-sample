@@ -41,6 +41,17 @@ var styles = StyleSheet.create({
     alignSelf: 'stretch',
     justifyContent: 'center'
   },
+  locationButton: {
+    height: 36,
+    flexDirection: 'row',
+    backgroundColor: '#48BBEC',
+    borderColor: '#48BBEC',
+    borderWidth: 1,
+    borderRadius: 8,
+    marginBottom: 10,
+    alignSelf: 'stretch',
+    justifyContent: 'center'
+  },
   searchInput: {
     height: 36,
     padding: 4,
@@ -82,6 +93,13 @@ class SearchScreen extends React.Component {
             <Text style={styles.buttonText}>Go</Text>
           </TouchableHighlight>
         </View>
+      
+        <TouchableHighlight style={styles.locationButton}
+            underlayColor='#99d9f4'>
+          <Text style={styles.buttonText}>
+            Location
+          </Text>
+        </TouchableHighlight>
       </View>
     );
   }
