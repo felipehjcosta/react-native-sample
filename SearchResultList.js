@@ -1,5 +1,5 @@
 import React, { Component, } from 'react'
-import { ListView, } from 'react-native'
+import { ListView, View } from 'react-native'
 import PropTypes from 'prop-types'
 
 import SearchResult from './SearchResult.js';
@@ -14,9 +14,11 @@ class SearchResultList extends Component {
 
   constructor(props) {
     super(props)
+    const {state} = props.navigation;
+    console.log("PROPS " + state.params.listing);
     var dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.lister_url !== r2.lister_url});
     this.state = {
-      dataSource: dataSource.cloneWithRows(this.props.data)
+      dataSource: dataSource.cloneWithRows(state.params.listing)
     };
   }
   
@@ -28,7 +30,7 @@ class SearchResultList extends Component {
   
   renderRow(row) {
     return (
-      <SearchResult price="{row.price}" image_url="{row.img_url}">{row.text}</SearchResult>
+      <SearchResult price={row.price_formatted} image_url={row.img_url}>{row.title}</SearchResult>
     );
   }
   

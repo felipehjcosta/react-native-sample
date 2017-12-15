@@ -99,10 +99,8 @@ class SearchScreen extends React.Component {
   _handleResponse(response) {
     this.setState({ isLoading: false , message: '' });
     if (response.application_response_code.substr(0, 1) === '1') {
-      this.props.navigator.push({
-        screen: 'SearchResults',
-        passProps: {listings: response.listings}
-      });
+      const { navigate } = this.props.navigation;
+      navigate('SearchResultList', { listing: response.listings })
     } else {
       this.setState({ message: 'Location not recognized; please try again.'});
     }
@@ -146,6 +144,7 @@ class SearchScreen extends React.Component {
             onChange={this.onSearchTextChanged.bind(this)}
             placeholder='Search via name or postcode'/>
           <TouchableHighlight style={styles.button}
+              onPress={this.onSearchPressed.bind(this)}
               underlayColor='#99d9f4'>
             <Text style={styles.buttonText}>Go</Text>
           </TouchableHighlight>
@@ -184,7 +183,7 @@ function urlForQueryAndPage(key, value, pageNumber) {
     .map(key => key + '=' + encodeURIComponent(data[key]))
     .join('&');
 
-  return 'http://api.nestoria.co.uk/api?' + querystring;
+  return 'https://api.nestoria.co.uk/api?' + querystring;
 };
 
 module.exports = SearchScreen;
