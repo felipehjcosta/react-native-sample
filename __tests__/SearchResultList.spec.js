@@ -17,7 +17,13 @@ describe('<SearchResultList>', () => {
        { title: "Rosemary Place", price: "750,000"}
      ];
      
-    wrapper = shallow(<SearchResultList data={data}/>);
+     const  navigation = {
+       "params": {
+         "listing": data
+       }
+     }
+     
+    wrapper = shallow(<SearchResultList data={data} navigation={navigation}/>);
   });
   
   it('should define its propTypes', () => {
