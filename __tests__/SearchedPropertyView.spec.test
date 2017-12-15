@@ -1,0 +1,23 @@
+import React, { Component } from 'react';
+import { 
+  View, 
+  TouchableHighlight,
+  Text,
+  Image
+} from 'react-native';
+
+import { shallow, configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+configure({ adapter: new Adapter() });
+import { expect } from 'chai';
+
+import SearchedPropertyView from '../SearchedPropertyView.js';
+
+describe('<SearchedPropertyView>', () => {
+  it('should be a View component', () => {
+  const wrapper = shallow(<SearchResult/>);
+  
+    expect(wrapper.type()).to.equal(View);
+  });
+
+});
