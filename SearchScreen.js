@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import {
-  View,
   StyleSheet,
   Text,
   TextInput,
-  TouchableHighlight
+  View,
+  TouchableHighlight,
+  ActivityIndicator,
+  Image
 } from 'react-native';
 
 var styles = StyleSheet.create({
@@ -65,20 +67,70 @@ var styles = StyleSheet.create({
   },
 })
 
+import SearchResultList from './SearchResultList.js';
+
 class SearchScreen extends React.Component {
   
   constructor(props) {
     super(props);
     this.state = {
-      searchString: 'london'
+      searchString: 'london',
+      isLoading: false,
+      message: ''
     };
   }
-  
+
   onSearchTextChanged(event) {
     this.setState({ searchString: event.nativeEvent.text });
   }
+
+  _executeQuery(query) {
+    this.setState({ isLoading: true, message: '' });
+    fetch(query)
+      .then(response => response.json())
+      .then(json => this._handleResponse(json.response))
+      .catch(error =>
+          this.setState({
+          isLoading: false,
+          message: 'Something bad happened ' + error
+        }));
+  }
+
+  _handleResponse(response) {
+    this.setState({ isLoading: false , message: '' });
+    if (response.application_response_code.substr(0, 1) === '1') {
+      this.props.navigator.push({
+        screen: 'SearchResults',
+        passProps: {listings: response.listings}
+      });
+    } else {
+      this.setState({ message: 'Location not recognized; please try again.'});
+    }
+  }
+
+  onSearchPressed() {
+    var query = urlForQueryAndPage('place_name', this.state.searchString, 1);
+    this._executeQuery(query);
+  }
+
+  onLocationPressed() {
+    navigator.geolocation.getCurrentPosition(
+      location => {
+        var search = location.coords.latitude + ',' + location.coords.longitude;
+        this.setState({ searchString: search });
+        var query = urlForQueryAndPage('centre_point', search, 1);
+        this._executeQuery(query);
+      },
+      error => {
+        this.setState({
+          message: 'There was a problem with obtaining your location: ' + error
+      });
+    });
+  }
   
   render() {
+    var spinner = this.state.isLoading ? ( <ActivityIndicator size='large'/> ) : ( <View/>);
+    
     return (
       <View style={styles.container}>
         <Text style={styles.description}>
@@ -101,13 +153,38 @@ class SearchScreen extends React.Component {
       
         <TouchableHighlight style={styles.locationButton}
             underlayColor='#99d9f4'>
-          <Text style={styles.buttonText}>
+          <Text style={styles.buttonText}
+            onPress={this.onLocationPressed.bind(this)}>
             Location
           </Text>
         </TouchableHighlight>
+
+        <Image source={require('./Resources/house.png')} style={styles.image}/>
+
+        {spinner}
+
+        <Text style={styles.description}>{this.state.message}</Text>
       </View>
     );
   }
 }
+
+function urlForQueryAndPage(key, value, pageNumber) {
+  var data = {
+      country: 'uk',
+      pretty: '1',
+      encoding: 'json',
+      listing_type: 'buy',
+      action: 'search_listings',
+      page: pageNumber
+  };
+  data[key] = value;
+
+  var querystring = Object.keys(data)
+    .map(key => key + '=' + encodeURIComponent(data[key]))
+    .join('&');
+
+  return 'http://api.nestoria.co.uk/api?' + querystring;
+};
 
 module.exports = SearchScreen;
