@@ -24,25 +24,21 @@ project.xcworkspace
 
 # Gradle
 /build/
-/RNTester/android/app/build/
-/RNTester/android/app/gradle/
-/RNTester/android/app/gradlew
-/RNTester/android/app/gradlew.bat
-/ReactAndroid/build/
+/android/app/build/
+/android/build/
 
 # Buck
 .buckd
 buck-out
-/ReactAndroid/src/main/jni/prebuilt/lib/armeabi-v7a/
-/ReactAndroid/src/main/jni/prebuilt/lib/x86/
-/ReactAndroid/src/main/gen
+/android/src/main/jni/prebuilt/lib/armeabi-v7a/
+/android/src/main/jni/prebuilt/lib/x86/
+/android/src/main/gen
 
 # Android
 .idea
 .gradle
 local.properties
 *.iml
-/android/
 
 # Node
 node_modules
@@ -54,7 +50,7 @@ node_modules
 .DS_Store
 
 # Test generated files
-/ReactAndroid/src/androidTest/assets/AndroidTestBundle.js
+/android/src/androidTest/assets/AndroidTestBundle.js
 *.js.meta
 
 /coverage
