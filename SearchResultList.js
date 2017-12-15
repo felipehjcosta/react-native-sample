@@ -14,10 +14,12 @@ class SearchResultList extends Component {
 
   constructor(props) {
     super(props)
-    this.props.data = props.navigation.params.listing
+    this.state = {
+      data: this.props.navigation.state.params.listing
+    };
     var dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.lister_url !== r2.lister_url});
     this.state = {
-      dataSource: dataSource.cloneWithRows(this.props.data)
+      dataSource: dataSource.cloneWithRows(this.state.data)
     };
   }
   

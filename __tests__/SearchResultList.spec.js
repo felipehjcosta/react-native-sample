@@ -18,8 +18,10 @@ describe('<SearchResultList>', () => {
      ];
      
      const  navigation = {
-       "params": {
-         "listing": data
+       "state":  {
+         "params": {
+           "listing": data
+         }         
        }
      }
      
