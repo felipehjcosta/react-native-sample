@@ -15,7 +15,6 @@ class SearchResultList extends Component {
   constructor(props) {
     super(props)
     const {state} = props.navigation;
-    console.log("PROPS " + state.params.listing);
     var dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.lister_url !== r2.lister_url});
     this.state = {
       dataSource: dataSource.cloneWithRows(state.params.listing)
@@ -27,10 +26,18 @@ class SearchResultList extends Component {
       dataSource: this.state.dataSource.cloneWithRows(this.props.data)
     });
   }
-  
+
   renderRow(row) {
     return (
-      <SearchResult price={row.price_formatted} image_url={row.img_url}>{row.title}</SearchResult>
+      <SearchResult 
+        row={row}
+        price={row.price_formatted} 
+        image_url={row.img_url}
+        lister_url={row.lister_url}
+        navigation={this.props.navigation}
+        >
+        {row.title}
+      </SearchResult>
     );
   }
   

@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Text
 } from 'react-native'
+import SearchedPropertyView from './SearchedPropertyView.js';
 
 var styles = StyleSheet.create({
   thumb: {
@@ -45,10 +46,18 @@ class SearchResult extends Component {
     super(props)
     this.state = {}
   }
+  
+  rowPressed() {
+    var property = this.props.row
+
+    const { navigate } = this.props.navigation;
+    navigate('SearchedPropertyView', { property: property })
+  }
 
   render() {
     return (
       <TouchableHighlight
+        onPress={() => this.rowPressed()}
         underlayColor='#dddddd'>
         <View>
           <View style={styles.rowContainer}>
