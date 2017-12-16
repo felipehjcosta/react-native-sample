@@ -7,12 +7,10 @@ env:
     - NODE_VERSION=stable
 
 before_install:
+  - set -e
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
-  
-install:
-  - yarn install
-  - yarn add codecov --dev
+
   
 matrix:
   include:
@@ -20,6 +18,9 @@ matrix:
       node_js: 8
       cache:
         yarn: true
+      install:
+        - yarn install
+        - yarn add codecov --dev
       script:
         - yarn install
         - yarn test
@@ -40,5 +41,8 @@ matrix:
         - sudo easy_install virtualenv
         - virtualenv ~/virtualenv
         - source ~/virtualenv/bin/activate
+      install:
+        - yarn install
+        - yarn add codecov --dev
       script:
         - yarn test
