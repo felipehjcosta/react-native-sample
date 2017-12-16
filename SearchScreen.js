@@ -4,6 +4,7 @@ import {
   Text,
   TextInput,
   View,
+  ScrollView,
   TouchableHighlight,
   ActivityIndicator,
   Image
@@ -130,40 +131,42 @@ class SearchScreen extends React.Component {
     var spinner = this.state.isLoading ? ( <ActivityIndicator size='large'/> ) : ( <View/>);
     
     return (
-      <View style={styles.container}>
-        <Text style={styles.description}>
-          Search for houses to buy!
-        </Text>
-        <Text style={styles.description}>
-          Search by place-name, postcode or search near your location.
-        </Text>
-        <View style={styles.flowRight}>
-          <TextInput
-            style={styles.searchInput}
-            value={this.state.searchString}
-            onChange={this.onSearchTextChanged.bind(this)}
-            placeholder='Search via name or postcode'/>
-          <TouchableHighlight style={styles.button}
-              onPress={this.onSearchPressed.bind(this)}
-              underlayColor='#99d9f4'>
-            <Text style={styles.buttonText}>Go</Text>
-          </TouchableHighlight>
-        </View>
-      
-        <TouchableHighlight style={styles.locationButton}
-            underlayColor='#99d9f4'>
-          <Text style={styles.buttonText}
-            onPress={this.onLocationPressed.bind(this)}>
-            Location
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={styles.description}>
+            Search for houses to buy!
           </Text>
-        </TouchableHighlight>
+          <Text style={styles.description}>
+            Search by place-name, postcode or search near your location.
+          </Text>
+          <View style={styles.flowRight}>
+            <TextInput
+              style={styles.searchInput}
+              value={this.state.searchString}
+              onChange={this.onSearchTextChanged.bind(this)}
+              placeholder='Search via name or postcode'/>
+            <TouchableHighlight style={styles.button}
+                onPress={this.onSearchPressed.bind(this)}
+                underlayColor='#99d9f4'>
+              <Text style={styles.buttonText}>Go</Text>
+            </TouchableHighlight>
+          </View>
 
-        <Image source={require('./Resources/house.png')} style={styles.image}/>
+          <TouchableHighlight style={styles.locationButton}
+              underlayColor='#99d9f4'>
+            <Text style={styles.buttonText}
+              onPress={this.onLocationPressed.bind(this)}>
+              Location
+            </Text>
+          </TouchableHighlight>
 
-        {spinner}
+          <Image source={require('./Resources/house.png')} style={styles.image}/>
 
-        <Text style={styles.description}>{this.state.message}</Text>
-      </View>
+          {spinner}
+
+          <Text style={styles.description}>{this.state.message}</Text>
+        </View>
+      </ScrollView>
     );
   }
 }

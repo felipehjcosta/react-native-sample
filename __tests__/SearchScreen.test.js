@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { 
   View, 
+  ScrollView,
   Text,
   TextInput,
   TouchableHighlight
@@ -20,8 +21,8 @@ describe('<SearchScreen>', () => {
     wrapper = shallow(<SearchScreen></SearchScreen>)
   });
   
-  it('should be a View component', () => {
-    expect(wrapper.type()).to.equal(View)
+  it('should be a ScrollView component', () => {
+    expect(wrapper.type()).to.equal(ScrollView)
   });
   
   it('should have a call to action', () => {
