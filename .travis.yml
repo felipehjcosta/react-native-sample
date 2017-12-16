@@ -31,12 +31,10 @@ matrix:
         - yarn
       before_install:
         - brew update
-        - brew install node
-        - brew install yarn
-        - brew outdated node || brew upgrade node
-        - brew outdated yarn || brew upgrade yarn
+        - brew install node || brew upgrade node
+        - brew install yarn || brew upgrade yarn
         - brew tap wix/brew
-        - brew install --HEAD applesimutils
+        - brew install --HEAD applesimutils || brew upgrade --HEAD applesimutils
       install:
         - npm install -g react-native-cli
         - npm install -g detox-cli
