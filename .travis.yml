@@ -1,31 +1,45 @@
 branches:
   only:
     - master
-
-language: objective-c
-osx_image: xcode8.3
-
+    
 env:
   global:
     - NODE_VERSION=stable
-    
 
 before_install:
-  - set -e
-  - brew update
-  - brew install yarn
-  - brew outdated node || brew upgrade node
-  - brew outdated yarn || brew upgrade yarn
-  
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH="$HOME/.yarn/bin:$PATH"
   
 install:
   - yarn install
   - yarn add codecov --dev
-
-script:
-  - yarn run test
-  - detox build --configuration ios.sim.release
-  - detox test --configuration ios.sim.release --cleanup
+  
+matrix:
+  include:
+    - language: node_js
+      node_js: 8
+      cache:
+        yarn: true
+      script:
+        - yarn install
+        - yarn test
+        
+    - language: objective-c
+      os: osx
+      osx_image: xcode8.3
+      cache:
+        - yarn
+      before_install:
+        - brew update
+        - brew install yarn
+        - brew outdated node || brew upgrade node
+        - brew outdated yarn || brew upgrade yarn
+      before_script:
+        - sudo easy_install virtualenv
+        - virtualenv ~/virtualenv
+        - source ~/virtualenv/bin/activate
+      script:
+        - yarn test
 
 after_success:
   - codecov
