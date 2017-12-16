@@ -2,27 +2,30 @@ branches:
   only:
     - master
 
-language: node_js
-node_js:
-  - node
-
-env:
-  global:
-    - NODE_VERSION=stable
-    
-
 before_install:
   - set -e
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH=$HOME/.yarn/bin:$PATH
   
-  
+env:
+  global:
+    - NODE_VERSION=stable
+    
 install:
   - yarn install
   - yarn add codecov --dev
 
-script:
-  - yarn run test
+  
+matrix:
+  include:
+    - language: node_js
+      node_js: node
+      env: NODE_VERSION=stable
+      cache:
+        yarn: true
+      script:
+        - yarn run test
 
+        
 after_success:
   - codecov
