@@ -34,6 +34,9 @@ buck-out
 /android/src/main/jni/prebuilt/lib/x86/
 /android/src/main/gen
 
+# Deco
+.deco/
+
 # Android
 .idea
 .gradle
