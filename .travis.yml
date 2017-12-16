@@ -10,7 +10,6 @@ before_install:
   - set -e
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
-
   
 matrix:
   include:
@@ -33,14 +32,10 @@ matrix:
       cache:
         - yarn
       before_install:
-        - brew update
-        - brew install yarn
-        - brew outdated node || brew upgrade node
-        - brew outdated yarn || brew upgrade yarn
-      before_script:
-        - sudo easy_install virtualenv
-        - virtualenv ~/virtualenv
-        - source ~/virtualenv/bin/activate
+        - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+        - export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+        - nvm install $NODE_VERSION
+        - nvm use $NODE_VERSION
       install:
         - yarn install
       script:
