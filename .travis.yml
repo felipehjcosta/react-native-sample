@@ -43,6 +43,5 @@ matrix:
         - source ~/virtualenv/bin/activate
       install:
         - yarn install
-        - yarn add codecov --dev
       script:
         - yarn test
