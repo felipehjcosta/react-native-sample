@@ -23,6 +23,8 @@ matrix:
       script:
         - yarn install
         - yarn test
+      after_success:
+        - codecov
         
     - language: objective-c
       os: osx
@@ -40,6 +42,3 @@ matrix:
         - source ~/virtualenv/bin/activate
       script:
         - yarn test
-
-after_success:
-  - codecov
