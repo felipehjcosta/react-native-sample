@@ -13,7 +13,6 @@ import {
 var styles = StyleSheet.create({
   container: {
     padding: 30,
-    marginTop: 65,
     alignItems: 'center'
   },
   description: {
