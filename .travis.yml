@@ -38,6 +38,9 @@ matrix:
         - curl -o- -L https://yarnpkg.com/install.sh | bash
         - export PATH="$HOME/.yarn/bin:$PATH"
       install:
+        - npm install -g react-native-cli
+        - npm install -g detox-cli
+        
         - yarn install
       script:
         - detox build --configuration ios.sim.release
