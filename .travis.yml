@@ -40,4 +40,5 @@ matrix:
       install:
         - yarn install
       script:
-        - yarn test
+        - detox build --configuration ios.sim.release
+        - detox test --configuration ios.sim.release --cleanup
