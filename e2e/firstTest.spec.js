@@ -4,7 +4,7 @@ describe('FindProperty App', () => {
   });
   
   it('should have a title on the start screen', async () => {
-    await expect(element(by.text('FindProperty'))).toBeVisible();
+    await waitFor(element(by.text('FindProperty'))).toBeVisible().withTimeout(1000);
   });
   
 //   it('should show hello screen after tap', async () => {
