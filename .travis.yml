@@ -50,7 +50,6 @@ matrix:
       sudo: required
       os: osx
       osx_image: xcode8.3
-      jdk: oraclejdk8
       before_script:
         - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
         - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
