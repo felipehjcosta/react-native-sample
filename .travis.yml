@@ -88,5 +88,5 @@ matrix:
           - extra-google-m2repository
           - extra-android-m2repository
           - sys-img-armeabi-v7a-android-21
-      script: bash travis/run-android-ci.sh 
+      script: bash .travis/run-android-ci.sh 
       
