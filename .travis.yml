@@ -47,7 +47,7 @@ matrix:
         - detox test --configuration ios.sim.release --cleanup
         
     - language: android
-      sudo: false
+      sudo: required
       jdk: oraclejdk8
       before_script:
         - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -81,6 +81,7 @@ matrix:
           - tools
            
           - build-tools-23.0.1
+          - build-tools-25.0.3
           
           - android-23
           - android-21
@@ -88,5 +89,5 @@ matrix:
           - extra-google-m2repository
           - extra-android-m2repository
           - sys-img-armeabi-v7a-android-21
-      script: bash .travis/run-android-ci.sh 
+      script: bash travis/run-android-ci.sh 
       
