@@ -60,7 +60,7 @@
       },
       "android.emu.release": {
         "binaryPath": "android/app/build/outputs/apk/app-debug.apk",
-        "build": "pushd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug && popd",
+        "build": "cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug && cd ..",
         "type": "android.emulator",
         "name": "test"
       } 
