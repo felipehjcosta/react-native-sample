@@ -47,7 +47,7 @@ matrix:
         - detox test --configuration ios.sim.release --cleanup
         
     - language: android
-      sudo: required
+      sudo: false
       jdk: oraclejdk8
       before_script:
         - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
