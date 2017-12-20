@@ -54,7 +54,7 @@ matrix:
         - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
         
         - android-update-sdk --components=sys-img-$ABI-$API --accept-licenses='android-sdk-license-[0-9a-f]{8}'
-        - echo no | android create avd --force -n test -t android-25 --abi armeabi-v7a
+        - echo no | android create avd --force -n test -t android-25 --abi x86 -no-accel
         - emulator -avd test -no-skin -no-audio -no-window -gpu off &
         - android-wait-for-emulator
         - adb devices
@@ -87,6 +87,6 @@ matrix:
 
           - extra-google-m2repository
           - extra-android-m2repository
-          - sys-img-armeabi-v7a-android-25
+          - sys-img-x86-android-25
       script: .travis/run-android-ci.sh 
       
