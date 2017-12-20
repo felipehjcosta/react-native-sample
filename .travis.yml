@@ -54,7 +54,7 @@ matrix:
         - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
         
         - android-update-sdk --components=sys-img-$ABI-$API --accept-licenses='android-sdk-license-[0-9a-f]{8}'
-        - echo no | android create avd --force -n test -t android-25 --abi x86 -no-accel
+        - echo no | android create avd --force -n test -t android-25 --abi x86
         - emulator -avd test -no-skin -no-audio -no-window -gpu off &
         - android-wait-for-emulator
         - adb devices
