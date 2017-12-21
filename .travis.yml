@@ -73,9 +73,9 @@ matrix:
         - yarn install
         
         - sdkmanager --list || true
-        - echo yes | sdkmanager "tools"
-        - echo yes | sdkmanager "extras;android;m2repository"
-        - echo yes | sdkmanager "extras;google;m2repository"
+        - echo yes | sdkmanager "tools" >/dev/null
+        - echo yes | sdkmanager "extras;android;m2repository" >/dev/null
+        - echo yes | sdkmanager "extras;google;m2repository" >/dev/null
         - echo no | avdmanager create avd -n test -k "system-images;android-25;google_apis;armeabi-v7a" -f --abi "armeabi-v7a" --tag "google_apis"
         - emulator -avd test -engine classic -no-window -camera-back none -camera-front none -verbose -qemu -m 512 &
   
