@@ -87,9 +87,12 @@ matrix:
         - yarn install
         
         - sdkmanager --list || true
+        - echo yes | sdkmanager "tools"
+        - echo yes | sdkmanager "platforms;android-25" 
+        - echo yes | sdkmanager "extras;android;m2repository"
+        - echo yes | sdkmanager "extras;google;m2repository"
         - echo yes | sdkmanager "system-images;android-25;google_apis;armeabi-v7a"
-        
-        - echo no | avdmanager create avd -n acib -k "system-images;android-25;google_apis;armeabi-v7a" -f --abi "armeabi-v7a" --tag "google_apis"
+        - echo no | avdmanager create avd -n test -k "system-images;android-25;google_apis;armeabi-v7a" -f --abi "armeabi-v7a" --tag "google_apis"
         - emulator -avd acib -engine classic -no-window -camera-back none -camera-front none -verbose -qemu -m 512 &
   
         - adb wait-for-device get-serialno
