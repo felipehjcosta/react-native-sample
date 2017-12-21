@@ -49,6 +49,10 @@ matrix:
     - language: android
       sudo: required
       jdk: oraclejdk8
+      env:
+        - ANDROID_HOME=/usr/local/android-sdk-24.0.2
+        - TOOLS=${ANDROID_HOME}/tools # PATH order matters, exists more than one emulator script
+        - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
       android:
         components:
           - platform-tools
