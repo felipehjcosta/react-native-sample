@@ -51,7 +51,7 @@ class SearchResult extends Component {
     const property = this.props.row;
 
     const { navigate } = this.props.navigation;
-    navigate('SearchedPropertyView', { property: property })
+    navigate('SearchedPropertyView', { property: property });
   }
 
   render() {

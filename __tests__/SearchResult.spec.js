@@ -10,6 +10,10 @@ import SearchResult from '../SearchResult.js';
 configure({adapter: new Adapter()});
 
 describe('<SearchResult>', () => {
+    let data;
+    let mockNavigateFunction;
+    let wrapper;
+
     beforeEach(() => {
         data = {
             "children": "Rossendale Way",
@@ -17,7 +21,13 @@ describe('<SearchResult>', () => {
             "img_url": "https://static.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg"
         };
 
-        wrapper = shallow(<SearchResult row={data}/>);
+        mockNavigateFunction = jest.fn();
+
+        let navigation = {
+            navigate: mockNavigateFunction
+        };
+
+        wrapper = shallow(<SearchResult row={data} navigation={navigation}/>);
     });
 
     it('should be a TouchableHighlight component', () => {
@@ -36,5 +46,16 @@ describe('<SearchResult>', () => {
         expect(wrapper.containsMatchingElement(<Image
             source={{uri: data.img_url}}/>))
             .to.equal(true);
+    });
+
+    it('should navigate to another component when the user touches the component', () => {
+
+        const componentView = wrapper.find(TouchableHighlight).first();
+
+        componentView.simulate('press');
+
+        expect(mockNavigateFunction.mock.calls.length).to.equals(1);
+        expect(mockNavigateFunction.mock.calls[0][0]).to.equals('SearchedPropertyView');
+        expect(mockNavigateFunction.mock.calls[0][1]).to.deep.equals({ property: data })
     });
 });
