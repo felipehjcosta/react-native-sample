@@ -8,7 +8,7 @@ import {
 } from 'react-native'
 import SearchedPropertyView from './SearchedPropertyView.js';
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   thumb: {
     width: 80,
     height: 80,
@@ -38,17 +38,17 @@ var styles = StyleSheet.create({
 
 class SearchResult extends Component {
 
-  static propTypes = {}
+  static propTypes = {};
 
-  static defaultProps = {}
+  static defaultProps = {};
 
   constructor(props) {
-    super(props)
-    this.state = {}
+    super(props);
+    this.state = {};
   }
   
   rowPressed() {
-    var property = this.props.row
+    const property = this.props.row;
 
     const { navigate } = this.props.navigation;
     navigate('SearchedPropertyView', { property: property })
@@ -61,11 +61,11 @@ class SearchResult extends Component {
         underlayColor='#dddddd'>
         <View>
           <View style={styles.rowContainer}>
-            <Image style={styles.thumb} source={{ uri: this.props.image_url }} />
+            <Image style={styles.thumb} source={{ uri: this.props.row.img_url }} />
             <View  style={styles.textContainer}>
-              <Text style={styles.price}>{this.props.price}</Text>
+              <Text style={styles.price}>{this.props.row.price_formatted}</Text>
               <Text style={styles.title}
-                    numberOfLines={1}>{this.props.children}</Text>
+                    numberOfLines={1}>{this.props.row.title}</Text>
             </View>
           </View>
           <View style={styles.separator}/>
