@@ -9,7 +9,7 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "chai": "^4.1.2",
-    "native-base": "^2.3.5",
+    "native-base": "^2.3.9",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
@@ -48,7 +48,7 @@
       },
       "ios.sim.release": {
         "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/PropertyFinder.app",
-        "build": "xcodebuild -project ios/PropertyFinder.xcodeproj -scheme PropertyFinder -configuration Release -sdk iphonesimulator -derivedDataPath ios/build", 
+        "build": "xcodebuild -project ios/PropertyFinder.xcodeproj -scheme PropertyFinder -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
         "name": "iPhone 7"
       },
@@ -63,7 +63,7 @@
         "build": "cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug && cd ..",
         "type": "android.emulator",
         "name": "test"
-      } 
+      }
     }
   }
 }
