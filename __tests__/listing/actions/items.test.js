@@ -1,6 +1,5 @@
 import fetchMock from 'fetch-mock'
-import {apiCall} from '../../../src/listing/actions/apiCall'
-import { itemsIsLoading, itemsFetchDataSuccess} from '../../../src/listing/actions/items'
+import {itemsFetchData} from '../../../src/listing/actions/items'
 import thunkMiddleware from 'redux-thunk'
 import configureStore from 'redux-mock-store'
 
@@ -13,12 +12,13 @@ test('check API action', () => {
     const testData = {id: 1};
     fetchMock.get('*', {response: {listings: testData}});
 
-    const actionResult = store.dispatch(apiCall())
+    const actionResult = store.dispatch(itemsFetchData())
         .then(() => {
             const actions = store.getActions();
-            expect(actions.length).toBe(2);
-            expect(actions[0]).toEqual(itemsIsLoading());
-            expect(actions[1]).toEqual(itemsFetchDataSuccess(testData));
+            expect(actions.length).toBe(3);
+            expect(actions[0]).toEqual({type: 'ITEMS_IS_LOADING', isLoading: true});
+            expect(actions[1]).toEqual({type: 'ITEMS_IS_LOADING', isLoading: false});
+            expect(actions[2]).toEqual({type: 'ITEMS_FETCH_DATA_SUCCESS', items: testData});
         });
 
     fetchMock.restore();

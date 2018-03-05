@@ -14,7 +14,7 @@ export function itemsFetchDataSuccess(items) {
     };
 }
 
-export const itemsFetchData = (params) => {
+export const itemsFetchData = () => {
     return function (dispatch) {
         dispatch(itemsIsLoading(true));
         return apiCall()

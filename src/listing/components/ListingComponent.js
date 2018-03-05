@@ -2,17 +2,16 @@
 // import * as React from 'react';
 import {Image, ListView, StyleSheet, Text, TouchableHighlight, View} from 'react-native'
 
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { itemsFetchData } from '../actions/items';
+import React, {PropTypes} from 'react';
+import {connect} from 'react-redux';
+import {itemsFetchData} from '../actions/items';
 
 type Props = {};
 
 class ListingComponent extends React.Component<Props> {
 
     componentDidMount() {
-        console.log(">>>> componentDidMount");
-        this.props.fetchData({});
+        this.props.fetchData();
     }
 
     renderRow(row) {
@@ -38,7 +37,6 @@ class ListingComponent extends React.Component<Props> {
 
     render() {
         var dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.lister_url !== r2.lister_url});
-        console.log(">>> items:" + JSON.stringify(this.props.items))
         return (
             <ListView
                 dataSource={dataSource.cloneWithRows(this.props.items)}
@@ -83,13 +81,6 @@ const styles = StyleSheet.create({
 // };
 
 const mapStateToProps = (state) => {
-    // var dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.lister_url !== r2.lister_url});
-    // console.log(">>> items: " + state.items);
-    // return {
-    //     items: state.items,
-    //     dataSource: dataSource.cloneWithRows(state.items),
-    //     isLoading: state.itemsIsLoading
-    // };
     return {
         items: state.items,
         isLoading: state.itemsIsLoading
@@ -98,7 +89,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchData: (params) => dispatch(itemsFetchData(params))
+        fetchData: () => dispatch(itemsFetchData())
     };
 };
 
