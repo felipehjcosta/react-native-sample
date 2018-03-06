@@ -8,7 +8,7 @@ import {itemsFetchData} from '../actions/items';
 
 type Props = {};
 
-class ListingComponent extends React.Component<Props> {
+export class ListingComponent extends React.Component<Props> {
 
     componentDidMount() {
         this.props.fetchData();
