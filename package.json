@@ -20,11 +20,14 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.2",
     "babel-jest": "21.2.0",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-react-native": "4.0.0",
     "detox": "^6.0.4",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
+    "eslint-plugin-flowtype": "^2.46.1",
     "fetch-mock": "^6.0.0",
     "flow-bin": "^0.66.0",
     "ignore-styles": "^5.0.1",
@@ -33,7 +36,12 @@
     "mocha": "^4.0.1",
     "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "16.0.0",
-    "redux-mock-store": "^1.5.1"
+    "redux-mock-store": "^1.5.1",
+    "standard": "^11.0.0"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "plugins": ["flowtype"]
   },
   "jest": {
     "preset": "react-native",
