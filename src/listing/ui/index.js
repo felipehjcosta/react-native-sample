@@ -9,12 +9,14 @@ import {
 } from 'react-native'
 
 import React from 'react'
-import { connect } from 'react-redux'
-import { itemsFetchData } from '../actions/items'
 
 export class Listing extends React.Component {
   componentDidMount () {
-    this.props.fetchData()
+    const {
+      fetchData
+    } = this.props
+
+    fetchData()
   }
 
   renderRow (row) {
@@ -76,17 +78,4 @@ const styles = StyleSheet.create({
   }
 })
 
-const mapStateToProps = (state) => {
-  return {
-    items: state.items,
-    isLoading: state.itemsIsLoading
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchData: () => dispatch(itemsFetchData())
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Listing)
+export default Listing
