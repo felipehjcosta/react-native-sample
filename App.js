@@ -8,7 +8,7 @@ import Listing from './src/listing/index';
 //         navigationOptions: {
 //             title: 'FindProperty'
 //         }
-//     },ListingComponent
+//     },Listing
 //     SearchResultList: {screen: SearchResultList},
 //     SearchedPropertyView: {screen: SearchedPropertyView},
 // });

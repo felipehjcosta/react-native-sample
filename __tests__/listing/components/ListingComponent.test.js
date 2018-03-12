@@ -2,7 +2,7 @@ import React from 'react'
 import Enzyme, {shallow} from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
-import {ListingComponent} from '../../../src/listing/components/ListingComponent'
+import {Listing} from '../../../src/listing/components/ListingComponent'
 
 Enzyme.configure({adapter: new Adapter()});
 
@@ -19,7 +19,7 @@ describe('Listing Component', () => {
             ]
         };
 
-        const wrapper = shallow(<ListingComponent {...props}/>)
+        const wrapper = shallow(<Listing {...props}/>)
 
         const tree = renderer.create(wrapper).toJSON();
         expect(tree).toMatchSnapshot();
@@ -31,7 +31,7 @@ describe('Listing Component', () => {
             items: []
         };
 
-        shallow(<ListingComponent {...props}/>)
+        shallow(<Listing {...props}/>)
 
         expect(props.fetchData.mock.calls.length).toBe(1)
     })

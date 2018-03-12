@@ -12,7 +12,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { itemsFetchData } from '../actions/items'
 
-export class ListingComponent extends React.Component {
+export class Listing extends React.Component {
   componentDidMount () {
     this.props.fetchData()
   }
@@ -89,4 +89,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListingComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(Listing)
