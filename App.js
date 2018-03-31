@@ -1,22 +1,23 @@
-import {Root} from "native-base";
-import React from 'react';
-import Listing from './src/listing/index';
+import React from 'react'
+import Listing from './src/listing/index'
+import { StackNavigator } from 'react-navigation'
+import { Provider } from 'react-redux'
+import { createAppStore } from './src/store/'
 
-// const AppNavigator = StackNavigator({
-//     SearchScreen: {
-//         screen: SearchScreen,
-//         navigationOptions: {
-//             title: 'FindProperty'
-//         }
-//     },Listing
-//     SearchResultList: {screen: SearchResultList},
-//     SearchedPropertyView: {screen: SearchedPropertyView},
-// });
+const store = createAppStore()
+
+const AppNavigator = StackNavigator({
+  Listing: {
+    screen: Listing
+  }
+})
 
 export default class App extends React.Component {
-    render() {
-        return (
-            <Listing/>
-        )
-    }
+  render () {
+    return (
+      <Provider store={store}>
+        <AppNavigator />
+      </Provider>
+    )
+  }
 }
