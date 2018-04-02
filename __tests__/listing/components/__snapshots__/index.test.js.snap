@@ -2,110 +2,138 @@
 
 exports[`Listing Component should render render correctly 1`] = `
 <RCTScrollView
-  dataSource={
-    ListViewDataSource {
-      "items": 1,
-    }
+  data={
+    Array [
+      Object {
+        "img_url": "https://imgs.nestimg.com/casa_300_m2_108811252799247473.jpg",
+        "price_formatted": "R$ 750.000",
+        "title": "Campo Grande,Rio de Janeiro,Rio De Janeiro",
+      },
+    ]
   }
-  renderRow={[Function]}
-  renderScrollComponent={[Function]}
+  disableVirtualization={false}
+  getItem={[Function]}
+  getItemCount={[Function]}
+  horizontal={false}
+  initialNumToRender={10}
+  keyExtractor={[Function]}
+  maxToRenderPerBatch={10}
+  numColumns={1}
+  onContentSizeChange={[Function]}
+  onEndReachedThreshold={2}
+  onLayout={[Function]}
+  onMomentumScrollEnd={[Function]}
+  onScroll={[Function]}
+  onScrollBeginDrag={[Function]}
+  onScrollEndDrag={[Function]}
+  renderItem={[Function]}
+  scrollEventThrottle={50}
+  stickyHeaderIndices={Array []}
+  updateCellsBatchingPeriod={50}
+  viewabilityConfigCallbackPairs={Array []}
+  windowSize={21}
 >
   <View>
     <View
-      accessibilityComponentType={undefined}
-      accessibilityLabel={undefined}
-      accessibilityTraits={undefined}
-      accessible={true}
-      hasTVPreferredFocus={undefined}
-      hitSlop={undefined}
-      isTVSelectable={true}
-      nativeID={undefined}
-      onLayout={undefined}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Array [
-          Object {
-            "backgroundColor": "transparent",
-          },
-          undefined,
-        ]
-      }
-      testID={undefined}
-      tvParallaxProperties={undefined}
+      onLayout={[Function]}
+      style={null}
     >
-      <View>
-        <View
-          style={
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        hasTVPreferredFocus={undefined}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        nativeID={undefined}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Array [
             Object {
-              "flexDirection": "row",
-              "padding": 10,
-            }
-          }
-        >
-          <Image
-            source={
-              Object {
-                "uri": "https://imgs.nestimg.com/casa_300_m2_108811252799247473.jpg",
-              }
-            }
-            style={
-              Object {
-                "height": 80,
-                "marginRight": 10,
-                "width": 80,
-              }
-            }
-          />
+              "backgroundColor": "transparent",
+            },
+            undefined,
+          ]
+        }
+        testID={undefined}
+        tvParallaxProperties={undefined}
+      >
+        <View>
           <View
             style={
               Object {
-                "flex": 1,
+                "flexDirection": "row",
+                "padding": 10,
               }
             }
           >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
+            <Image
+              source={
+                Object {
+                  "uri": "https://imgs.nestimg.com/casa_300_m2_108811252799247473.jpg",
+                }
+              }
               style={
                 Object {
-                  "color": "#48BBEC",
-                  "fontSize": 25,
-                  "fontWeight": "bold",
+                  "height": 80,
+                  "marginRight": 10,
+                  "width": 80,
+                }
+              }
+            />
+            <View
+              style={
+                Object {
+                  "flex": 1,
                 }
               }
             >
-              R$ 750.000
-            </Text>
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              numberOfLines={1}
-              style={
-                Object {
-                  "color": "#656565",
-                  "fontSize": 20,
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "#48BBEC",
+                    "fontSize": 25,
+                    "fontWeight": "bold",
+                  }
                 }
-              }
-            >
-              Campo Grande,Rio de Janeiro,Rio De Janeiro
-            </Text>
+              >
+                R$ 750.000
+              </Text>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                numberOfLines={1}
+                style={
+                  Object {
+                    "color": "#656565",
+                    "fontSize": 20,
+                  }
+                }
+              >
+                Campo Grande,Rio de Janeiro,Rio De Janeiro
+              </Text>
+            </View>
           </View>
-        </View>
-        <View
-          style={
-            Object {
-              "backgroundColor": "#dddddd",
-              "height": 1,
+          <View
+            style={
+              Object {
+                "backgroundColor": "#dddddd",
+                "height": 1,
+              }
             }
-          }
-        />
+          />
+        </View>
       </View>
     </View>
   </View>

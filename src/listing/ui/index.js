@@ -1,7 +1,7 @@
 // @flow
 import {
+  FlatList,
   Image,
-  ListView,
   StyleSheet,
   Text,
   TouchableHighlight,
@@ -33,10 +33,10 @@ export class Listing extends React.Component {
         underlayColor='#dddddd'>
         <View>
           <View style={styles.rowContainer}>
-            <Image style={styles.thumb} source={{uri: row.img_url}} />
+            <Image style={styles.thumb} source={{uri: row.item.img_url}} />
             <View style={styles.textContainer}>
-              <Text style={styles.price}>{row.price_formatted}</Text>
-              <Text style={styles.title} numberOfLines={1}>{row.title}</Text>
+              <Text style={styles.price}>{row.item.price_formatted}</Text>
+              <Text style={styles.title} numberOfLines={1}>{row.item.title}</Text>
             </View>
           </View>
           <View style={styles.separator} />
@@ -53,12 +53,10 @@ export class Listing extends React.Component {
 
     if (Object.keys(listingState).length === 0) return false
 
-    const dataSource = new ListView.DataSource(
-      {rowHasChanged: (r1, r2) => r1.lister_url !== r2.lister_url})
     return (
-      <ListView
-        dataSource={dataSource.cloneWithRows(listingState.items)}
-        renderRow={this.renderRow.bind(this)} />
+      <FlatList
+        data={listingState.items}
+        renderItem={this.renderRow.bind(this)} />
     )
   }
 }
