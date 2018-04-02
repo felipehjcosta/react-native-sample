@@ -8,10 +8,11 @@ import { Listing } from '../../../src/listing/ui/index'
 Enzyme.configure({adapter: new Adapter()})
 
 describe('Listing Component', () => {
-  it('should render render correctly', () => {
+  it('should display list correctly', () => {
     const props = {
       fetchData: jest.fn(),
       listingState: {
+        isLoading: false,
         items: [
           {
             img_url: 'https://imgs.nestimg.com/casa_300_m2_108811252799247473.jpg',
@@ -19,6 +20,20 @@ describe('Listing Component', () => {
             title: 'Campo Grande,Rio de Janeiro,Rio De Janeiro'
           }
         ]
+      }
+    }
+
+    const wrapper = shallow(<Listing {...props} />)
+
+    const tree = renderer.create(wrapper).toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+
+  it('should display loading correctly', () => {
+    const props = {
+      fetchData: jest.fn(),
+      listingState: {
+        isLoading: true
       }
     }
 

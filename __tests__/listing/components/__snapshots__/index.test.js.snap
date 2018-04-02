@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Listing Component should render render correctly 1`] = `
+exports[`Listing Component should display list correctly 1`] = `
 <RCTScrollView
   data={
     Array [
@@ -138,4 +138,24 @@ exports[`Listing Component should render render correctly 1`] = `
     </View>
   </View>
 </RCTScrollView>
+`;
+
+exports[`Listing Component should display loading correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "flexDirection": "row",
+      "justifyContent": "center",
+    }
+  }
+>
+  <ActivityIndicator
+    animating={true}
+    color="#999999"
+    hidesWhenStopped={true}
+    size="large"
+  />
+</View>
 `;

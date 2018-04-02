@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   TouchableHighlight,
+  ActivityIndicator,
   View
 } from 'react-native'
 import PropTypes from 'prop-types'
@@ -24,6 +25,14 @@ export class Listing extends React.Component {
     } = this.props
 
     fetchData()
+  }
+
+  renderLoading () {
+    return (
+      <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+        <ActivityIndicator size='large' />
+      </View>
+    )
   }
 
   renderRow (row) {
@@ -46,6 +55,14 @@ export class Listing extends React.Component {
     )
   }
 
+  renderList (items) {
+    return (
+      <FlatList
+        data={items}
+        renderItem={this.renderRow.bind(this)} />
+    )
+  }
+
   render () {
     const {
       listingState
@@ -53,11 +70,11 @@ export class Listing extends React.Component {
 
     if (Object.keys(listingState).length === 0) return false
 
-    return (
-      <FlatList
-        data={listingState.items}
-        renderItem={this.renderRow.bind(this)} />
-    )
+    if (listingState.isLoading) {
+      return this.renderLoading()
+    } else {
+      return this.renderList(listingState.items)
+    }
   }
 }
 
