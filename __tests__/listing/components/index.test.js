@@ -11,13 +11,15 @@ describe('Listing Component', () => {
   it('should render render correctly', () => {
     const props = {
       fetchData: jest.fn(),
-      items: [
-        {
-          img_url: 'https://imgs.nestimg.com/casa_300_m2_108811252799247473.jpg',
-          price_formatted: 'R$ 750.000',
-          title: 'Campo Grande,Rio de Janeiro,Rio De Janeiro'
-        }
-      ]
+      listingState: {
+        items: [
+          {
+            img_url: 'https://imgs.nestimg.com/casa_300_m2_108811252799247473.jpg',
+            price_formatted: 'R$ 750.000',
+            title: 'Campo Grande,Rio de Janeiro,Rio De Janeiro'
+          }
+        ]
+      }
     }
 
     const wrapper = shallow(<Listing {...props} />)
@@ -29,7 +31,9 @@ describe('Listing Component', () => {
   it('should call the mock fetch data function ', () => {
     const props = {
       fetchData: jest.fn(),
-      items: []
+      listingState: {
+        items: []
+      }
     }
 
     shallow(<Listing {...props} />)

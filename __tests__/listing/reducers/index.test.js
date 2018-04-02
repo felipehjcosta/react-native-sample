@@ -1,19 +1,23 @@
 // @flow
-import { items, itemsIsLoading } from '../../../src/listing/reducers/index'
+import reducer from '../../../src/listing/reducers/index'
 
-test('reducer itemsIsLoading should return the initial state', () => {
-  expect(itemsIsLoading(undefined, {})).toEqual(false)
+test('reducer should return the initial state', () => {
+  expect(reducer(undefined, {})).toEqual({})
 })
 
-test('reducer itemsIsLoading should handle ITEMS_IS_LOADING', () => {
+test('reducer should handle ITEMS_IS_LOADING', () => {
   expect(
-    itemsIsLoading(undefined, {type: 'ITEMS_IS_LOADING', isLoading: true})).toEqual(true)
+    reducer(undefined,
+      {type: 'ITEMS_IS_LOADING', payload: {isLoading: true}})).
+    toEqual({isLoading: true})
 })
 
-test('reducer items should return the initial state', () => {
-  expect(items(undefined, {})).toEqual([])
+test('reducer should return the initial state', () => {
+  expect(reducer(undefined, {})).toEqual({})
 })
 
-test('reducer items should handle ITEMS_FETCH_DATA_SUCCESS', () => {
-  expect(items(undefined, {type: 'ITEMS_FETCH_DATA_SUCCESS', items: {id: 1}})).toEqual({id: 1})
+test('reducer should handle ITEMS_FETCH_DATA_SUCCESS', () => {
+  expect(reducer(undefined,
+    {type: 'ITEMS_FETCH_DATA_SUCCESS', payload: {items: {id: 1}}})).
+    toEqual({items: {id: 1}})
 })

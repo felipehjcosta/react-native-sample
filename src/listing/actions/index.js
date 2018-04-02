@@ -1,17 +1,19 @@
 // @flow
 import { apiCall } from './apiCall'
 
+const initialPayload = {isLoading: false, items: []}
+
 export function itemsIsLoading (bool) {
   return {
     type: 'ITEMS_IS_LOADING',
-    isLoading: bool
+    payload: Object.assign({}, initialPayload, {isLoading: bool})
   }
 }
 
 export function itemsFetchDataSuccess (items) {
   return {
     type: 'ITEMS_FETCH_DATA_SUCCESS',
-    items
+    payload: Object.assign({}, initialPayload, {items})
   }
 }
 

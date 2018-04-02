@@ -5,8 +5,7 @@ import { itemsFetchData } from '../actions/index'
 
 const mapStateToProps = (state) => {
   return {
-    items: state.items,
-    isLoading: state.itemsIsLoading
+    listingState: state.listing
   }
 }
 

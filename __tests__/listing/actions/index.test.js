@@ -16,10 +16,16 @@ test('check API action', () => {
   const actionResult = store.dispatch(itemsFetchData()).then(() => {
     const actions = store.getActions()
     expect(actions.length).toBe(3)
-    expect(actions[0]).toEqual({type: 'ITEMS_IS_LOADING', isLoading: true})
-    expect(actions[1]).toEqual({type: 'ITEMS_IS_LOADING', isLoading: false})
+    expect(actions[0]).
+      toEqual({type: 'ITEMS_IS_LOADING', payload: {isLoading: true, items: []}})
+    expect(actions[1]).
+      toEqual(
+        {type: 'ITEMS_IS_LOADING', payload: {isLoading: false, items: []}})
     expect(actions[2]).
-      toEqual({type: 'ITEMS_FETCH_DATA_SUCCESS', items: testData})
+      toEqual({
+        type: 'ITEMS_FETCH_DATA_SUCCESS',
+        payload: {isLoading: false, items: testData}
+      })
   })
 
   fetchMock.restore()

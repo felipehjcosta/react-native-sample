@@ -7,10 +7,17 @@ import {
   TouchableHighlight,
   View
 } from 'react-native'
+import PropTypes from 'prop-types'
 
 import React from 'react'
 
 export class Listing extends React.Component {
+
+  static propTypes = {
+    fetchData: PropTypes.func.isRequired,
+    listingState: PropTypes.object.isRequired
+  }
+
   componentDidMount () {
     const {
       fetchData
@@ -40,11 +47,17 @@ export class Listing extends React.Component {
   }
 
   render () {
+    const {
+      listingState
+    } = this.props
+
+    if (Object.keys(listingState).length === 0) return false
+
     const dataSource = new ListView.DataSource(
       {rowHasChanged: (r1, r2) => r1.lister_url !== r2.lister_url})
     return (
       <ListView
-        dataSource={dataSource.cloneWithRows(this.props.items)}
+        dataSource={dataSource.cloneWithRows(listingState.items)}
         renderRow={this.renderRow.bind(this)} />
     )
   }

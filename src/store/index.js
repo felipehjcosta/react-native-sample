@@ -1,16 +1,10 @@
 import thunk from 'redux-thunk'
-import {
-  createStore,
-  applyMiddleware,
-  combineReducers,
-  compose
-} from 'redux'
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
 
-import { items, itemsIsLoading } from '../listing/reducers'
+import listing from '../listing/reducers'
 
 const reducer = combineReducers({
-  items,
-  itemsIsLoading
+  listing
 })
 
 const middleware = applyMiddleware(thunk)
