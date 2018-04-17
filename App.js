@@ -1,22 +1,17 @@
 import React from 'react'
-import Listing from './src/listing/index'
-import { StackNavigator } from 'react-navigation'
 import { Provider } from 'react-redux'
-import { createAppStore } from './src/store/'
-
-const store = createAppStore()
-
-const AppNavigator = StackNavigator({
-  Listing: {
-    screen: Listing
-  }
-})
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import AppReducer from './src/AppReducer'
+import AppWithNavigationState from './src/AppNavigator'
 
 export default class App extends React.Component {
+  store = createStore(AppReducer, applyMiddleware(thunk))
+
   render () {
     return (
-      <Provider store={store}>
-        <AppNavigator />
+      <Provider store={this.store}>
+        <AppWithNavigationState />
       </Provider>
     )
   }
