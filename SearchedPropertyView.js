@@ -52,7 +52,7 @@ class SearchedPropertyView extends Component {
                 ? 'bathrooms' : 'bathroom');
         }
 
-        const price = property.price_formatted.split(' ')[0];
+        const price = property.price_formatted;
 
         return (
             <ScrollView>

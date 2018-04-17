@@ -9,14 +9,15 @@ import {
   View
 } from 'react-native'
 import PropTypes from 'prop-types'
-
 import React from 'react'
+import { withNavigation } from 'react-navigation';
 
-export class Listing extends React.Component {
+class Listing extends React.Component {
 
   static propTypes = {
     fetchData: PropTypes.func.isRequired,
-    listingState: PropTypes.object.isRequired
+    listingState: PropTypes.object.isRequired,
+    navigation: PropTypes.object.isRequired
   }
 
   componentDidMount () {
@@ -35,10 +36,14 @@ export class Listing extends React.Component {
     )
   }
 
+  rowPressed (item) {
+    this.props.navigation.navigate('Detail', { property: item })
+  }
+
   renderRow (row) {
     return (
       <TouchableHighlight
-        onPress={() => this.rowPressed()}
+        onPress={() => this.rowPressed(row.item)}
         underlayColor='#dddddd'>
         <View>
           <View style={styles.rowContainer}>
@@ -106,4 +111,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Listing
+export default withNavigation(Listing)
