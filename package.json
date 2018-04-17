@@ -53,6 +53,9 @@
       "/node_modules/",
       "/vendor",
       "/e2e"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-navigation)"
     ]
   },
   "detox": {

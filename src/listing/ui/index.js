@@ -10,9 +10,9 @@ import {
 } from 'react-native'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { withNavigation } from 'react-navigation';
+import { withNavigation } from 'react-navigation'
 
-class Listing extends React.Component {
+export class ListingUI extends React.Component {
 
   static propTypes = {
     fetchData: PropTypes.func.isRequired,
@@ -111,4 +111,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default withNavigation(Listing)
+export default withNavigation(ListingUI)

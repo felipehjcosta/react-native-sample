@@ -3,7 +3,7 @@ import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import renderer from 'react-test-renderer'
-import { Listing } from '../../../src/listing/ui/index'
+import { ListingUI } from '../../../src/listing/ui/index'
 
 Enzyme.configure({adapter: new Adapter()})
 
@@ -23,7 +23,9 @@ describe('Listing Component', () => {
       }
     }
 
-    const wrapper = shallow(<Listing {...props} />)
+    const navigation = { navigate: jest.fn() };
+
+    const wrapper = shallow(<ListingUI {...props} navigation={navigation} />)
 
     const tree = renderer.create(wrapper).toJSON()
     expect(tree).toMatchSnapshot()
@@ -37,7 +39,9 @@ describe('Listing Component', () => {
       }
     }
 
-    const wrapper = shallow(<Listing {...props} />)
+    const navigation = { navigate: jest.fn() };
+
+    const wrapper = shallow(<ListingUI {...props} navigation={navigation} />)
 
     const tree = renderer.create(wrapper).toJSON()
     expect(tree).toMatchSnapshot()
@@ -51,7 +55,9 @@ describe('Listing Component', () => {
       }
     }
 
-    shallow(<Listing {...props} />)
+    const navigation = { navigate: jest.fn() };
+
+    shallow(<ListingUI {...props} navigation={navigation} />)
 
     expect(props.fetchData.mock.calls.length).toBe(1)
   })
