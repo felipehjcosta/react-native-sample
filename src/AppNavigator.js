@@ -2,7 +2,7 @@ import React from 'react'
 import { addNavigationHelpers, StackNavigator } from 'react-navigation'
 import { connect } from 'react-redux'
 import Listing from './listing/index'
-import Detail from '../SearchedPropertyView'
+import Detail from './detail/ui'
 
 export const AppNavigator = StackNavigator({
   Listing: { screen: Listing },
