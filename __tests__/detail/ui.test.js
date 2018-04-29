@@ -5,11 +5,11 @@ import { configure, shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import { expect } from 'chai'
 
-import { SearchedPropertyView } from '../../src/detail/ui'
+import { DetailUI } from '../../src/detail/ui'
 
 configure({adapter: new Adapter()})
 
-describe('<SearchedPropertyView>', () => {
+describe('<DetailUI>', () => {
   beforeEach(() => {
     data = {
       'bathroom_number': 2,
@@ -51,7 +51,7 @@ describe('<SearchedPropertyView>', () => {
 
     const navigation = {navigate: jest.fn()}
 
-    wrapper = shallow(<SearchedPropertyView {...props} navigation={navigation} />)
+    wrapper = shallow(<DetailUI {...props} navigation={navigation} />)
   })
 
   it('should be a ScrollView component', () => {

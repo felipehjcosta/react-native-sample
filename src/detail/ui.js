@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   }
 })
 
-export class SearchedPropertyView extends React.Component {
+export class DetailUI extends React.Component {
 
   static propTypes = {}
 
@@ -76,4 +76,4 @@ export class SearchedPropertyView extends React.Component {
   }
 }
 
-export default withNavigation(SearchedPropertyView)
+export default withNavigation(DetailUI)
