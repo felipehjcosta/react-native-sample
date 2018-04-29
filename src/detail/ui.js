@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   }
 })
 
-class SearchedPropertyView extends React.Component {
+export class SearchedPropertyView extends React.Component {
 
   static propTypes = {}
 
@@ -45,8 +45,11 @@ class SearchedPropertyView extends React.Component {
   }
 
   render () {
-    const {state} = this.props.navigation
-    const property = state.params.property
+    const {
+      detailState
+    } = this.props
+
+    const property = detailState
     let stats = property.bedroom_number + ' bed ' + property.property_type
     if (property.bathroom_number) {
       stats += ', ' + property.bathroom_number + ' ' +
