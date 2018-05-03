@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 
-import ListingContainer from './containers'
+import ListingContainer from './container'
 
 const Listing = (props) => {
   return <ListingContainer {...props} />

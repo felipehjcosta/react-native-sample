@@ -1,6 +1,6 @@
 // @flow
 import fetchMock from 'fetch-mock'
-import { itemsFetchData } from '../../../src/listing/actions/index'
+import { itemsFetchData } from '../../src/listing/actions'
 import thunkMiddleware from 'redux-thunk'
 import configureStore from 'redux-mock-store'
 

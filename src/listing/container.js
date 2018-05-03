@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
-import Listing from '../ui/'
-import { itemsFetchData } from '../actions/index'
+import Listing from './ui'
+import { itemsFetchData } from './actions'
 
 const mapStateToProps = (state) => {
   return {

@@ -1,5 +1,5 @@
 // @flow
-import reducer from '../../../src/listing/reducers/index'
+import reducer from '../../src/listing/reducer'
 
 test('reducer should return the initial state', () => {
   expect(reducer(undefined, {})).toEqual({})

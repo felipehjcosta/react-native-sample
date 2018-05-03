@@ -4,7 +4,7 @@ import { TouchableHighlight } from 'react-native'
 import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import ReactTestRenderer from 'react-test-renderer'
-import { ListingUI } from '../../../src/listing/ui/index'
+import { ListingUI } from '../../src/listing/ui'
 
 Enzyme.configure({adapter: new Adapter()})
 

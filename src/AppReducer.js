@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import listingReducer from './listing/reducers/index'
+import listingReducer from './listing/reducer'
 import detailReducer from './detail/reducer'
 import NavReducer from './NavReducer'
 
