@@ -17,6 +17,7 @@ export class ListingUI extends React.Component {
   static propTypes = {
     fetchData: PropTypes.func.isRequired,
     detail: PropTypes.func.isRequired,
+    onItemSelected: PropTypes.func.isRequired,
     listingState: PropTypes.object.isRequired,
     navigation: PropTypes.object.isRequired
   }
@@ -39,7 +40,7 @@ export class ListingUI extends React.Component {
 
   rowPressed (item) {
     this.props.detail(item)
-    this.props.navigation.navigate('Detail', { property: item })
+    this.props.onItemSelected()
   }
 
   renderRow (row) {

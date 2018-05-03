@@ -3,7 +3,7 @@ import React from 'react'
 
 import ListingContainer from './containers'
 
-const Listing = () => {
-  return <ListingContainer />
+const Listing = (props) => {
+  return <ListingContainer {...props} />
 }
 export default Listing

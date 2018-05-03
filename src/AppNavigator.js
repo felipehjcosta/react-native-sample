@@ -4,9 +4,14 @@ import { connect } from 'react-redux'
 import Listing from './listing/index'
 import Detail from './detail/index'
 
+const ListingScreen = ({navigation}) =>
+  <Listing onItemSelected={() => navigation.navigate('Detail')} />
+
+const DetailScreen = () => <Detail />
+
 export const AppNavigator = StackNavigator({
-  Listing: { screen: Listing },
-  Detail: { screen: Detail }
+  Listing: {screen: ListingScreen},
+  Detail: {screen: DetailScreen}
 })
 
 class AppWithNavigationState extends React.Component {

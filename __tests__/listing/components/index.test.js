@@ -82,7 +82,9 @@ describe('Listing Component', () => {
 
     const navigation = {navigate: jest.fn()}
 
-    const wrapper = shallow(<ListingUI {...props} navigation={navigation} />)
+    const onItemSelected = jest.fn()
+
+    const wrapper = shallow(<ListingUI {...props} navigation={navigation} onItemSelected={onItemSelected} />)
 
     const uiRendered = ReactTestRenderer.create(wrapper)
     const componentView = uiRendered.root.findByType(TouchableHighlight)
@@ -90,5 +92,35 @@ describe('Listing Component', () => {
     componentView.props.onPress()
 
     expect(props.detail.mock.calls.length).toBe(1)
+  })
+
+  it('should notify item selected function when touch item', () => {
+    const props = {
+      fetchData: jest.fn(),
+      detail: jest.fn(),
+      listingState: {
+        isLoading: false,
+        items: [
+          {
+            img_url: 'https://imgs.nestimg.com/casa_300_m2_108811252799247473.jpg',
+            price_formatted: 'R$ 750.000',
+            title: 'Campo Grande,Rio de Janeiro,Rio De Janeiro',
+          }
+        ]
+      }
+    }
+
+    const navigation = {navigate: jest.fn()}
+
+    const onItemSelected = jest.fn()
+
+    const wrapper = shallow(<ListingUI {...props} navigation={navigation} onItemSelected={onItemSelected} />)
+
+    const uiRendered = ReactTestRenderer.create(wrapper)
+    const componentView = uiRendered.root.findByType(TouchableHighlight)
+
+    componentView.props.onPress()
+
+    expect(onItemSelected.mock.calls.length).toBe(1)
   })
 })
