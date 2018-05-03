@@ -11,7 +11,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchData: () => dispatch(itemsFetchData())
+    fetchData: () => dispatch(itemsFetchData()),
+    detail: (item) => dispatch({
+      type: 'DETAIL_PROPERTY',
+      payload: item
+    })
   }
 }
 
