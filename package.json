@@ -14,6 +14,8 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-native": "0.51.0",
+    "react-native-linear-gradient": "^2.4.0",
+    "react-native-shimmer-placeholder": "^1.0.26",
     "react-navigation": "1.0.0-beta.23",
     "react-navigation-redux-helpers": "^1.0.5",
     "react-redux": "^5.0.7",

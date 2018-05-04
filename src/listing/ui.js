@@ -5,12 +5,12 @@ import {
   StyleSheet,
   Text,
   TouchableHighlight,
-  ActivityIndicator,
-  View
+  View,
 } from 'react-native'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { withNavigation } from 'react-navigation'
+import ShimmerPlaceHolder from 'react-native-shimmer-placeholder'
 
 export class ListingUI extends React.Component {
 
@@ -31,8 +31,21 @@ export class ListingUI extends React.Component {
 
   renderLoading () {
     return (
-      <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-        <ActivityIndicator size='large' />
+      <FlatList
+        data={new Array(10)}
+        keyExtractor={(item, index) => `${index}`}
+        renderItem={this.readerShimmerRows.bind(this)} />
+    )
+  }
+
+  readerShimmerRows (row) {
+    return (
+      <View>
+        <View style={styles.rowContainer}>
+          <ShimmerPlaceHolder autoRun style={{width: 80, height: 80, marginRight: 10}} />
+          <ShimmerPlaceHolder autoRun style={{flex: 1, height: 80, marginRight: 10}} />
+        </View>
+        <View style={styles.separator} />
       </View>
     )
   }
