@@ -34,7 +34,8 @@ export class ListingUI extends React.Component {
       <FlatList
         data={new Array(10)}
         keyExtractor={(item, index) => `${index}`}
-        renderItem={this.readerShimmerRows.bind(this)} />
+        renderItem={this.readerShimmerRows.bind(this)}
+        ItemSeparatorComponent={this.renderSeparator} />
     )
   }
 
@@ -45,7 +46,6 @@ export class ListingUI extends React.Component {
           <ShimmerPlaceHolder autoRun style={{width: 80, height: 80, marginRight: 10}} />
           <ShimmerPlaceHolder autoRun style={{flex: 1, height: 80, marginRight: 10}} />
         </View>
-        <View style={styles.separator} />
       </View>
     )
   }
@@ -67,7 +67,6 @@ export class ListingUI extends React.Component {
               <Text style={styles.title} numberOfLines={1}>{row.item.title}</Text>
             </View>
           </View>
-          <View style={styles.separator} />
         </View>
 
       </TouchableHighlight>
@@ -79,9 +78,12 @@ export class ListingUI extends React.Component {
       <FlatList
         data={items}
         keyExtractor={(item) => item.lister_url}
-        renderItem={this.renderRow.bind(this)} />
+        renderItem={this.renderRow.bind(this)}
+        ItemSeparatorComponent={this.renderSeparator} />
     )
   }
+
+  renderSeparator = () => <View style={styles.separator} />
 
   render () {
     const {
