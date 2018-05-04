@@ -29,60 +29,6 @@ export class ListingUI extends React.Component {
     fetchData()
   }
 
-  renderLoading () {
-    return (
-      <FlatList
-        data={new Array(10)}
-        keyExtractor={(item, index) => `${index}`}
-        renderItem={this.readerShimmerRows.bind(this)}
-        ItemSeparatorComponent={this.renderSeparator} />
-    )
-  }
-
-  readerShimmerRows (row) {
-    return (
-      <View>
-        <View style={styles.rowContainer}>
-          <ShimmerPlaceHolder autoRun style={{width: 80, height: 80, marginRight: 10}} />
-          <ShimmerPlaceHolder autoRun style={{flex: 1, height: 80, marginRight: 10}} />
-        </View>
-      </View>
-    )
-  }
-
-  rowPressed (item) {
-    this.props.onItemSelected(item.lister_url)
-  }
-
-  renderRow (row) {
-    return (
-      <TouchableHighlight
-        onPress={() => this.rowPressed(row.item)}
-        underlayColor='#dddddd'>
-        <View>
-          <View style={styles.rowContainer}>
-            <Image style={styles.thumb} source={{uri: row.item.img_url}} />
-            <View style={styles.textContainer}>
-              <Text style={styles.price}>{row.item.price_formatted}</Text>
-              <Text style={styles.title} numberOfLines={1}>{row.item.title}</Text>
-            </View>
-          </View>
-        </View>
-
-      </TouchableHighlight>
-    )
-  }
-
-  renderList (items) {
-    return (
-      <FlatList
-        data={items}
-        keyExtractor={(item) => item.lister_url}
-        renderItem={this.renderRow.bind(this)}
-        ItemSeparatorComponent={this.renderSeparator} />
-    )
-  }
-
   renderSeparator = () => <View style={styles.separator} />
 
   render () {
@@ -92,12 +38,76 @@ export class ListingUI extends React.Component {
 
     if (Object.keys(listingState).length === 0) return false
 
+    return this.renderList(this.createFlatListViewModel(listingState))
+  }
+
+  renderList = (flatListViewModel) => <FlatList
+    data={flatListViewModel.items}
+    keyExtractor={(item, index) => flatListViewModel.keyExtractor(item, index)}
+    renderItem={(row) => flatListViewModel.renderItem(row)}
+    ItemSeparatorComponent={this.renderSeparator} />
+
+  createFlatListViewModel = (listingState) => {
     if (listingState.isLoading) {
-      return this.renderLoading()
+      return this.createLoadingFlatListViewModel()
     } else {
-      return this.renderList(listingState.items)
+      return this.createItemsFlatListViewModel(listingState.items)
     }
   }
+
+  createLoadingFlatListViewModel = () => {
+    return {
+      items: new Array(10),
+      keyExtractor: (item, index) => `${index}`,
+      renderItem: (row) => {
+        return (
+          <View>
+            <View style={styles.rowContainer}>
+              <ShimmerPlaceHolder autoRun
+                                  style={{
+                                    width: 80,
+                                    height: 80,
+                                    marginRight: 10,
+                                  }} />
+              <ShimmerPlaceHolder autoRun
+                                  style={{
+                                    flex: 1,
+                                    height: 80,
+                                    marginRight: 10,
+                                  }} />
+            </View>
+          </View>
+        )
+      }
+    }
+  }
+
+  createItemsFlatListViewModel = (items) => {
+    return {
+      items,
+      keyExtractor: (item, index) => item.lister_url,
+      renderItem: (row) => {
+        return (
+          <TouchableHighlight
+            onPress={() => this.rowPressed(row.item)}
+            underlayColor='#dddddd'>
+            <View>
+              <View style={styles.rowContainer}>
+                <Image style={styles.thumb} source={{uri: row.item.img_url}} />
+                <View style={styles.textContainer}>
+                  <Text style={styles.price}>{row.item.price_formatted}</Text>
+                  <Text style={styles.title} numberOfLines={1}>{row.item.title}</Text>
+                </View>
+              </View>
+            </View>
+
+          </TouchableHighlight>
+        )
+      }
+    }
+  }
+
+  rowPressed = (item) => this.props.onItemSelected(item.lister_url)
 }
 
 const styles = StyleSheet.create({
