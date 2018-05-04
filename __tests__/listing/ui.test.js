@@ -9,6 +9,10 @@ import { ListingUI } from '../../src/listing/ui'
 Enzyme.configure({adapter: new Adapter()})
 
 describe('Listing Component', () => {
+  beforeEach(() => {
+    jest.useFakeTimers()
+  })
+
   it('should display list correctly', () => {
     const props = {
       fetchData: jest.fn(),
