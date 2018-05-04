@@ -5,7 +5,7 @@ import Listing from './listing/index'
 import Detail from './detail/index'
 
 const ListingScreen = ({navigation}) =>
-  <Listing onItemSelected={() => navigation.navigate('Detail')} />
+  <Listing onItemSelected={(itemId) => navigation.navigate('Detail', { itemId: itemId })} />
 
 const DetailScreen = () => <Detail />
 
