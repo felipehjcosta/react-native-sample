@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
-import { withNavigation } from 'react-navigation'
 
 const styles = StyleSheet.create({
   container: {},
@@ -76,4 +75,4 @@ export class DetailUI extends React.Component {
   }
 }
 
-export default withNavigation(DetailUI)
+export default DetailUI
