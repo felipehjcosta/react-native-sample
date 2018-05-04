@@ -7,7 +7,7 @@ import Detail from './detail/index'
 const ListingScreen = ({navigation}) =>
   <Listing onItemSelected={(itemId) => navigation.navigate('Detail', { itemId: itemId })} />
 
-const DetailScreen = () => <Detail />
+const DetailScreen = ({navigation}) => <Detail navigation={navigation} />
 
 export const AppNavigator = StackNavigator({
   Listing: {screen: ListingScreen},
