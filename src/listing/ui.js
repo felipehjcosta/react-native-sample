@@ -67,6 +67,7 @@ export class ListingUI extends React.Component {
     return (
       <FlatList
         data={items}
+        keyExtractor={(item) => item.lister_url}
         renderItem={this.renderRow.bind(this)} />
     )
   }
