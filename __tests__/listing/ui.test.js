@@ -11,6 +11,7 @@ Enzyme.configure({adapter: new Adapter()})
 describe('Listing Component', () => {
   beforeEach(() => {
     jest.useFakeTimers()
+    jest.mock('react-native-shimmer-placeholder', () => 'View')
   })
 
   it('should display list correctly', () => {
@@ -23,6 +24,7 @@ describe('Listing Component', () => {
             img_url: 'https://imgs.nestimg.com/casa_300_m2_108811252799247473.jpg',
             price_formatted: 'R$ 750.000',
             title: 'Campo Grande,Rio de Janeiro,Rio De Janeiro',
+            lister_url: 'https://www.nestoria.com.br/detail/0000000108550797542396092/title/5/1-1?serpUid=&pt=1&ot=1&l=rio-de-janeiro&did=41_default&utm_source=api&utm_medium=external'
           }
         ]
       }
@@ -30,7 +32,9 @@ describe('Listing Component', () => {
 
     const navigation = {navigate: jest.fn()}
 
-    const wrapper = shallow(<ListingUI {...props} navigation={navigation} />)
+    const onItemSelected = jest.fn()
+
+    const wrapper = shallow(<ListingUI {...props} navigation={navigation} onItemSelected={onItemSelected} />)
 
     const tree = ReactTestRenderer.create(wrapper).toJSON()
     expect(tree).toMatchSnapshot()
@@ -38,7 +42,6 @@ describe('Listing Component', () => {
 
   it('should display loading correctly', () => {
     const props = {
-
       fetchData: jest.fn(),
       listingState: {
         isLoading: true
@@ -47,7 +50,9 @@ describe('Listing Component', () => {
 
     const navigation = {navigate: jest.fn()}
 
-    const wrapper = shallow(<ListingUI {...props} navigation={navigation} />)
+    const onItemSelected = jest.fn()
+
+    const wrapper = shallow(<ListingUI {...props} navigation={navigation} onItemSelected={onItemSelected} />)
 
     const tree = ReactTestRenderer.create(wrapper).toJSON()
     expect(tree).toMatchSnapshot()
@@ -63,7 +68,9 @@ describe('Listing Component', () => {
 
     const navigation = {navigate: jest.fn()}
 
-    shallow(<ListingUI {...props} navigation={navigation} />)
+    const onItemSelected = jest.fn()
+
+    shallow(<ListingUI {...props} navigation={navigation} onItemSelected={onItemSelected} />)
 
     expect(props.fetchData.mock.calls.length).toBe(1)
   })

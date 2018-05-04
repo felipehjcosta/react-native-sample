@@ -7,6 +7,7 @@ exports[`Listing Component should display list correctly 1`] = `
     Array [
       Object {
         "img_url": "https://imgs.nestimg.com/casa_300_m2_108811252799247473.jpg",
+        "lister_url": "https://www.nestoria.com.br/detail/0000000108550797542396092/title/5/1-1?serpUid=&pt=1&ot=1&l=rio-de-janeiro&did=41_default&utm_source=api&utm_medium=external",
         "price_formatted": "R$ 750.000",
         "title": "Campo Grande,Rio de Janeiro,Rio De Janeiro",
       },
