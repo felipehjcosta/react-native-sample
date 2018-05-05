@@ -75,7 +75,7 @@ export class ListingUI extends React.Component {
   createRefreshingFlatListViewModel = (items) => {
     return {
       items,
-      keyExtractor: (item, index) => item.lister_url,
+      keyExtractor: (item, index) => `${index}`,
       renderItem: (row) => this.renderRow(row),
       refreshing: true,
       onRefresh: () => {}
@@ -85,7 +85,7 @@ export class ListingUI extends React.Component {
   createItemsFlatListViewModel = (items) => {
     return {
       items,
-      keyExtractor: (item, index) => item.lister_url,
+      keyExtractor: (item, index) => `${index}`,
       renderItem: (row) => this.renderRow(row),
       refreshing: false,
       onRefresh: () => {
