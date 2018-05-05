@@ -39,6 +39,8 @@ export class ListingUI extends React.Component {
     renderItem={(row) => flatListViewModel.renderItem(row)}
     refreshing={flatListViewModel.refreshing}
     onRefresh={() => flatListViewModel.onRefresh()}
+    onEndReached={() => flatListViewModel.loadMore()}
+    onEndReachedThreshold={5}
     ItemSeparatorComponent={this.renderSeparator} />
 
   renderSeparator = () => <View style={styles.separator} />
@@ -48,6 +50,8 @@ export class ListingUI extends React.Component {
       return this.createLoadingFlatListViewModel()
     } else if (listingState.isRefreshing) {
       return this.createRefreshingFlatListViewModel(listingState.items)
+    } else if (listingState.isLoadingMore) {
+      return this.createLoadingMoreFlatListViewModel(listingState.items)
     } else {
       return this.createItemsFlatListViewModel(listingState.items)
     }
@@ -68,7 +72,8 @@ export class ListingUI extends React.Component {
         )
       },
       refreshing: false,
-      onRefresh: () => {}
+      onRefresh: () => {},
+      loadMore: () => {}
     }
   }
 
@@ -78,7 +83,19 @@ export class ListingUI extends React.Component {
       keyExtractor: (item, index) => `${index}`,
       renderItem: (row) => this.renderRow(row),
       refreshing: true,
-      onRefresh: () => {}
+      onRefresh: () => {},
+      loadMore: () => {}
+    }
+  }
+
+  createLoadingMoreFlatListViewModel = (items) => {
+    return {
+      items,
+      keyExtractor: (item, index) => `${index}`,
+      renderItem: (row) => this.renderRow(row),
+      refreshing: true,
+      onRefresh: () => {},
+      loadMore: () => {}
     }
   }
 
@@ -88,13 +105,8 @@ export class ListingUI extends React.Component {
       keyExtractor: (item, index) => `${index}`,
       renderItem: (row) => this.renderRow(row),
       refreshing: false,
-      onRefresh: () => {
-        const {
-          updateData
-        } = this.props
-
-        updateData()
-      }
+      onRefresh: () => this.props.updateData(),
+      loadMore: () => this.props.loadMoreData()
     }
   }
 

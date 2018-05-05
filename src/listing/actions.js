@@ -1,7 +1,7 @@
 // @flow
 import { apiCall } from './apiCall'
 
-const initialPayload = {isLoading: false, items: []}
+const initialPayload = {isLoading: false, items: [], page: 1}
 
 export function itemsIsLoading (bool) {
   return {
@@ -51,6 +51,33 @@ export const updateItems = () => {
       return items
     }).then((items) => {
       dispatch(updateItemsSuccess(items.response.listings))
+    })
+  }
+}
+
+export function itemsIsLoadingMore (bool) {
+  return {
+    type: 'ITEMS_IS_LOADING_MORE',
+    payload: Object.assign({}, {isLoadingMore: bool})
+  }
+}
+
+export function loadMoreItemsSuccess (newPage, items) {
+  return {
+    type: 'LOAD_MORE_ITEMS_SUCCESS',
+    payload: Object.assign({}, {page: newPage, items})
+  }
+}
+
+export const loadMoreItems = (page) => {
+  const newPage = page + 1
+  return function (dispatch) {
+    dispatch(itemsIsLoadingMore(true))
+    return apiCall(newPage).then((items) => {
+      dispatch(itemsIsLoadingMore(false))
+      return items
+    }).then((items) => {
+      dispatch(loadMoreItemsSuccess(newPage, items.response.listings))
     })
   }
 }

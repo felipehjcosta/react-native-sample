@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import Listing from './ui'
-import { fetchItems, updateItems } from './actions'
+import { fetchItems, updateItems, loadMoreItems } from './actions'
 
 const mapStateToProps = (state) => {
   return {
@@ -12,11 +12,20 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchData: () => dispatch(fetchItems()),
-    updateData: () => dispatch(updateItems())
+    updateData: () => dispatch(updateItems()),
+    loadMoreData: (page) => dispatch(loadMoreItems(page))
   }
 }
 
+const mergeProps = (state, actions, props) => ({
+  ...state,
+  ...props,
+  ...actions,
+  loadMoreData: () => actions.loadMoreData(state.listingState.page)
+})
+
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
+  mergeProps
 )(Listing)

@@ -24,6 +24,19 @@ const updateItemsSuccess = (payload) => state => Object.assign(
   payload
 )
 
+const loadingMore = (payload) => state => Object.assign(
+  {},
+  state,
+  payload
+)
+
+const loadMoreItemsSuccess = (payload) => state => Object.assign(
+  {},
+  state,
+  payload,
+  {items: [...state.items, ...payload.items]}
+)
+
 export default function reducer (state = {}, action) {
   switch (action.type) {
     case 'ITEMS_IS_LOADING':
@@ -34,6 +47,10 @@ export default function reducer (state = {}, action) {
       return refreshing(action.payload)(state)
     case 'UPDATE_ITEMS_SUCCESS':
       return updateItemsSuccess(action.payload)(state)
+    case 'ITEMS_IS_LOADING_MORE':
+      return loadingMore(action.payload)(state)
+    case 'LOAD_MORE_ITEMS_SUCCESS':
+      return loadMoreItemsSuccess(action.payload)(state)
     default:
       return state
   }
