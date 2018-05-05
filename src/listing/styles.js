@@ -35,5 +35,10 @@ export default StyleSheet.create({
     flex: 1,
     height: 80,
     marginRight: 10
+  },
+  loadingMoreIndicatorContainer: {
+    paddingVertical: 20,
+    borderTopWidth: 1,
+    borderColor: '#CED0CE'
   }
 })

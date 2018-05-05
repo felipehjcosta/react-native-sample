@@ -3,6 +3,7 @@
 exports[`Listing Component should display list correctly 1`] = `
 <RCTScrollView
   ItemSeparatorComponent={[Function]}
+  ListFooterComponent={[Function]}
   data={
     Array [
       Object {
@@ -141,6 +142,10 @@ exports[`Listing Component should display list correctly 1`] = `
         </View>
       </View>
     </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    />
   </View>
 </RCTScrollView>
 `;
@@ -148,6 +153,7 @@ exports[`Listing Component should display list correctly 1`] = `
 exports[`Listing Component should display loading correctly 1`] = `
 <RCTScrollView
   ItemSeparatorComponent={[Function]}
+  ListFooterComponent={[Function]}
   data={
     Array [
       undefined,
@@ -2088,6 +2094,10 @@ exports[`Listing Component should display loading correctly 1`] = `
         </View>
       </View>
     </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    />
   </View>
 </RCTScrollView>
 `;
@@ -2095,6 +2105,7 @@ exports[`Listing Component should display loading correctly 1`] = `
 exports[`Listing Component should display loading more correctly 1`] = `
 <RCTScrollView
   ItemSeparatorComponent={[Function]}
+  ListFooterComponent={[Function]}
   data={
     Array [
       Object {
@@ -2231,6 +2242,27 @@ exports[`Listing Component should display loading more correctly 1`] = `
             </View>
           </View>
         </View>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        style={
+          Object {
+            "borderColor": "#CED0CE",
+            "borderTopWidth": 1,
+            "paddingVertical": 20,
+          }
+        }
+      >
+        <ActivityIndicator
+          animating={true}
+          color="#999999"
+          hidesWhenStopped={true}
+          size="large"
+        />
       </View>
     </View>
   </View>
@@ -2240,6 +2272,7 @@ exports[`Listing Component should display loading more correctly 1`] = `
 exports[`Listing Component should display refresh correctly 1`] = `
 <RCTScrollView
   ItemSeparatorComponent={[Function]}
+  ListFooterComponent={[Function]}
   data={
     Array [
       Object {
@@ -2378,6 +2411,10 @@ exports[`Listing Component should display refresh correctly 1`] = `
         </View>
       </View>
     </View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    />
   </View>
 </RCTScrollView>
 `;

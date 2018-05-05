@@ -1,5 +1,5 @@
 // @flow
-import { FlatList, Image, Text, TouchableHighlight, View } from 'react-native'
+import { FlatList, Image, Text, TouchableHighlight, View, ActivityIndicator } from 'react-native'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { withNavigation } from 'react-navigation'
@@ -41,6 +41,7 @@ export class ListingUI extends React.Component {
     onRefresh={() => flatListViewModel.onRefresh()}
     onEndReached={() => flatListViewModel.loadMore()}
     onEndReachedThreshold={5}
+    ListFooterComponent={() => flatListViewModel.renderFooter()}
     ItemSeparatorComponent={this.renderSeparator} />
 
   renderSeparator = () => <View style={styles.separator} />
@@ -61,20 +62,23 @@ export class ListingUI extends React.Component {
     return {
       items: new Array(10),
       keyExtractor: (item, index) => `${index}`,
-      renderItem: (row) => {
-        return (
-          <View>
-            <View style={styles.rowContainer}>
-              <ShimmerPlaceHolder autoRun style={styles.imageShimmerPlaceHolder} />
-              <ShimmerPlaceHolder autoRun style={styles.contentShimmerPlaceHolder} />
-            </View>
-          </View>
-        )
-      },
+      renderItem: (row) => this.renderLoadingItem(),
       refreshing: false,
       onRefresh: () => {},
-      loadMore: () => {}
+      loadMore: () => {},
+      renderFooter: () => false
     }
+  }
+
+  renderLoadingItem = () => {
+    return (
+      <View>
+        <View style={styles.rowContainer}>
+          <ShimmerPlaceHolder autoRun style={styles.imageShimmerPlaceHolder} />
+          <ShimmerPlaceHolder autoRun style={styles.contentShimmerPlaceHolder} />
+        </View>
+      </View>
+    )
   }
 
   createRefreshingFlatListViewModel = (items) => {
@@ -84,7 +88,8 @@ export class ListingUI extends React.Component {
       renderItem: (row) => this.renderRow(row),
       refreshing: true,
       onRefresh: () => {},
-      loadMore: () => {}
+      loadMore: () => {},
+      renderFooter: () => false
     }
   }
 
@@ -95,8 +100,17 @@ export class ListingUI extends React.Component {
       renderItem: (row) => this.renderRow(row),
       refreshing: true,
       onRefresh: () => {},
-      loadMore: () => {}
+      loadMore: () => {},
+      renderFooter: () => this.renderLoadingMoreFooter()
     }
+  }
+
+  renderLoadingMoreFooter = () => {
+    return (
+      <View style={styles.loadingMoreIndicatorContainer}>
+        <ActivityIndicator animating size='large' />
+      </View>
+    )
   }
 
   createItemsFlatListViewModel = (items) => {
@@ -106,7 +120,8 @@ export class ListingUI extends React.Component {
       renderItem: (row) => this.renderRow(row),
       refreshing: false,
       onRefresh: () => this.props.updateData(),
-      loadMore: () => this.props.loadMoreData()
+      loadMore: () => this.props.loadMoreData(),
+      renderFooter: () => false
     }
   }
 
