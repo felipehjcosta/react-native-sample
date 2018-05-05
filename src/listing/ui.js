@@ -1,16 +1,10 @@
 // @flow
-import {
-  FlatList,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  View,
-} from 'react-native'
+import { FlatList, Image, Text, TouchableHighlight, View } from 'react-native'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { withNavigation } from 'react-navigation'
 import ShimmerPlaceHolder from 'react-native-shimmer-placeholder'
+import styles from './styles.js'
 
 export class ListingUI extends React.Component {
 
@@ -28,8 +22,6 @@ export class ListingUI extends React.Component {
 
     fetchData()
   }
-
-  renderSeparator = () => <View style={styles.separator} />
 
   render () {
     const {
@@ -49,6 +41,8 @@ export class ListingUI extends React.Component {
     onRefresh={() => flatListViewModel.onRefresh()}
     ItemSeparatorComponent={this.renderSeparator} />
 
+  renderSeparator = () => <View style={styles.separator} />
+
   createFlatListViewModel = (listingState) => {
     if (listingState.isLoading) {
       return this.createLoadingFlatListViewModel()
@@ -67,18 +61,8 @@ export class ListingUI extends React.Component {
         return (
           <View>
             <View style={styles.rowContainer}>
-              <ShimmerPlaceHolder autoRun
-                                  style={{
-                                    width: 80,
-                                    height: 80,
-                                    marginRight: 10,
-                                  }} />
-              <ShimmerPlaceHolder autoRun
-                                  style={{
-                                    flex: 1,
-                                    height: 80,
-                                    marginRight: 10,
-                                  }} />
+              <ShimmerPlaceHolder autoRun style={styles.imageShimmerPlaceHolder} />
+              <ShimmerPlaceHolder autoRun style={styles.contentShimmerPlaceHolder} />
             </View>
           </View>
         )
@@ -92,24 +76,7 @@ export class ListingUI extends React.Component {
     return {
       items,
       keyExtractor: (item, index) => item.lister_url,
-      renderItem: (row) => {
-        return (
-          <TouchableHighlight
-            onPress={() => this.rowPressed(row.item)}
-            underlayColor='#dddddd'>
-            <View>
-              <View style={styles.rowContainer}>
-                <Image style={styles.thumb} source={{uri: row.item.img_url}} />
-                <View style={styles.textContainer}>
-                  <Text style={styles.price}>{row.item.price_formatted}</Text>
-                  <Text style={styles.title} numberOfLines={1}>{row.item.title}</Text>
-                </View>
-              </View>
-            </View>
-
-          </TouchableHighlight>
-        )
-      },
+      renderItem: (row) => this.renderRow(row),
       refreshing: true,
       onRefresh: () => {}
     }
@@ -119,24 +86,7 @@ export class ListingUI extends React.Component {
     return {
       items,
       keyExtractor: (item, index) => item.lister_url,
-      renderItem: (row) => {
-        return (
-          <TouchableHighlight
-            onPress={() => this.rowPressed(row.item)}
-            underlayColor='#dddddd'>
-            <View>
-              <View style={styles.rowContainer}>
-                <Image style={styles.thumb} source={{uri: row.item.img_url}} />
-                <View style={styles.textContainer}>
-                  <Text style={styles.price}>{row.item.price_formatted}</Text>
-                  <Text style={styles.title} numberOfLines={1}>{row.item.title}</Text>
-                </View>
-              </View>
-            </View>
-
-          </TouchableHighlight>
-        )
-      },
+      renderItem: (row) => this.renderRow(row),
       refreshing: false,
       onRefresh: () => {
         const {
@@ -148,35 +98,26 @@ export class ListingUI extends React.Component {
     }
   }
 
+  renderRow = (row) => {
+    return (
+      <TouchableHighlight
+        onPress={() => this.rowPressed(row.item)}
+        underlayColor='#dddddd'>
+        <View>
+          <View style={styles.rowContainer}>
+            <Image style={styles.thumb} source={{uri: row.item.img_url}} />
+            <View style={styles.textContainer}>
+              <Text style={styles.price}>{row.item.price_formatted}</Text>
+              <Text style={styles.title} numberOfLines={1}>{row.item.title}</Text>
+            </View>
+          </View>
+        </View>
+
+      </TouchableHighlight>
+    )
+  }
+
   rowPressed = (item) => this.props.onItemSelected(item.lister_url)
 }
-
-const styles = StyleSheet.create({
-  thumb: {
-    width: 80,
-    height: 80,
-    marginRight: 10
-  },
-  textContainer: {
-    flex: 1
-  },
-  separator: {
-    height: 1,
-    backgroundColor: '#dddddd'
-  },
-  price: {
-    fontSize: 25,
-    fontWeight: 'bold',
-    color: '#48BBEC'
-  },
-  title: {
-    fontSize: 20,
-    color: '#656565'
-  },
-  rowContainer: {
-    flexDirection: 'row',
-    padding: 10
-  }
-})
 
 export default withNavigation(ListingUI)

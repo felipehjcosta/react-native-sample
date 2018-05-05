@@ -1,47 +1,15 @@
 import React from 'react'
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
-
-const styles = StyleSheet.create({
-  container: {},
-  heading: {
-    backgroundColor: '#F8F8F8'
-  },
-  separator: {
-    height: 1,
-    backgroundColor: '#DDDDDD'
-  },
-  image: {
-    width: 400,
-    height: 300
-  },
-  price: {
-    fontSize: 25,
-    fontWeight: 'bold',
-    margin: 5,
-    color: '#48BBEC'
-  },
-  title: {
-    fontSize: 20,
-    margin: 5,
-    color: '#656565'
-  },
-  description: {
-    fontSize: 18,
-    margin: 5,
-    color: '#656565'
-  }
-})
+import { Image, ScrollView, Text, View } from 'react-native'
+import PropTypes from 'prop-types'
+import styles from './styles.js'
 
 export class DetailUI extends React.Component {
 
-  static propTypes = {}
+  static propTypes = {
+    detailState: PropTypes.object.isRequired
+  }
 
   static defaultProps = {}
-
-  constructor (props) {
-    super(props)
-    this.state = {}
-  }
 
   render () {
     const {
