@@ -45,11 +45,15 @@ export class ListingUI extends React.Component {
     data={flatListViewModel.items}
     keyExtractor={(item, index) => flatListViewModel.keyExtractor(item, index)}
     renderItem={(row) => flatListViewModel.renderItem(row)}
+    refreshing={flatListViewModel.refreshing}
+    onRefresh={() => flatListViewModel.onRefresh()}
     ItemSeparatorComponent={this.renderSeparator} />
 
   createFlatListViewModel = (listingState) => {
     if (listingState.isLoading) {
       return this.createLoadingFlatListViewModel()
+    } else if (listingState.isRefreshing) {
+      return this.createRefreshingFlatListViewModel(listingState.items)
     } else {
       return this.createItemsFlatListViewModel(listingState.items)
     }
@@ -78,7 +82,36 @@ export class ListingUI extends React.Component {
             </View>
           </View>
         )
-      }
+      },
+      refreshing: false,
+      onRefresh: () => {}
+    }
+  }
+
+  createRefreshingFlatListViewModel = (items) => {
+    return {
+      items,
+      keyExtractor: (item, index) => item.lister_url,
+      renderItem: (row) => {
+        return (
+          <TouchableHighlight
+            onPress={() => this.rowPressed(row.item)}
+            underlayColor='#dddddd'>
+            <View>
+              <View style={styles.rowContainer}>
+                <Image style={styles.thumb} source={{uri: row.item.img_url}} />
+                <View style={styles.textContainer}>
+                  <Text style={styles.price}>{row.item.price_formatted}</Text>
+                  <Text style={styles.title} numberOfLines={1}>{row.item.title}</Text>
+                </View>
+              </View>
+            </View>
+
+          </TouchableHighlight>
+        )
+      },
+      refreshing: true,
+      onRefresh: () => {}
     }
   }
 
@@ -103,6 +136,14 @@ export class ListingUI extends React.Component {
 
           </TouchableHighlight>
         )
+      },
+      refreshing: false,
+      onRefresh: () => {
+        const {
+          updateData
+        } = this.props
+
+        updateData()
       }
     }
   }

@@ -17,7 +17,7 @@ export function itemsFetchDataSuccess (items) {
   }
 }
 
-export const itemsFetchData = () => {
+export const fetchItems = () => {
   return function (dispatch) {
     dispatch(itemsIsLoading(true))
     return apiCall().then((items) => {
@@ -25,6 +25,32 @@ export const itemsFetchData = () => {
       return items
     }).then((items) => {
       dispatch(itemsFetchDataSuccess(items.response.listings))
+    })
+  }
+}
+
+export function itemsIsRefreshing (bool) {
+  return {
+    type: 'ITEMS_IS_REFRESHING',
+    payload: Object.assign({}, {isRefreshing: bool})
+  }
+}
+
+export function updateItemsSuccess (items) {
+  return {
+    type: 'UPDATE_ITEMS_SUCCESS',
+    payload: Object.assign({}, {items})
+  }
+}
+
+export const updateItems = () => {
+  return function (dispatch) {
+    dispatch(itemsIsRefreshing(true))
+    return apiCall().then((items) => {
+      dispatch(itemsIsRefreshing(false))
+      return items
+    }).then((items) => {
+      dispatch(updateItemsSuccess(items.response.listings))
     })
   }
 }

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import Listing from './ui'
-import { itemsFetchData } from './actions'
+import { fetchItems, updateItems } from './actions'
 
 const mapStateToProps = (state) => {
   return {
@@ -11,7 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchData: () => dispatch(itemsFetchData())
+    fetchData: () => dispatch(fetchItems()),
+    updateData: () => dispatch(updateItems())
   }
 }
 
