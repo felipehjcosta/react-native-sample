@@ -10,7 +10,11 @@ const ListingScreen = ({navigation}) =>
 const DetailScreen = ({navigation}) => <Detail navigation={navigation} />
 
 export const AppNavigator = StackNavigator({
-  Listing: {screen: ListingScreen},
+  Listing: {
+    screen: ListingScreen,
+    navigationOptions: ({navigation}) => ({
+      title: 'Property Finder'
+    })},
   Detail: {screen: DetailScreen}
 })
 
