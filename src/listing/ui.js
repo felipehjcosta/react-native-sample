@@ -40,7 +40,6 @@ export class ListingUI extends React.Component {
     refreshing={flatListViewModel.refreshing}
     onRefresh={() => flatListViewModel.onRefresh()}
     onEndReached={() => flatListViewModel.loadMore()}
-    onEndReachedThreshold={5}
     ListFooterComponent={() => flatListViewModel.renderFooter()}
     ItemSeparatorComponent={this.renderSeparator} />
 
