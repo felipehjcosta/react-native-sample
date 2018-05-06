@@ -58,6 +58,26 @@ describe('Listing Component', () => {
     expect(tree).toMatchSnapshot()
   })
 
+  it('should display loading failure correctly', () => {
+    const props = {
+      fetchData: jest.fn(),
+      listingState: {
+        isLoading: false,
+        isLoadingFailed: true,
+        items: []
+      }
+    }
+
+    const navigation = {navigate: jest.fn()}
+
+    const onItemSelected = jest.fn()
+
+    const wrapper = shallow(<ListingUI {...props} navigation={navigation} onItemSelected={onItemSelected} />)
+
+    const tree = ReactTestRenderer.create(wrapper).toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+
   it('should call the mock fetch data function ', () => {
     const props = {
       fetchData: jest.fn(),
@@ -109,6 +129,33 @@ describe('Listing Component', () => {
         'https://www.nestoria.com.br/detail/0000000108550797542396092/title/5/1-1?serpUid=&pt=1&ot=1&l=rio-de-janeiro&did=41_default&utm_source=api&utm_medium=external')
   })
 
+  it('should display refresh failure correctly', () => {
+    const props = {
+      fetchData: jest.fn(),
+      listingState: {
+        isRefreshing: false,
+        isRefreshingFailed: true,
+        items: [
+          {
+            img_url: 'https://imgs.nestimg.com/casa_300_m2_108811252799247473.jpg',
+            price_formatted: 'R$ 750.000',
+            title: 'Campo Grande,Rio de Janeiro,Rio De Janeiro',
+            lister_url: 'https://www.nestoria.com.br/detail/0000000108550797542396092/title/5/1-1?serpUid=&pt=1&ot=1&l=rio-de-janeiro&did=41_default&utm_source=api&utm_medium=external'
+          }
+        ]
+      }
+    }
+
+    const navigation = {navigate: jest.fn()}
+
+    const onItemSelected = jest.fn()
+
+    const wrapper = shallow(<ListingUI {...props} navigation={navigation} onItemSelected={onItemSelected} />)
+
+    const tree = ReactTestRenderer.create(wrapper).toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+
   it('should display refresh correctly', () => {
     const props = {
       fetchData: jest.fn(),
@@ -140,6 +187,33 @@ describe('Listing Component', () => {
       fetchData: jest.fn(),
       listingState: {
         isLoadingMore: true,
+        items: [
+          {
+            img_url: 'https://imgs.nestimg.com/casa_300_m2_108811252799247473.jpg',
+            price_formatted: 'R$ 750.000',
+            title: 'Campo Grande,Rio de Janeiro,Rio De Janeiro',
+            lister_url: 'https://www.nestoria.com.br/detail/0000000108550797542396092/title/5/1-1?serpUid=&pt=1&ot=1&l=rio-de-janeiro&did=41_default&utm_source=api&utm_medium=external'
+          }
+        ]
+      }
+    }
+
+    const navigation = {navigate: jest.fn()}
+
+    const onItemSelected = jest.fn()
+
+    const wrapper = shallow(<ListingUI {...props} navigation={navigation} onItemSelected={onItemSelected} />)
+
+    const tree = ReactTestRenderer.create(wrapper).toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+
+  it('should display loading more failure correctly', () => {
+    const props = {
+      fetchData: jest.fn(),
+      listingState: {
+        isLoadingMore: false,
+        isLoadingMoreFailed: true,
         items: [
           {
             img_url: 'https://imgs.nestimg.com/casa_300_m2_108811252799247473.jpg',
