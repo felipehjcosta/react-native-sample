@@ -24,33 +24,10 @@ test('reducer should handle ITEMS_FETCH_DATA_FAILURE', () => {
     toEqual({isLoadingFailed: true, isLoading: false, items: [], page: 1})
 })
 
-test('reducer should handle ITEMS_IS_REFRESHING', () => {
-  const state = {
-    isLoading: false,
-    isLoadingFailed: false,
-    isRefreshing: false,
-    isLoadingMore: false,
-    items: [{id: 1}]
-  }
-  expect(
-    reducer(state,
-      {type: 'ITEMS_IS_REFRESHING', payload: {isRefreshing: true, isRefreshingFailed: false}})).
-    toEqual({
-      isLoading: false,
-      isLoadingFailed: false,
-      isRefreshing: true,
-      isRefreshingFailed: false,
-      isLoadingMore: false,
-      items: [{id: 1}]
-    })
-})
-
 test('reducer should handle ITEMS_IS_LOADING_MORE', () => {
   const state = {
     isLoading: false,
     isLoadingFailed: false,
-    isRefreshing: false,
-    isRefreshingFailed: false,
     isLoadingMore: false,
     items: [{id: 1}]
   }
@@ -60,8 +37,6 @@ test('reducer should handle ITEMS_IS_LOADING_MORE', () => {
     toEqual({
       isLoading: false,
       isLoadingFailed: false,
-      isRefreshing: false,
-      isRefreshingFailed: false,
       isLoadingMore: true,
       isLoadingMoreFailed: false,
       items: [{id: 1}]
@@ -72,8 +47,6 @@ test('reducer should handle LOAD_MORE_ITEMS_SUCCESS', () => {
   const state = {
     isLoading: false,
     isLoadingFailed: false,
-    isRefreshing: false,
-    isRefreshingFailed: false,
     isLoadingMore: true,
     isLoadingMoreFailed: false,
     items: [{id: 1}]
@@ -83,8 +56,6 @@ test('reducer should handle LOAD_MORE_ITEMS_SUCCESS', () => {
     toEqual({
       isLoading: false,
       isLoadingFailed: false,
-      isRefreshing: false,
-      isRefreshingFailed: false,
       isLoadingMore: false,
       isLoadingMoreFailed: false,
       items: [{id: 1}, {id: 2}]
@@ -95,8 +66,6 @@ test('reducer should handle LOAD_MORE_ITEMS_FAILURE', () => {
   const state = {
     isLoading: false,
     isLoadingFailed: false,
-    isRefreshing: false,
-    isRefreshingFailed: false,
     isLoadingMore: true,
     isLoadingMoreFailed: false,
     items: [{id: 1}]
@@ -106,8 +75,6 @@ test('reducer should handle LOAD_MORE_ITEMS_FAILURE', () => {
     toEqual({
       isLoading: false,
       isLoadingFailed: false,
-      isRefreshing: false,
-      isRefreshingFailed: false,
       isLoadingMore: false,
       isLoadingMoreFailed: true,
       items: [{id: 1}]
