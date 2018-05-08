@@ -53,53 +53,6 @@ test('check fetch API action with failure', () => {
   return actionResult
 })
 
-test('check update API action', () => {
-  const initialState = {}
-  const store = mockStore(initialState)
-
-  const testData = [{id: 1}]
-  fetchMock.get('*', {response: {listings: testData}})
-
-  const actionResult = store.dispatch(updateItems()).then(() => {
-    const actions = store.getActions()
-    expect(actions.length).toBe(2)
-    expect(actions[0]).
-      toEqual({type: 'ITEMS_IS_REFRESHING', payload: {isRefreshing: true, isRefreshingFailed: false}})
-    expect(actions[1]).
-      toEqual({
-        type: 'UPDATE_ITEMS_SUCCESS',
-        payload: {items: testData, isRefreshing: false, isRefreshingFailed: false}
-      })
-  })
-
-  fetchMock.restore()
-  return actionResult
-})
-
-test('check update API action with failure', () => {
-  const initialState = {}
-  const store = mockStore(initialState)
-
-  fetchMock.get('*', () => {
-    throw new Error('Some No Good Error')
-  })
-
-  const actionResult = store.dispatch(updateItems()).then(() => {
-    const actions = store.getActions()
-    expect(actions.length).toBe(2)
-    expect(actions[0]).
-      toEqual({type: 'ITEMS_IS_REFRESHING', payload: {isRefreshing: true, isRefreshingFailed: false}})
-    expect(actions[1]).
-      toEqual({
-        type: 'UPDATE_ITEMS_FAILURE',
-        payload: {isRefreshing: false, isRefreshingFailed: true}
-      })
-  })
-
-  fetchMock.restore()
-  return actionResult
-})
-
 test('check load more API action with success', () => {
   const initialState = {}
   const store = mockStore(initialState)

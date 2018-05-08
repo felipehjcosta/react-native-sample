@@ -45,48 +45,6 @@ test('reducer should handle ITEMS_IS_REFRESHING', () => {
     })
 })
 
-test('reducer should handle UPDATE_ITEMS_SUCCESS', () => {
-  const state = {
-    isLoading: false,
-    isLoadingFailed: false,
-    isRefreshing: true,
-    isLoadingMore: false,
-    items: [{id: 1}]
-  }
-  expect(reducer(state,
-    {type: 'UPDATE_ITEMS_SUCCESS', payload: {items: [{id: 1}], isRefreshing: false, isRefreshingFailed: false}})).
-    toEqual({
-      isLoading: false,
-      isLoadingFailed: false,
-      isRefreshing: false,
-      isRefreshingFailed: false,
-      isLoadingMore: false,
-      items: [{id: 1}]
-    })
-})
-
-test('reducer should handle UPDATE_ITEMS_FAILURE', () => {
-  const state = {
-    isLoading: false,
-    isLoadingFailed: false,
-    isRefreshing: false,
-    isRefreshingFailed: false,
-    isLoadingMore: false,
-    items: [{id: 1}]
-  }
-  expect(
-    reducer(state,
-      {type: 'UPDATE_ITEMS_FAILURE', payload: {isRefreshing: false, isRefreshingFailed: true}})).
-    toEqual({
-      isLoading: false,
-      isLoadingFailed: false,
-      isRefreshing: false,
-      isRefreshingFailed: true,
-      isLoadingMore: false,
-      items: [{id: 1}]
-    })
-})
-
 test('reducer should handle ITEMS_IS_LOADING_MORE', () => {
   const state = {
     isLoading: false,

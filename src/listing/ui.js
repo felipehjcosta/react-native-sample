@@ -52,10 +52,6 @@ export class ListingUI extends React.Component {
       return this.createLoadingFlatListViewModel()
     } else if (listingState.isLoadingFailed) {
       return this.createLoadingFailedFlatListViewModel()
-    } else if (listingState.isRefreshing) {
-      return this.createRefreshingFlatListViewModel(listingState.items)
-    } else if (listingState.isRefreshingFailed) {
-      return this.createRefreshingFailedFlatListViewModel()
     } else if (listingState.isLoadingMore) {
       return this.createLoadingMoreFlatListViewModel(listingState.items)
     } else if (listingState.isLoadingMoreFailed) {
@@ -126,40 +122,6 @@ export class ListingUI extends React.Component {
         </TouchableHighlight>
       </View>
     )
-  }
-
-  createRefreshingFlatListViewModel = (items) => {
-    return {
-      items,
-      keyExtractor: (item, index) => `${index}`,
-      renderItem: (row) => this.renderRow(row),
-      refreshing: true,
-      onRefresh: () => {},
-      loadMore: () => {},
-      renderFooter: () => false,
-      contentContainerStyle: () => {}
-    }
-  }
-
-  createRefreshingFailedFlatListViewModel = () => {
-    return {
-      items: [],
-      keyExtractor: (item, index) => `${index}`,
-      renderItem: (row) => this.renderRow(row),
-      refreshing: false,
-      onRefresh: () => {},
-      loadMore: () => {},
-      renderFooter: () => false,
-      contentContainerStyle: () => {
-        return {
-          flex: 1,
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }
-      },
-      renderEmpty: () => this.renderLoadingFailure()
-    }
   }
 
   createLoadingMoreFlatListViewModel = (items) => {

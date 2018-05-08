@@ -27,7 +27,7 @@ export class DetailUI extends React.Component {
     const price = property.price_formatted
 
     return (
-      <ScrollView>
+      <ScrollView styles={{backgroundColor: '#ffffff'}}>
         <View style={styles.container}>
           <Image style={styles.image} source={{uri: property.img_url}} />
           <View style={styles.heading}>

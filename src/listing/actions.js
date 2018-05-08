@@ -35,38 +35,6 @@ export const fetchItems = () => {
   }
 }
 
-export function itemsIsRefreshing () {
-  return {
-    type: 'ITEMS_IS_REFRESHING',
-    payload: Object.assign({}, {isRefreshing: true, isRefreshingFailed: false})
-  }
-}
-
-export function updateItemsSuccess (items) {
-  return {
-    type: 'UPDATE_ITEMS_SUCCESS',
-    payload: Object.assign({}, {items, isRefreshing: false, isRefreshingFailed: false})
-  }
-}
-
-export function updateItemsFailure () {
-  return {
-    type: 'UPDATE_ITEMS_FAILURE',
-    payload: Object.assign({}, {isRefreshing: false, isRefreshingFailed: true})
-  }
-}
-
-export const updateItems = () => {
-  return function (dispatch) {
-    dispatch(itemsIsRefreshing(true))
-    return apiCall().then((items) => {
-      dispatch(updateItemsSuccess(items.response.listings))
-    }).catch((error) => {
-      dispatch(updateItemsFailure(true))
-    })
-  }
-}
-
 export function itemsIsLoadingMore () {
   return {
     type: 'ITEMS_IS_LOADING_MORE',
