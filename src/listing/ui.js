@@ -34,6 +34,7 @@ export class ListingUI extends React.Component {
   }
 
   renderList = (flatListViewModel) => <FlatList
+    style={styles.listing}
     contentContainerStyle={flatListViewModel.contentContainerStyle()}
     data={flatListViewModel.items}
     keyExtractor={(item, index) => flatListViewModel.keyExtractor(item, index)}

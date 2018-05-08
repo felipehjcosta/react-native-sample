@@ -9,6 +9,9 @@ export default StyleSheet.create({
   textContainer: {
     flex: 1
   },
+  listing: {
+    backgroundColor: '#ffffff'
+  },
   separator: {
     height: 1,
     backgroundColor: '#dddddd'
