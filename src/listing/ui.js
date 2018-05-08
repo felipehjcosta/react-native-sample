@@ -119,6 +119,7 @@ export class ListingUI extends React.Component {
         <Text>Error on fetch data</Text>
         <Text>Veify your internet connection and try gain</Text>
         <TouchableHighlight
+          onPress={() => this.props.fetchData()}
           underlayColor='#dddddd' style={{padding: 10, backgroundColor: '#48BBEC'}}>
           <Text>Retry</Text>
         </TouchableHighlight>

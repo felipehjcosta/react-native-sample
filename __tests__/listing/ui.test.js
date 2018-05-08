@@ -129,6 +129,30 @@ describe('Listing Component', () => {
         'https://www.nestoria.com.br/detail/0000000108550797542396092/title/5/1-1?serpUid=&pt=1&ot=1&l=rio-de-janeiro&did=41_default&utm_source=api&utm_medium=external')
   })
 
+  it('should notify function when touch item', () => {
+    const props = {
+      fetchData: jest.fn(),
+      detail: jest.fn(),
+      listingState: {
+        isLoading: false,
+        isLoadingFailed: true,
+      }
+    }
+
+    const navigation = {navigate: jest.fn()}
+
+    const onItemSelected = jest.fn()
+
+    const wrapper = shallow(<ListingUI {...props} navigation={navigation} onItemSelected={onItemSelected} />)
+
+    const uiRendered = ReactTestRenderer.create(wrapper)
+    const componentView = uiRendered.root.findByType(TouchableHighlight)
+
+    componentView.props.onPress()
+
+    expect(props.fetchData.mock.calls.length).toBe(2)
+  })
+
   it('should display loading more correctly', () => {
     const props = {
       fetchData: jest.fn(),
