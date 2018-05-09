@@ -21,6 +21,7 @@ exports[`Listing Component should display list correctly 1`] = `
   getItemCount={[Function]}
   horizontal={false}
   initialNumToRender={10}
+  invertStickyHeaders={undefined}
   keyExtractor={[Function]}
   maxToRenderPerBatch={10}
   numColumns={1}
@@ -75,18 +76,13 @@ exports[`Listing Component should display list correctly 1`] = `
         onResponderTerminate={[Function]}
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-            },
-            undefined,
-          ]
-        }
+        style={null}
         testID={undefined}
         tvParallaxProperties={undefined}
       >
-        <View>
+        <View
+          style={null}
+        >
           <View
             style={
               Object {
@@ -182,6 +178,7 @@ exports[`Listing Component should display loading correctly 1`] = `
   getItemCount={[Function]}
   horizontal={false}
   initialNumToRender={10}
+  invertStickyHeaders={undefined}
   keyExtractor={[Function]}
   maxToRenderPerBatch={10}
   numColumns={1}
@@ -2135,6 +2132,7 @@ exports[`Listing Component should display loading failure correctly 1`] = `
   getItemCount={[Function]}
   horizontal={false}
   initialNumToRender={10}
+  invertStickyHeaders={undefined}
   keyExtractor={[Function]}
   maxToRenderPerBatch={10}
   numColumns={1}
@@ -2214,15 +2212,10 @@ exports[`Listing Component should display loading failure correctly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-              },
-              Object {
-                "backgroundColor": "#48BBEC",
-                "padding": 10,
-              },
-            ]
+            Object {
+              "backgroundColor": "#48BBEC",
+              "padding": 10,
+            }
           }
           testID={undefined}
           tvParallaxProperties={undefined}
@@ -2231,6 +2224,7 @@ exports[`Listing Component should display loading failure correctly 1`] = `
             accessible={true}
             allowFontScaling={true}
             ellipsizeMode="tail"
+            style={null}
           >
             Retry
           </Text>
@@ -2266,6 +2260,7 @@ exports[`Listing Component should display loading more correctly 1`] = `
   getItemCount={[Function]}
   horizontal={false}
   initialNumToRender={10}
+  invertStickyHeaders={undefined}
   keyExtractor={[Function]}
   maxToRenderPerBatch={10}
   numColumns={1}
@@ -2320,18 +2315,13 @@ exports[`Listing Component should display loading more correctly 1`] = `
         onResponderTerminate={[Function]}
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-            },
-            undefined,
-          ]
-        }
+        style={null}
         testID={undefined}
         tvParallaxProperties={undefined}
       >
-        <View>
+        <View
+          style={null}
+        >
           <View
             style={
               Object {
@@ -2440,6 +2430,7 @@ exports[`Listing Component should display loading more failure correctly 1`] = `
   getItemCount={[Function]}
   horizontal={false}
   initialNumToRender={10}
+  invertStickyHeaders={undefined}
   keyExtractor={[Function]}
   maxToRenderPerBatch={10}
   numColumns={1}
@@ -2494,18 +2485,13 @@ exports[`Listing Component should display loading more failure correctly 1`] = `
         onResponderTerminate={[Function]}
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-            },
-            undefined,
-          ]
-        }
+        style={null}
         testID={undefined}
         tvParallaxProperties={undefined}
       >
-        <View>
+        <View
+          style={null}
+        >
           <View
             style={
               Object {
@@ -2613,15 +2599,10 @@ exports[`Listing Component should display loading more failure correctly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-              },
-              Object {
-                "backgroundColor": "#48BBEC",
-                "padding": 10,
-              },
-            ]
+            Object {
+              "backgroundColor": "#48BBEC",
+              "padding": 10,
+            }
           }
           testID={undefined}
           tvParallaxProperties={undefined}
@@ -2630,6 +2611,7 @@ exports[`Listing Component should display loading more failure correctly 1`] = `
             accessible={true}
             allowFontScaling={true}
             ellipsizeMode="tail"
+            style={null}
           >
             Retry
           </Text>
