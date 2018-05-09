@@ -28,8 +28,9 @@ project.xcworkspace
 /android/build/
 
 # Buck
-.buckd
-buck-out
+buck-out/
+\.buckd/
+*.keystore
 /android/src/main/jni/prebuilt/lib/armeabi-v7a/
 /android/src/main/jni/prebuilt/lib/x86/
 /android/src/main/gen
@@ -59,3 +60,17 @@ node_modules
 
 /coverage
 /third-party
+
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://docs.fastlane.tools/best-practices/source-control/
+
+*/fastlane/report.xml
+*/fastlane/Preview.html
+*/fastlane/screenshots
+
+# Bundle artifact
+*.jsbundle
