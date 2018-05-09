@@ -24,18 +24,6 @@ const refreshing = (payload) => state => Object.assign(
   payload
 )
 
-const updateItemsSuccess = (payload) => state => Object.assign(
-  {},
-  state,
-  payload
-)
-
-const updateItemsFailure = (payload) => state => Object.assign(
-  {},
-  state,
-  payload
-)
-
 const loadingMore = (payload) => state => Object.assign(
   {},
   state,
@@ -63,8 +51,6 @@ export default function reducer (state = {}, action) {
       return fetchDataSuccess(action.payload)(state)
     case 'ITEMS_FETCH_DATA_FAILURE':
       return fetchDataFailure(action.payload)(state)
-    case 'ITEMS_IS_REFRESHING':
-      return refreshing(action.payload)(state)
     case 'ITEMS_IS_LOADING_MORE':
       return loadingMore(action.payload)(state)
     case 'LOAD_MORE_ITEMS_SUCCESS':
