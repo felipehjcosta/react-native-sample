@@ -2277,10 +2277,10 @@ exports[`Listing Component should display loading more correctly 1`] = `
     <RefreshControlMock
       onRefresh={[Function]}
       progressViewOffset={undefined}
-      refreshing={true}
+      refreshing={false}
     />
   }
-  refreshing={true}
+  refreshing={false}
   renderItem={[Function]}
   scrollEventThrottle={50}
   stickyHeaderIndices={Array []}
@@ -2447,10 +2447,10 @@ exports[`Listing Component should display loading more failure correctly 1`] = `
     <RefreshControlMock
       onRefresh={[Function]}
       progressViewOffset={undefined}
-      refreshing={true}
+      refreshing={false}
     />
   }
-  refreshing={true}
+  refreshing={false}
   renderItem={[Function]}
   scrollEventThrottle={50}
   stickyHeaderIndices={Array []}
