@@ -20,9 +20,7 @@ matrix:
         - yarn add codecov --dev
       script:
         - yarn install
-        - yarn test
-      after_success:
-        - codecov
+        - yarn test && codecov
         
     - language: objective-c
       os: osx
