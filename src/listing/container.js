@@ -1,20 +1,16 @@
 import { connect } from 'react-redux'
-
 import Listing from './ui'
-import { fetchItems, updateItems, loadMoreItems } from './actions'
+import { fetchItems, loadMoreItems } from './actions'
+import { createListingState } from './selectors'
 
-const mapStateToProps = (state) => {
-  return {
-    listingState: state.listing
-  }
-}
+const mapStateToProps = (state) => ({
+  listingState: createListingState(state)
+})
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchData: () => dispatch(fetchItems()),
-    updateData: () => dispatch(fetchItems()),
-    loadMoreData: (page) => dispatch(loadMoreItems(page))
-  }
+const actionCreators = {
+  fetchData: fetchItems,
+  updateData: fetchItems,
+  loadMoreData: loadMoreItems
 }
 
 const mergeProps = (state, actions, props) => ({
@@ -26,6 +22,6 @@ const mergeProps = (state, actions, props) => ({
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  actionCreators,
   mergeProps
 )(Listing)
