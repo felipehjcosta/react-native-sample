@@ -2,7 +2,8 @@
 import reducer from '../../src/listing/reducer'
 
 test('reducer should return the initial state', () => {
-  expect(reducer(undefined, {})).toEqual({})
+  const state = {isLoading: false, isLoadingFailed: false, items: [], page: 1}
+  expect(reducer(undefined, {})).toEqual(state)
 })
 
 test('reducer should handle ITEMS_IS_LOADING', () => {

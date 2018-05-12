@@ -17,11 +17,11 @@ test('check fetch API action with success', () => {
     const actions = store.getActions()
     expect(actions.length).toBe(2)
     expect(actions[0]).
-      toEqual({type: 'ITEMS_IS_LOADING', payload: {isLoading: true, isLoadingFailed: false, items: [], page: 1}})
+      toEqual({type: 'ITEMS_IS_LOADING', payload: {isLoading: true}})
     expect(actions[1]).
       toEqual({
         type: 'ITEMS_FETCH_DATA_SUCCESS',
-        payload: {isLoading: false, isLoadingFailed: false, items: testData, page: 1}
+        payload: {isLoading: false, items: testData}
       })
   })
 
@@ -41,11 +41,11 @@ test('check fetch API action with failure', () => {
     const actions = store.getActions()
     expect(actions.length).toBe(2)
     expect(actions[0]).
-      toEqual({type: 'ITEMS_IS_LOADING', payload: {isLoading: true, isLoadingFailed: false, items: [], page: 1}})
+      toEqual({type: 'ITEMS_IS_LOADING', payload: {isLoading: true}})
     expect(actions[1]).
       toEqual({
         type: 'ITEMS_FETCH_DATA_FAILURE',
-        payload: {isLoadingFailed: true, isLoading: false, items: [], page: 1}
+        payload: {isLoadingFailed: true, isLoading: false}
       })
   })
 

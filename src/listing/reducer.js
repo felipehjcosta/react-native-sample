@@ -18,12 +18,6 @@ const fetchDataFailure = (payload) => state => Object.assign(
   payload
 )
 
-const refreshing = (payload) => state => Object.assign(
-  {},
-  state,
-  payload
-)
-
 const loadingMore = (payload) => state => Object.assign(
   {},
   state,
@@ -43,7 +37,9 @@ const loadMoreItemsFailure = (payload) => state => Object.assign(
   payload
 )
 
-export default function reducer (state = {}, action) {
+const initialState = {isLoading: false, isLoadingFailed: false, items: [], page: 1}
+
+export default function reducer (state = initialState, action) {
   switch (action.type) {
     case 'ITEMS_IS_LOADING':
       return loading(action.payload)(state)
