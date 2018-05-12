@@ -1,33 +1,17 @@
 // @flow
 import { apiCall } from './apiCall'
-
-export function itemsIsLoading () {
-  return {
-    type: 'ITEMS_IS_LOADING',
-    payload: {isLoading: true}
-  }
-}
-
-export function itemsFetchDataSuccess (items) {
-  return {
-    type: 'ITEMS_FETCH_DATA_SUCCESS',
-    payload: {isLoading: false, items}
-  }
-}
-
-export function itemsFetchDataFailure () {
-  return {
-    type: 'ITEMS_FETCH_DATA_FAILURE',
-    payload: {isLoading: false, isLoadingFailed: true}
-  }
-}
+import {
+  errorOnFetchItemsAction,
+  loadingItemsAction,
+  receivedItemsAction
+} from './actions'
 
 export const fetchItems = () => (dispatch) => {
-  dispatch(itemsIsLoading())
+  dispatch(loadingItemsAction())
   return apiCall().then((items) => {
-    dispatch(itemsFetchDataSuccess(items.response.listings))
+    dispatch(receivedItemsAction(items.response.listings))
   }).catch((error) => {
-    dispatch(itemsFetchDataFailure())
+    dispatch(errorOnFetchItemsAction())
   })
 }
 
@@ -45,8 +29,8 @@ export function loadMoreItemsSuccess (newPage, items) {
       page: newPage,
       items,
       isLoadingMore: false,
-      isLoadingMoreFailed: false,
-    },
+      isLoadingMoreFailed: false
+    }
   }
 }
 

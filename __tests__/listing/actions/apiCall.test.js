@@ -1,5 +1,5 @@
 import fetchMock from 'fetch-mock'
-import { apiCall } from '../../src/listing/apiCall'
+import { apiCall } from '../../../src/listing/actions/apiCall'
 
 test('check API call', () => {
   const testData = {id: 1}

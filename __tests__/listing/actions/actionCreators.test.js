@@ -1,6 +1,15 @@
 // @flow
 import fetchMock from 'fetch-mock'
-import { fetchItems, updateItems, loadMoreItems } from '../../src/listing/actions'
+import {
+  fetchItems,
+  loadMoreItems
+} from '../../../src/listing/actions/actionCreators'
+
+import {
+  ERROR_ON_FETCH_ITEMS,
+  LOADING_ITEMS,
+  RECEIVED_ITEMS
+} from '../../../src/listing/actions/types'
 import thunkMiddleware from 'redux-thunk'
 import configureStore from 'redux-mock-store'
 
@@ -16,13 +25,11 @@ test('check fetch API action with success', () => {
   const actionResult = store.dispatch(fetchItems()).then(() => {
     const actions = store.getActions()
     expect(actions.length).toBe(2)
-    expect(actions[0]).
-      toEqual({type: 'ITEMS_IS_LOADING', payload: {isLoading: true}})
-    expect(actions[1]).
-      toEqual({
-        type: 'ITEMS_FETCH_DATA_SUCCESS',
-        payload: {isLoading: false, items: testData}
-      })
+    expect(actions[0]).toEqual({type: LOADING_ITEMS})
+    expect(actions[1]).toEqual({
+      type: RECEIVED_ITEMS,
+      payload: {items: testData}
+    })
   })
 
   fetchMock.restore()
@@ -40,13 +47,8 @@ test('check fetch API action with failure', () => {
   const actionResult = store.dispatch(fetchItems()).then(() => {
     const actions = store.getActions()
     expect(actions.length).toBe(2)
-    expect(actions[0]).
-      toEqual({type: 'ITEMS_IS_LOADING', payload: {isLoading: true}})
-    expect(actions[1]).
-      toEqual({
-        type: 'ITEMS_FETCH_DATA_FAILURE',
-        payload: {isLoadingFailed: true, isLoading: false}
-      })
+    expect(actions[0]).toEqual({type: LOADING_ITEMS})
+    expect(actions[1]).toEqual({type: ERROR_ON_FETCH_ITEMS})
   })
 
   fetchMock.restore()
@@ -64,13 +66,19 @@ test('check load more API action with success', () => {
   const actionResult = store.dispatch(loadMoreItems(page)).then(() => {
     const actions = store.getActions()
     expect(actions.length).toBe(2)
-    expect(actions[0]).
-      toEqual({type: 'ITEMS_IS_LOADING_MORE', payload: {isLoadingMore: true, isLoadingMoreFailed: false}})
-    expect(actions[1]).
-      toEqual({
-        type: 'LOAD_MORE_ITEMS_SUCCESS',
-        payload: {page: 2, items: testData, isLoadingMore: false, isLoadingMoreFailed: false}
-      })
+    expect(actions[0]).toEqual({
+      type: 'ITEMS_IS_LOADING_MORE',
+      payload: {isLoadingMore: true, isLoadingMoreFailed: false}
+    })
+    expect(actions[1]).toEqual({
+      type: 'LOAD_MORE_ITEMS_SUCCESS',
+      payload: {
+        page: 2,
+        items: testData,
+        isLoadingMore: false,
+        isLoadingMoreFailed: false
+      }
+    })
   })
 
   fetchMock.restore()
@@ -89,13 +97,14 @@ test('check load more API action with failure', () => {
   const actionResult = store.dispatch(loadMoreItems(page)).then(() => {
     const actions = store.getActions()
     expect(actions.length).toBe(2)
-    expect(actions[0]).
-      toEqual({type: 'ITEMS_IS_LOADING_MORE', payload: {isLoadingMore: true, isLoadingMoreFailed: false}})
-    expect(actions[1]).
-      toEqual({
-        type: 'LOAD_MORE_ITEMS_FAILURE',
-        payload: {isLoadingMore: false, isLoadingMoreFailed: true}
-      })
+    expect(actions[0]).toEqual({
+      type: 'ITEMS_IS_LOADING_MORE',
+      payload: {isLoadingMore: true, isLoadingMoreFailed: false}
+    })
+    expect(actions[1]).toEqual({
+      type: 'LOAD_MORE_ITEMS_FAILURE',
+      payload: {isLoadingMore: false, isLoadingMoreFailed: true}
+    })
   })
 
   fetchMock.restore()
