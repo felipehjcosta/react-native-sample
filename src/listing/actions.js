@@ -22,15 +22,13 @@ export function itemsFetchDataFailure () {
   }
 }
 
-export const fetchItems = () => {
-  return function (dispatch) {
-    dispatch(itemsIsLoading())
-    return apiCall().then((items) => {
-      dispatch(itemsFetchDataSuccess(items.response.listings))
-    }).catch((error) => {
-      dispatch(itemsFetchDataFailure())
-    })
-  }
+export const fetchItems = () => (dispatch) => {
+  dispatch(itemsIsLoading())
+  return apiCall().then((items) => {
+    dispatch(itemsFetchDataSuccess(items.response.listings))
+  }).catch((error) => {
+    dispatch(itemsFetchDataFailure())
+  })
 }
 
 export function itemsIsLoadingMore () {
@@ -43,7 +41,12 @@ export function itemsIsLoadingMore () {
 export function loadMoreItemsSuccess (newPage, items) {
   return {
     type: 'LOAD_MORE_ITEMS_SUCCESS',
-    payload: {page: newPage, items, isLoadingMore: false, isLoadingMoreFailed: false}
+    payload: {
+      page: newPage,
+      items,
+      isLoadingMore: false,
+      isLoadingMoreFailed: false,
+    },
   }
 }
 
@@ -54,14 +57,12 @@ export function loadMoreItemsFailure () {
   }
 }
 
-export const loadMoreItems = (page) => {
+export const loadMoreItems = (page) => (dispatch) => {
   const newPage = page + 1
-  return function (dispatch) {
-    dispatch(itemsIsLoadingMore())
-    return apiCall(newPage).then((items) => {
-      dispatch(loadMoreItemsSuccess(newPage, items.response.listings))
-    }).catch((error) => {
-      dispatch(loadMoreItemsFailure())
-    })
-  }
+  dispatch(itemsIsLoadingMore())
+  return apiCall(newPage).then((items) => {
+    dispatch(loadMoreItemsSuccess(newPage, items.response.listings))
+  }).catch((error) => {
+    dispatch(loadMoreItemsFailure())
+  })
 }
