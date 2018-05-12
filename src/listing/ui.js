@@ -72,7 +72,8 @@ export class ListingUI extends React.Component {
       onRefresh: () => {},
       loadMore: () => {},
       renderFooter: () => false,
-      contentContainerStyle: () => {}
+      contentContainerStyle: () => {},
+      renderEmpty: () => { return false }
     }
   }
 
@@ -136,7 +137,8 @@ export class ListingUI extends React.Component {
       onRefresh: () => {},
       loadMore: () => {},
       renderFooter: () => this.renderLoadingMoreFooter(),
-      contentContainerStyle: () => {}
+      contentContainerStyle: () => {},
+      renderEmpty: () => { return false }
     }
   }
 
@@ -157,7 +159,8 @@ export class ListingUI extends React.Component {
       onRefresh: () => {},
       loadMore: () => {},
       renderFooter: () => this.renderLoadingMoreFailedFooter(),
-      contentContainerStyle: () => {}
+      contentContainerStyle: () => {},
+      renderEmpty: () => { return false }
     }
   }
 
@@ -188,7 +191,8 @@ export class ListingUI extends React.Component {
       onRefresh: () => this.props.updateData(),
       loadMore: () => this.props.loadMoreData(),
       renderFooter: () => false,
-      contentContainerStyle: () => {}
+      contentContainerStyle: () => {},
+      renderEmpty: () => { return false }
     }
   }
 
