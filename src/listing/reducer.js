@@ -1,18 +1,23 @@
 // @flow
+import {
+  ERROR_ON_FETCH_ITEMS,
+  FETCHING_ITEMS,
+  RECEIVED_ITEMS
+} from './actions/types'
 
-const loading = (payload) => state => Object.assign(
+const fetching = (payload) => state => Object.assign(
   {},
   state,
-  payload
+  {isLoading: true}
 )
 
-const fetchDataSuccess = (payload) => state => Object.assign(
+const receivedItems = (payload) => state => Object.assign(
   {},
   state,
-  payload
+  {isLoading: false, items: payload.items}
 )
 
-const fetchDataFailure = (payload) => state => Object.assign(
+const errorOnFetchItems = (payload) => state => Object.assign(
   {},
   state,
   payload
@@ -37,16 +42,21 @@ const loadMoreItemsFailure = (payload) => state => Object.assign(
   payload
 )
 
-const initialState = {isLoading: false, isLoadingFailed: false, items: [], page: 1}
+const initialState = {
+  isLoading: false,
+  isLoadingFailed: false,
+  items: [],
+  page: 1
+}
 
 export default function reducer (state = initialState, action) {
   switch (action.type) {
-    case 'ITEMS_IS_LOADING':
-      return loading(action.payload)(state)
-    case 'ITEMS_FETCH_DATA_SUCCESS':
-      return fetchDataSuccess(action.payload)(state)
-    case 'ITEMS_FETCH_DATA_FAILURE':
-      return fetchDataFailure(action.payload)(state)
+    case FETCHING_ITEMS:
+      return fetching(action.payload)(state)
+    case RECEIVED_ITEMS:
+      return receivedItems(action.payload)(state)
+    case ERROR_ON_FETCH_ITEMS:
+      return errorOnFetchItems(action.payload)(state)
     case 'ITEMS_IS_LOADING_MORE':
       return loadingMore(action.payload)(state)
     case 'LOAD_MORE_ITEMS_SUCCESS':

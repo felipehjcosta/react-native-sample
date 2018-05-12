@@ -1,8 +1,9 @@
-import { ERROR_ON_FETCH_ITEMS, LOADING_ITEMS, RECEIVED_ITEMS } from './types'
+// @flow
+import { ERROR_ON_FETCH_ITEMS, FETCHING_ITEMS, RECEIVED_ITEMS } from './types'
 
 export const loadingItemsAction = () => {
   return {
-    type: LOADING_ITEMS
+    type: FETCHING_ITEMS
   }
 }
 
