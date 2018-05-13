@@ -5,7 +5,6 @@ exports[`Listing Component should display list correctly 1`] = `
   ItemSeparatorComponent={[Function]}
   ListEmptyComponent={[Function]}
   ListFooterComponent={[Function]}
-  contentContainerStyle={undefined}
   data={
     Array [
       Object {
@@ -156,7 +155,6 @@ exports[`Listing Component should display loading correctly 1`] = `
   ItemSeparatorComponent={[Function]}
   ListEmptyComponent={[Function]}
   ListFooterComponent={[Function]}
-  contentContainerStyle={undefined}
   data={
     Array [
       undefined,
@@ -2116,14 +2114,6 @@ exports[`Listing Component should display loading failure correctly 1`] = `
   ItemSeparatorComponent={[Function]}
   ListEmptyComponent={[Function]}
   ListFooterComponent={[Function]}
-  contentContainerStyle={
-    Object {
-      "alignItems": "center",
-      "flex": 1,
-      "flexDirection": "column",
-      "justifyContent": "center",
-    }
-  }
   data={Array []}
   disableVirtualization={false}
   getItem={[Function]}
@@ -2191,7 +2181,7 @@ exports[`Listing Component should display loading failure correctly 1`] = `
           allowFontScaling={true}
           ellipsizeMode="tail"
         >
-          Veify your internet connection and try gain
+          Verify your internet connection and try gain
         </Text>
         <View
           accessibilityComponentType={undefined}
@@ -2242,7 +2232,6 @@ exports[`Listing Component should display loading more correctly 1`] = `
   ItemSeparatorComponent={[Function]}
   ListEmptyComponent={[Function]}
   ListFooterComponent={[Function]}
-  contentContainerStyle={undefined}
   data={
     Array [
       Object {
@@ -2410,7 +2399,6 @@ exports[`Listing Component should display loading more failure correctly 1`] = `
   ItemSeparatorComponent={[Function]}
   ListEmptyComponent={[Function]}
   ListFooterComponent={[Function]}
-  contentContainerStyle={undefined}
   data={
     Array [
       Object {

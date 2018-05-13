@@ -11,6 +11,7 @@ import { withNavigation } from 'react-navigation'
 import LoadingItem from './loadingItem'
 import ListItem from './listItem'
 import styles from './styles'
+import FetchingFailure from './fetchingFailure'
 
 export class ListingUI extends React.Component {
 
@@ -82,32 +83,13 @@ export class ListingUI extends React.Component {
   createLoadingFailedFlatListViewModel = () => {
     return {
       items: [],
-      renderItem: (row) => LoadingItem,
+      renderItem: (row) => <LoadingItem />,
       onRefresh: () => {},
       loadMore: () => {},
       renderFooter: () => false,
-      renderEmpty: () => this.renderLoadingFailure()
+      renderEmpty: () => <FetchingFailure
+        onRetryButtonTouched={() => this.props.fetchData()} />
     }
-  }
-
-  renderLoadingFailure = () => {
-    return (
-      <View style={{
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}>
-        <Text>Error on fetch data</Text>
-        <Text>Veify your internet connection and try gain</Text>
-        <TouchableHighlight
-          onPress={() => this.props.fetchData()}
-          underlayColor='#dddddd'
-          style={{padding: 10, backgroundColor: '#48BBEC'}}>
-          <Text>Retry</Text>
-        </TouchableHighlight>
-      </View>
-    )
   }
 
   createLoadingMoreFlatListViewModel = (items) => {
