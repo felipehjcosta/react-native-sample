@@ -10,7 +10,7 @@ import {
 const fetching = (payload) => state => Object.assign(
   {},
   state,
-  {isLoading: true}
+  {isLoading: true, isLoadingFailed: false}
 )
 
 const receivedItems = (payload) => state => Object.assign(
@@ -22,13 +22,13 @@ const receivedItems = (payload) => state => Object.assign(
 const errorOnFetchingItems = (payload) => state => Object.assign(
   {},
   state,
-  {isLoadingFailed: true}
+  {isLoading: false, isLoadingFailed: true}
 )
 
 const fetchingMore = (payload) => state => Object.assign(
   {},
   state,
-  {isLoadingMore: true}
+  {isLoadingMore: true, isLoadingMoreFailed: false}
 )
 
 const receivedMoreItems = (payload) => state => Object.assign(
@@ -50,6 +50,8 @@ const errorOnFetchingMoreItems = (payload) => state => Object.assign(
 const initialState = {
   isLoading: false,
   isLoadingFailed: false,
+  isLoadingMore: false,
+  isLoadingMoreFailed: false,
   items: [],
   page: 1
 }
