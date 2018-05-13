@@ -7,6 +7,11 @@ import ReactTestRenderer from 'react-test-renderer'
 Enzyme.configure({adapter: new Adapter()})
 
 describe('LoadingItem Component', () => {
+  beforeEach(() => {
+    jest.useFakeTimers()
+    jest.mock('react-native-shimmer-placeholder', () => 'View')
+  })
+
   it('renders correctly', () => {
     const wrapper = shallow(<LoadingItem />)
 
