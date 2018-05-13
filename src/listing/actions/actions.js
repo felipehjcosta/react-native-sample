@@ -1,4 +1,3 @@
-// @flow
 import { ERROR_ON_FETCH_ITEMS, FETCHING_ITEMS, RECEIVED_ITEMS } from './types'
 
 export const loadingItemsAction = () => {

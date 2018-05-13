@@ -1,4 +1,3 @@
-// @flow
 const createUrl = (page = 1) => {
   const key = 'place_name'
   const value = 'rio-de-janeiro'

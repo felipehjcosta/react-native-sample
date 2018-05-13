@@ -1,4 +1,3 @@
-// @flow
 export const FETCHING_ITEMS = 'FETCHING_ITEMS'
 
 export const RECEIVED_ITEMS = 'RECEIVED_ITEMS'

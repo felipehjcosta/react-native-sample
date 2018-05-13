@@ -1,4 +1,3 @@
-// @flow
 import fetchMock from 'fetch-mock'
 import {
   fetchItems,

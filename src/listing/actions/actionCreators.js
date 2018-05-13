@@ -1,4 +1,3 @@
-// @flow
 import { apiCall } from './apiCall'
 import {
   errorOnFetchItemsAction,
