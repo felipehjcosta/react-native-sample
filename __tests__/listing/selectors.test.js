@@ -1,5 +1,5 @@
 // @flow
-import { createListingState } from '../../src/listing/selectors'
+import { createListProps } from '../../src/listing/selectors'
 
 describe('Listing selectors', () => {
   it('should select listing object from state', () => {
@@ -15,6 +15,6 @@ describe('Listing selectors', () => {
     }
 
     const newState = state
-    expect(createListingState(oldState)).toBe(newState)
+    expect(createListProps(oldState)).toBe(newState)
   })
 })
