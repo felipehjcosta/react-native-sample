@@ -1,10 +1,9 @@
-// @flow
 import React from 'react'
 import { TouchableHighlight } from 'react-native'
 import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import ReactTestRenderer from 'react-test-renderer'
-import { ListingUI } from '../../src/listing/ui'
+import { ListingUI } from '../../../src/listing/ui/ui'
 
 Enzyme.configure({adapter: new Adapter()})
 
@@ -34,7 +33,8 @@ describe('Listing Component', () => {
 
     const onItemSelected = jest.fn()
 
-    const wrapper = shallow(<ListingUI {...props} navigation={navigation} onItemSelected={onItemSelected} />)
+    const wrapper = shallow(<ListingUI {...props} navigation={navigation}
+      onItemSelected={onItemSelected} />)
 
     const tree = ReactTestRenderer.create(wrapper).toJSON()
     expect(tree).toMatchSnapshot()
@@ -124,8 +124,8 @@ describe('Listing Component', () => {
     componentView.props.onPress()
 
     expect(onItemSelected.mock.calls.length).toBe(1)
-    expect(onItemSelected.mock.calls[0][0]).
-      toBe(
+    expect(onItemSelected.mock.calls[0][0])
+      .toBe(
         'https://www.nestoria.com.br/detail/0000000108550797542396092/title/5/1-1?serpUid=&pt=1&ot=1&l=rio-de-janeiro&did=41_default&utm_source=api&utm_medium=external')
   })
 
@@ -136,6 +136,14 @@ describe('Listing Component', () => {
       listingState: {
         isLoading: false,
         isLoadingFailed: true,
+        items: [
+          {
+            img_url: 'https://imgs.nestimg.com/casa_300_m2_108811252799247473.jpg',
+            price_formatted: 'R$ 750.000',
+            title: 'Campo Grande,Rio de Janeiro,Rio De Janeiro',
+            lister_url: 'https://www.nestoria.com.br/detail/0000000108550797542396092/title/5/1-1?serpUid=&pt=1&ot=1&l=rio-de-janeiro&did=41_default&utm_source=api&utm_medium=external'
+          }
+        ]
       }
     }
 

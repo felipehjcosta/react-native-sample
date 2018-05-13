@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
-import Listing from './ui'
-import { fetchItems, loadMoreItems } from './actions'
-import { createListingState } from './selectors'
+import Listing from './ui/ui'
+import { fetchItems, loadMoreItems } from './actions/actionCreators'
+import { createListProps } from './selectors'
 
 const mapStateToProps = (state) => ({
-  listingState: createListingState(state)
+  listingState: createListProps(state)
 })
 
 const actionCreators = {

@@ -1,2 +1,2 @@
 
-export const createListingState = (state) => (state.listing)
+export const createListProps = (state) => (state.listing)

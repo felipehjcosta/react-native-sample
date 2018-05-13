@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingItem Component renders correctly 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "padding": 10,
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "uri": "https://imgs.nestimg.com/casa_300_m2_108811252799247473.jpg",
+        }
+      }
+      style={
+        Object {
+          "height": 80,
+          "marginRight": 10,
+          "width": 80,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#48BBEC",
+            "fontSize": 25,
+            "fontWeight": "bold",
+          }
+        }
+      >
+        R$ 750.000
+      </Text>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        numberOfLines={1}
+        style={
+          Object {
+            "color": "#656565",
+            "fontSize": 20,
+          }
+        }
+      >
+        Campo Grande,Rio de Janeiro,Rio De Janeiro
+      </Text>
+    </View>
+  </View>
+</View>
+`;

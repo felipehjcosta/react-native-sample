@@ -1,10 +1,17 @@
 // @flow
-import { FlatList, Image, Text, TouchableHighlight, View, ActivityIndicator } from 'react-native'
+import {
+  ActivityIndicator,
+  FlatList,
+  Text,
+  TouchableHighlight,
+  View
+} from 'react-native'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { withNavigation } from 'react-navigation'
-import ShimmerPlaceHolder from 'react-native-shimmer-placeholder'
 import styles from './styles.js'
+import LoadingItem from './loadingItem'
+import ListItem from './listItem'
 
 export class ListingUI extends React.Component {
 
@@ -67,7 +74,7 @@ export class ListingUI extends React.Component {
     return {
       items: new Array(10),
       keyExtractor: (item, index) => `${index}`,
-      renderItem: (row) => this.renderLoadingItem(),
+      renderItem: (row) => <LoadingItem />,
       refreshing: false,
       onRefresh: () => {},
       loadMore: () => {},
@@ -77,22 +84,11 @@ export class ListingUI extends React.Component {
     }
   }
 
-  renderLoadingItem = () => {
-    return (
-      <View>
-        <View style={styles.rowContainer}>
-          <ShimmerPlaceHolder autoRun style={styles.imageShimmerPlaceHolder} />
-          <ShimmerPlaceHolder autoRun style={styles.contentShimmerPlaceHolder} />
-        </View>
-      </View>
-    )
-  }
-
   createLoadingFailedFlatListViewModel = () => {
     return {
       items: [],
       keyExtractor: (item, index) => `${index}`,
-      renderItem: (row) => this.renderLoadingItem(),
+      renderItem: (row) => LoadingItem,
       refreshing: false,
       onRefresh: () => {},
       loadMore: () => {},
@@ -121,7 +117,8 @@ export class ListingUI extends React.Component {
         <Text>Veify your internet connection and try gain</Text>
         <TouchableHighlight
           onPress={() => this.props.fetchData()}
-          underlayColor='#dddddd' style={{padding: 10, backgroundColor: '#48BBEC'}}>
+          underlayColor='#dddddd'
+          style={{padding: 10, backgroundColor: '#48BBEC'}}>
           <Text>Retry</Text>
         </TouchableHighlight>
       </View>
@@ -175,7 +172,8 @@ export class ListingUI extends React.Component {
         <Text>Error on fetch data</Text>
         <Text>Veify your internet connection and try gain</Text>
         <TouchableHighlight
-          underlayColor='#dddddd' style={{padding: 10, backgroundColor: '#48BBEC'}}>
+          underlayColor='#dddddd'
+          style={{padding: 10, backgroundColor: '#48BBEC'}}>
           <Text>Retry</Text>
         </TouchableHighlight>
       </View>
@@ -201,15 +199,7 @@ export class ListingUI extends React.Component {
       <TouchableHighlight
         onPress={() => this.rowPressed(row.item)}
         underlayColor='#dddddd'>
-        <View>
-          <View style={styles.rowContainer}>
-            <Image style={styles.thumb} source={{uri: row.item.img_url}} />
-            <View style={styles.textContainer}>
-              <Text style={styles.price}>{row.item.price_formatted}</Text>
-              <Text style={styles.title} numberOfLines={1}>{row.item.title}</Text>
-            </View>
-          </View>
-        </View>
+        <ListItem item={row.item} />
       </TouchableHighlight>
     )
   }

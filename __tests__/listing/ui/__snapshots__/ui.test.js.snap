@@ -80,9 +80,7 @@ exports[`Listing Component should display list correctly 1`] = `
         testID={undefined}
         tvParallaxProperties={undefined}
       >
-        <View
-          style={null}
-        >
+        <View>
           <View
             style={
               Object {
@@ -2319,9 +2317,7 @@ exports[`Listing Component should display loading more correctly 1`] = `
         testID={undefined}
         tvParallaxProperties={undefined}
       >
-        <View
-          style={null}
-        >
+        <View>
           <View
             style={
               Object {
@@ -2489,9 +2485,7 @@ exports[`Listing Component should display loading more failure correctly 1`] = `
         testID={undefined}
         tvParallaxProperties={undefined}
       >
-        <View
-          style={null}
-        >
+        <View>
           <View
             style={
               Object {

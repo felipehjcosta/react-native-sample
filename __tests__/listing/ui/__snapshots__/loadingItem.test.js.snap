@@ -1,0 +1,181 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingItem Component renders correctly 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "padding": 10,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "height": 15,
+            "width": 200,
+          },
+          Object {
+            "overflow": "hidden",
+          },
+          Object {
+            "height": 80,
+            "marginRight": 10,
+            "width": 80,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "#ebebeb",
+            "flex": 1,
+          }
+        }
+      >
+        <View
+          collapsable={undefined}
+          style={
+            Object {
+              "flex": 1,
+              "transform": Array [
+                Object {
+                  "translateX": -200,
+                },
+              ],
+            }
+          }
+        >
+          <BVLinearGradient
+            colors={
+              Array [
+                4293651435,
+                4291151301,
+                4293651435,
+              ]
+            }
+            endPoint={
+              Object {
+                "x": 2,
+                "y": 0.5,
+              }
+            }
+            locations={
+              Array [
+                0.3,
+                0.5,
+                0.7,
+              ]
+            }
+            startPoint={
+              Object {
+                "x": -1,
+                "y": 0.5,
+              }
+            }
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
+          />
+        </View>
+        <View
+          style={
+            Object {
+              "height": 0,
+              "width": 0,
+            }
+          }
+        />
+      </View>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "height": 15,
+            "width": 200,
+          },
+          Object {
+            "overflow": "hidden",
+          },
+          Object {
+            "flex": 1,
+            "height": 80,
+            "marginRight": 10,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "#ebebeb",
+            "flex": 1,
+          }
+        }
+      >
+        <View
+          collapsable={undefined}
+          style={
+            Object {
+              "flex": 1,
+              "transform": Array [
+                Object {
+                  "translateX": -200,
+                },
+              ],
+            }
+          }
+        >
+          <BVLinearGradient
+            colors={
+              Array [
+                4293651435,
+                4291151301,
+                4293651435,
+              ]
+            }
+            endPoint={
+              Object {
+                "x": 2,
+                "y": 0.5,
+              }
+            }
+            locations={
+              Array [
+                0.3,
+                0.5,
+                0.7,
+              ]
+            }
+            startPoint={
+              Object {
+                "x": -1,
+                "y": 0.5,
+              }
+            }
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
+          />
+        </View>
+        <View
+          style={
+            Object {
+              "height": 0,
+              "width": 0,
+            }
+          }
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;
