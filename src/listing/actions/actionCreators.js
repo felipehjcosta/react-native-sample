@@ -7,8 +7,8 @@ import {
 
 export const fetchItems = () => (dispatch) => {
   dispatch(loadingItemsAction())
-  return apiCall().then((items) => {
-    dispatch(receivedItemsAction(items.response.listings))
+  return apiCall().then((response) => {
+    dispatch(receivedItemsAction(response.response.listings))
   }).catch((error) => {
     dispatch(errorOnFetchItemsAction())
   })
@@ -43,8 +43,8 @@ export function loadMoreItemsFailure () {
 export const loadMoreItems = (page) => (dispatch) => {
   const newPage = page + 1
   dispatch(itemsIsLoadingMore())
-  return apiCall(newPage).then((items) => {
-    dispatch(loadMoreItemsSuccess(newPage, items.response.listings))
+  return apiCall(newPage).then((response) => {
+    dispatch(loadMoreItemsSuccess(newPage, response.response.listings))
   }).catch((error) => {
     dispatch(loadMoreItemsFailure())
   })

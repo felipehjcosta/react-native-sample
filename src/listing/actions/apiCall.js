@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const createUrl = (page = 1) => {
   const key = 'place_name'
   const value = 'rio-de-janeiro'
@@ -11,15 +13,15 @@ const createUrl = (page = 1) => {
   }
   data[key] = value
 
-  const querystring = Object.keys(data)
+  const queryString = Object.keys(data)
     .map(key => key + '=' + encodeURIComponent(data[key]))
     .join('&')
 
-  return 'https://api.nestoria.com.br/api?' + querystring
+  return `https://api.nestoria.com.br/api?${queryString}`
 }
 
-export const apiCall = () => {
-  return fetch(createUrl()).then(response => {
-    return response.json()
+export const apiCall = (page) => {
+  return axios.get(createUrl(page)).then(response => {
+    return response.data
   })
 }

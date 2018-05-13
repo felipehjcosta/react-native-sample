@@ -1,4 +1,4 @@
-import fetchMock from 'fetch-mock'
+import moxios from 'moxios'
 import {
   fetchItems,
   loadMoreItems
@@ -19,14 +19,18 @@ describe('Actions', () => {
   beforeEach(() => {
     const initialState = {}
     store = mockStore(initialState)
+    moxios.install()
   })
-  afterEach(() => fetchMock.restore())
+  afterEach(() => moxios.uninstall())
 
   test('check fetch API action with success', () => {
     const testData = [{id: 1}]
-    fetchMock.get('*', {response: {listings: testData}})
+    moxios.stubRequest(/api\.nestoria\.com\.br\/api.*/, {
+      status: 200,
+      response: {response: {listings: testData}}
+    })
 
-    const actionResult = store.dispatch(fetchItems()).then(() => {
+    return store.dispatch(fetchItems()).then(() => {
       const actions = store.getActions()
       expect(actions.length).toBe(2)
       expect(actions[0]).toEqual({type: FETCHING_ITEMS})
@@ -35,33 +39,30 @@ describe('Actions', () => {
         payload: {items: testData}
       })
     })
-
-    fetchMock.restore()
-    return actionResult
   })
 
   test('check fetch API action with failure', () => {
-    fetchMock.get('*', () => {
-      throw new Error('Some No Good Error')
+    moxios.stubRequest(/api\.nestoria\.com\.br\/api.*/, {
+      status: 404
     })
 
-    const actionResult = store.dispatch(fetchItems()).then(() => {
+    return store.dispatch(fetchItems()).then(() => {
       const actions = store.getActions()
       expect(actions.length).toBe(2)
       expect(actions[0]).toEqual({type: FETCHING_ITEMS})
       expect(actions[1]).toEqual({type: ERROR_ON_FETCH_ITEMS})
     })
-
-    fetchMock.restore()
-    return actionResult
   })
 
   test('check load more API action with success', () => {
     const page = 1
     const testData = [{id: 1}]
-    fetchMock.get('*', {response: {listings: testData}})
+    moxios.stubRequest(/api\.nestoria\.com\.br\/api.*/, {
+      status: 200,
+      response: {response: {listings: testData}}
+    })
 
-    const actionResult = store.dispatch(loadMoreItems(page)).then(() => {
+    return store.dispatch(loadMoreItems(page)).then(() => {
       const actions = store.getActions()
       expect(actions.length).toBe(2)
       expect(actions[0]).toEqual({
@@ -78,18 +79,15 @@ describe('Actions', () => {
         }
       })
     })
-
-    fetchMock.restore()
-    return actionResult
   })
 
   test('check load more API action with failure', () => {
     const page = 1
-    fetchMock.get('*', () => {
-      throw new Error('Some No Good Error')
+    moxios.stubRequest(/api\.nestoria\.com\.br\/api.*/, {
+      status: 404
     })
 
-    const actionResult = store.dispatch(loadMoreItems(page)).then(() => {
+    return store.dispatch(loadMoreItems(page)).then(() => {
       const actions = store.getActions()
       expect(actions.length).toBe(2)
       expect(actions[0]).toEqual({
@@ -101,9 +99,6 @@ describe('Actions', () => {
         payload: {isLoadingMore: false, isLoadingMoreFailed: true}
       })
     })
-
-    fetchMock.restore()
-    return actionResult
   })
 
 })
