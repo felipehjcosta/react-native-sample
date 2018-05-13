@@ -1,4 +1,6 @@
-import axios from 'axios';
+import axios from 'axios'
+
+const API_CALL_TIMEOUT = 3000
 
 const createUrl = (page = 1) => {
   const key = 'place_name'
@@ -13,15 +15,15 @@ const createUrl = (page = 1) => {
   }
   data[key] = value
 
-  const queryString = Object.keys(data)
-    .map(key => key + '=' + encodeURIComponent(data[key]))
-    .join('&')
+  const queryString = Object.keys(data).
+    map(key => key + '=' + encodeURIComponent(data[key])).
+    join('&')
 
   return `https://api.nestoria.com.br/api?${queryString}`
 }
 
 export const apiCall = (page) => {
-  return axios.get(createUrl(page)).then(response => {
+  return axios.get(createUrl(page), {timeout: API_CALL_TIMEOUT}).then(response => {
     return response.data
   })
 }
