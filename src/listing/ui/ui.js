@@ -1,4 +1,3 @@
-// @flow
 import {
   ActivityIndicator,
   FlatList,
@@ -9,9 +8,9 @@ import {
 import PropTypes from 'prop-types'
 import React from 'react'
 import { withNavigation } from 'react-navigation'
-import styles from './styles.js'
 import LoadingItem from './loadingItem'
 import ListItem from './listItem'
+import styles from './styles'
 
 export class ListingUI extends React.Component {
 
@@ -42,11 +41,10 @@ export class ListingUI extends React.Component {
 
   renderList = (flatListViewModel) => <FlatList
     style={styles.listing}
-    contentContainerStyle={flatListViewModel.contentContainerStyle()}
     data={flatListViewModel.items}
-    keyExtractor={(item, index) => flatListViewModel.keyExtractor(item, index)}
+    keyExtractor={(item, index) => `${index}`}
     renderItem={(row) => flatListViewModel.renderItem(row)}
-    refreshing={flatListViewModel.refreshing}
+    refreshing={false}
     onRefresh={() => flatListViewModel.onRefresh()}
     onEndReached={() => flatListViewModel.loadMore()}
     onEndReachedThreshold={0.5}
@@ -73,34 +71,21 @@ export class ListingUI extends React.Component {
   createLoadingFlatListViewModel = () => {
     return {
       items: new Array(10),
-      keyExtractor: (item, index) => `${index}`,
       renderItem: (row) => <LoadingItem />,
-      refreshing: false,
       onRefresh: () => {},
       loadMore: () => {},
       renderFooter: () => false,
-      contentContainerStyle: () => {},
-      renderEmpty: () => { return false }
+      renderEmpty: () => false
     }
   }
 
   createLoadingFailedFlatListViewModel = () => {
     return {
       items: [],
-      keyExtractor: (item, index) => `${index}`,
       renderItem: (row) => LoadingItem,
-      refreshing: false,
       onRefresh: () => {},
       loadMore: () => {},
       renderFooter: () => false,
-      contentContainerStyle: () => {
-        return {
-          flex: 1,
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }
-      },
       renderEmpty: () => this.renderLoadingFailure()
     }
   }
@@ -128,14 +113,11 @@ export class ListingUI extends React.Component {
   createLoadingMoreFlatListViewModel = (items) => {
     return {
       items,
-      keyExtractor: (item, index) => `${index}`,
       renderItem: (row) => this.renderRow(row),
-      refreshing: false,
       onRefresh: () => {},
       loadMore: () => {},
       renderFooter: () => this.renderLoadingMoreFooter(),
-      contentContainerStyle: () => {},
-      renderEmpty: () => { return false }
+      renderEmpty: () => false
     }
   }
 
@@ -150,14 +132,11 @@ export class ListingUI extends React.Component {
   createLoadingMoreFailedFlatListViewModel = (items) => {
     return {
       items,
-      keyExtractor: (item, index) => `${index}`,
       renderItem: (row) => this.renderRow(row),
-      refreshing: false,
       onRefresh: () => {},
       loadMore: () => {},
       renderFooter: () => this.renderLoadingMoreFailedFooter(),
-      contentContainerStyle: () => {},
-      renderEmpty: () => { return false }
+      renderEmpty: () => false
     }
   }
 
@@ -183,14 +162,11 @@ export class ListingUI extends React.Component {
   createItemsFlatListViewModel = (items) => {
     return {
       items,
-      keyExtractor: (item, index) => `${index}`,
       renderItem: (row) => this.renderRow(row),
-      refreshing: false,
       onRefresh: () => this.props.updateData(),
       loadMore: () => this.props.loadMoreData(),
       renderFooter: () => false,
-      contentContainerStyle: () => {},
-      renderEmpty: () => { return false }
+      renderEmpty: () => false
     }
   }
 
