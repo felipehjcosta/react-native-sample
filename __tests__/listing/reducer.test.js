@@ -52,15 +52,12 @@ describe('Reducer', () => {
   it('should handle ERROR_ON_FETCH_ITEMS', () => {
     const state = {isLoading: true, isLoadingFailed: false, items: [], page: 1}
     const action = {
-      type: ERROR_ON_FETCH_ITEMS,
-      payload: {
-        items: [{id: 1}]
-      }
+      type: ERROR_ON_FETCH_ITEMS
     }
     const newState = {
       isLoading: true,
-      isLoadingFailed: false,
-      items: [{id: 1}],
+      isLoadingFailed: true,
+      items: [],
       page: 1
     }
     expect(reducer(state, action)).toEqual(newState)

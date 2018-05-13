@@ -1,4 +1,3 @@
-// @flow
 import {
   ERROR_ON_FETCH_ITEMS,
   FETCHING_ITEMS,
@@ -20,7 +19,7 @@ const receivedItems = (payload) => state => Object.assign(
 const errorOnFetchItems = (payload) => state => Object.assign(
   {},
   state,
-  payload
+  {isLoadingFailed: true}
 )
 
 const loadingMore = (payload) => state => Object.assign(
