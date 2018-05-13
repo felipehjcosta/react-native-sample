@@ -1,7 +1,10 @@
 import {
-  ERROR_ON_FETCH_ITEMS,
+  ERROR_ON_FETCHING_ITEMS,
+  ERROR_ON_FETCHING_MORE_ITEMS,
   FETCHING_ITEMS,
-  RECEIVED_ITEMS
+  FETCHING_MORE_ITEMS,
+  RECEIVED_ITEMS,
+  RECEIVED_MORE_ITEMS
 } from './actions/types'
 
 const fetching = (payload) => state => Object.assign(
@@ -16,29 +19,32 @@ const receivedItems = (payload) => state => Object.assign(
   {isLoading: false, items: payload.items}
 )
 
-const errorOnFetchItems = (payload) => state => Object.assign(
+const errorOnFetchingItems = (payload) => state => Object.assign(
   {},
   state,
   {isLoadingFailed: true}
 )
 
-const loadingMore = (payload) => state => Object.assign(
+const fetchingMore = (payload) => state => Object.assign(
   {},
   state,
-  payload
+  {isLoadingMore: true}
 )
 
-const loadMoreItemsSuccess = (payload) => state => Object.assign(
+const receivedMoreItems = (payload) => state => Object.assign(
   {},
   state,
-  payload,
-  {items: [...state.items, ...payload.items]}
+  {
+    isLoadingMore: false,
+    page: payload.newPage,
+    items: [...state.items, ...payload.items]
+  }
 )
 
-const loadMoreItemsFailure = (payload) => state => Object.assign(
+const errorOnFetchingMoreItems = (payload) => state => Object.assign(
   {},
   state,
-  payload
+  {isLoadingMore: false, isLoadingMoreFailed: true}
 )
 
 const initialState = {
@@ -54,14 +60,14 @@ export default function reducer (state = initialState, action) {
       return fetching(action.payload)(state)
     case RECEIVED_ITEMS:
       return receivedItems(action.payload)(state)
-    case ERROR_ON_FETCH_ITEMS:
-      return errorOnFetchItems(action.payload)(state)
-    case 'ITEMS_IS_LOADING_MORE':
-      return loadingMore(action.payload)(state)
-    case 'LOAD_MORE_ITEMS_SUCCESS':
-      return loadMoreItemsSuccess(action.payload)(state)
-    case 'LOAD_MORE_ITEMS_FAILURE':
-      return loadMoreItemsFailure(action.payload)(state)
+    case ERROR_ON_FETCHING_ITEMS:
+      return errorOnFetchingItems(action.payload)(state)
+    case FETCHING_MORE_ITEMS:
+      return fetchingMore(action.payload)(state)
+    case RECEIVED_MORE_ITEMS:
+      return receivedMoreItems(action.payload)(state)
+    case ERROR_ON_FETCHING_MORE_ITEMS:
+      return errorOnFetchingMoreItems(action.payload)(state)
     default:
       return state
   }

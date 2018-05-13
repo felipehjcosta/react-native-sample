@@ -1,8 +1,8 @@
 import { apiCall } from './apiCall'
 import {
-  errorOnFetchItemsAction,
-  loadingItemsAction,
-  receivedItemsAction
+  errorOnFetchingItemsAction, errorOnFetchingMoreItems,
+  loadingItemsAction, loadingMoreItemsAction,
+  receivedItemsAction, receivedMoreItemsAction
 } from './actions'
 
 export const fetchItems = () => (dispatch) => {
@@ -10,42 +10,16 @@ export const fetchItems = () => (dispatch) => {
   return apiCall().then((response) => {
     dispatch(receivedItemsAction(response.response.listings))
   }).catch((error) => {
-    dispatch(errorOnFetchItemsAction())
+    dispatch(errorOnFetchingItemsAction())
   })
-}
-
-export function itemsIsLoadingMore () {
-  return {
-    type: 'ITEMS_IS_LOADING_MORE',
-    payload: {isLoadingMore: true, isLoadingMoreFailed: false}
-  }
-}
-
-export function loadMoreItemsSuccess (newPage, items) {
-  return {
-    type: 'LOAD_MORE_ITEMS_SUCCESS',
-    payload: {
-      page: newPage,
-      items,
-      isLoadingMore: false,
-      isLoadingMoreFailed: false
-    }
-  }
-}
-
-export function loadMoreItemsFailure () {
-  return {
-    type: 'LOAD_MORE_ITEMS_FAILURE',
-    payload: {isLoadingMore: false, isLoadingMoreFailed: true}
-  }
 }
 
 export const loadMoreItems = (page) => (dispatch) => {
   const newPage = page + 1
-  dispatch(itemsIsLoadingMore())
+  dispatch(loadingMoreItemsAction())
   return apiCall(newPage).then((response) => {
-    dispatch(loadMoreItemsSuccess(newPage, response.response.listings))
+    dispatch(receivedMoreItemsAction(newPage, response.response.listings))
   }).catch((error) => {
-    dispatch(loadMoreItemsFailure())
+    dispatch(errorOnFetchingMoreItems())
   })
 }

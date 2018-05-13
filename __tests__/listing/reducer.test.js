@@ -1,9 +1,12 @@
 // @flow
 import reducer from '../../src/listing/reducer'
 import {
-  ERROR_ON_FETCH_ITEMS,
+  ERROR_ON_FETCHING_ITEMS,
+  ERROR_ON_FETCHING_MORE_ITEMS,
   FETCHING_ITEMS,
-  RECEIVED_ITEMS
+  FETCHING_MORE_ITEMS,
+  RECEIVED_ITEMS,
+  RECEIVED_MORE_ITEMS
 } from '../../src/listing/actions/types'
 
 describe('Reducer', () => {
@@ -49,10 +52,10 @@ describe('Reducer', () => {
     expect(reducer(state, action)).toEqual(newState)
   })
 
-  it('should handle ERROR_ON_FETCH_ITEMS', () => {
+  it('should handle ERROR_ON_FETCHING_ITEMS', () => {
     const state = {isLoading: true, isLoadingFailed: false, items: [], page: 1}
     const action = {
-      type: ERROR_ON_FETCH_ITEMS
+      type: ERROR_ON_FETCHING_ITEMS
     }
     const newState = {
       isLoading: true,
@@ -63,74 +66,69 @@ describe('Reducer', () => {
     expect(reducer(state, action)).toEqual(newState)
   })
 
-  it('should handle ITEMS_IS_LOADING_MORE', () => {
+  it('should handle FETCHING_MORE_ITEMS', () => {
     const state = {
+      isLoading: false,
+      isLoadingFailed: false,
+      items: [{id: 1}],
+      page: 1
+    }
+    const action = {type: FETCHING_MORE_ITEMS}
+    const newState = {
+      isLoading: false,
+      isLoadingFailed: false,
+      isLoadingMore: true,
+      items: [{id: 1}],
+      page: 1
+    }
+    expect(reducer(state, action)).toEqual(newState)
+  })
+
+  it('should handle RECEIVED_MORE_ITEMS', () => {
+    const state = {
+      isLoading: false,
+      isLoadingFailed: false,
+      isLoadingMore: true,
+      items: [{id: 1}],
+      page: 1
+    }
+    const action = {
+      type: RECEIVED_MORE_ITEMS,
+      payload: {
+        newPage: 2,
+        items: [{id: 2}]
+      }
+    }
+    const newState = {
       isLoading: false,
       isLoadingFailed: false,
       isLoadingMore: false,
-      items: [{id: 1}]
+      items: [{id: 1}, {id: 2}],
+      page: 2
     }
-    expect(
-      reducer(state,
-        {
-          type: 'ITEMS_IS_LOADING_MORE',
-          payload: {isLoadingMore: true, isLoadingMoreFailed: false}
-        })).
-      toEqual({
-        isLoading: false,
-        isLoadingFailed: false,
-        isLoadingMore: true,
-        isLoadingMoreFailed: false,
-        items: [{id: 1}]
-      })
+    expect(reducer(state, action)).toEqual(newState)
   })
 
-  it('should handle LOAD_MORE_ITEMS_SUCCESS', () => {
+  it('should handle ERROR_ON_FETCHING_MORE_ITEMS', () => {
     const state = {
       isLoading: false,
       isLoadingFailed: false,
       isLoadingMore: true,
-      isLoadingMoreFailed: false,
-      items: [{id: 1}]
+      items: [{id: 1}],
+      page: 1
     }
-    expect(reducer(state,
-      {
-        type: 'LOAD_MORE_ITEMS_SUCCESS',
-        payload: {
-          items: [{id: 2}],
-          isLoadingMore: false,
-          isLoadingMoreFailed: false
-        }
-      })).
-      toEqual({
-        isLoading: false,
-        isLoadingFailed: false,
-        isLoadingMore: false,
-        isLoadingMoreFailed: false,
-        items: [{id: 1}, {id: 2}]
-      })
-  })
-
-  it('should handle LOAD_MORE_ITEMS_FAILURE', () => {
-    const state = {
+    const action = {
+      type: ERROR_ON_FETCHING_MORE_ITEMS
+    }
+    const newState = {
       isLoading: false,
       isLoadingFailed: false,
-      isLoadingMore: true,
-      isLoadingMoreFailed: false,
-      items: [{id: 1}]
+      isLoadingMore: false,
+      isLoadingMoreFailed: true,
+      items: [{id: 1}],
+      page: 1
     }
-    expect(reducer(state,
-      {
-        type: 'LOAD_MORE_ITEMS_FAILURE',
-        payload: {isLoadingMore: false, isLoadingMoreFailed: true}
-      })).
-      toEqual({
-        isLoading: false,
-        isLoadingFailed: false,
-        isLoadingMore: false,
-        isLoadingMoreFailed: true,
-        items: [{id: 1}]
-      })
+    expect(reducer(state, action)).toEqual(newState)
   })
 
 })
