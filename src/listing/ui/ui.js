@@ -34,8 +34,6 @@ class ListingUI extends React.Component {
       listingState
     } = this.props
 
-    if (Object.keys(listingState).length === 0) return false
-
     return this.renderList(this.createFlatListViewModel(listingState))
   }
 
