@@ -7,13 +7,12 @@ import {
 } from 'react-native'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { withNavigation } from 'react-navigation'
 import LoadingItem from './loadingItem'
 import ListItem from './listItem'
 import styles from './styles'
 import FetchingFailure from './fetchingFailure'
 
-export class ListingUI extends React.Component {
+class ListingUI extends React.Component {
 
   static propTypes = {
     fetchData: PropTypes.func.isRequired,
@@ -165,4 +164,4 @@ export class ListingUI extends React.Component {
   rowPressed = (item) => this.props.onItemSelected(item.lister_url)
 }
 
-export default withNavigation(ListingUI)
+export default ListingUI

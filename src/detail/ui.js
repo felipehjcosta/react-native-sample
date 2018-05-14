@@ -3,7 +3,7 @@ import { Image, ScrollView, Text, View } from 'react-native'
 import PropTypes from 'prop-types'
 import styles from './styles.js'
 
-export class DetailUI extends React.Component {
+class DetailUI extends React.Component {
 
   static propTypes = {
     detailState: PropTypes.object.isRequired

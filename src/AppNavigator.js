@@ -5,7 +5,9 @@ import Listing from './listing/index'
 import Detail from './detail/index'
 
 const ListingScreen = ({navigation}) =>
-  <Listing onItemSelected={(itemId) => navigation.navigate('Detail', { itemId: itemId })} />
+  <Listing navigation={navigation}
+    onItemSelected={(itemId) => navigation.navigate('Detail',
+      {itemId: itemId})} />
 
 const DetailScreen = ({navigation}) => <Detail navigation={navigation} />
 
@@ -14,7 +16,8 @@ export const AppNavigator = StackNavigator({
     screen: ListingScreen,
     navigationOptions: ({navigation}) => ({
       title: 'PropertyFinder'
-    })},
+    })
+  },
   Detail: {screen: DetailScreen}
 })
 
