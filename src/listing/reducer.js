@@ -10,7 +10,8 @@ import {
 const fetching = (payload) => state => Object.assign(
   {},
   state,
-  {isLoading: true, isLoadingFailed: false}
+  initialState,
+  {isLoading: true}
 )
 
 const receivedItems = (payload) => state => Object.assign(

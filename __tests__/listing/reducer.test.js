@@ -115,6 +115,27 @@ describe('Reducer', () => {
     expect(reducer(state, action)).toEqual(newState)
   })
 
+  it('should handle FETCHING_ITEMS with items', () => {
+    const state = {
+      isLoading: false,
+      isLoadingFailed: false,
+      isLoadingMore: false,
+      isLoadingMoreFailed: false,
+      items: [{id: 1}],
+      page: 1
+    }
+    const action = {type: FETCHING_ITEMS}
+    const newState = {
+      isLoading: true,
+      isLoadingFailed: false,
+      isLoadingMore: false,
+      isLoadingMoreFailed: false,
+      items: [],
+      page: 1
+    }
+    expect(reducer(state, action)).toEqual(newState)
+  })
+
   it('should handle FETCHING_MORE_ITEMS', () => {
     const state = {
       isLoading: false,
