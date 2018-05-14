@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_CALL_TIMEOUT = 3000
+const API_CALL_TIMEOUT = 10000
 
 const createUrl = (page = 1) => {
   const key = 'place_name'
