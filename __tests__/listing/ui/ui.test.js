@@ -95,7 +95,7 @@ describe('Listing Component', () => {
     expect(props.fetchData.mock.calls.length).toBe(1)
   })
 
-  it('should notify item selected function when touch item', () => {
+  it('should call item selected prop function when user touches item', () => {
     const props = {
       fetchData: jest.fn(),
       detail: jest.fn(),
@@ -129,7 +129,7 @@ describe('Listing Component', () => {
         'https://www.nestoria.com.br/detail/0000000108550797542396092/title/5/1-1?serpUid=&pt=1&ot=1&l=rio-de-janeiro&did=41_default&utm_source=api&utm_medium=external')
   })
 
-  it('should notify function when touch item', () => {
+  it('should call fetchData prop function when user touches retry', () => {
     const props = {
       fetchData: jest.fn(),
       detail: jest.fn(),
@@ -212,5 +212,38 @@ describe('Listing Component', () => {
 
     const tree = ReactTestRenderer.create(wrapper).toJSON()
     expect(tree).toMatchSnapshot()
+  })
+
+  it('should call fetchData prop function when user touches retry on loading more error', () => {
+    const props = {
+      fetchData: jest.fn(),
+      loadMoreData: jest.fn(),
+      listingState: {
+        isLoadingMore: false,
+        isLoadingMoreFailed: true,
+        items: [
+          {
+            img_url: 'https://imgs.nestimg.com/casa_300_m2_108811252799247473.jpg',
+            price_formatted: 'R$ 750.000',
+            title: 'Campo Grande,Rio de Janeiro,Rio De Janeiro',
+            lister_url: 'https://www.nestoria.com.br/detail/0000000108550797542396092/title/5/1-1?serpUid=&pt=1&ot=1&l=rio-de-janeiro&did=41_default&utm_source=api&utm_medium=external'
+          }
+        ]
+      }
+    }
+
+    const navigation = {navigate: jest.fn()}
+
+    const onItemSelected = jest.fn()
+
+    const wrapper = shallow(<ListingUI {...props} navigation={navigation} onItemSelected={onItemSelected} />)
+
+    const uiRendered = ReactTestRenderer.create(wrapper)
+    const componentView = uiRendered.root.findAllByType(TouchableHighlight).slice(-1)[0]
+
+    componentView.props.onPress()
+
+    expect(props.fetchData.mock.calls.length).toBe(1)
+    expect(props.loadMoreData.mock.calls.length).toBe(1)
   })
 })

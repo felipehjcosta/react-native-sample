@@ -21,21 +21,10 @@ class ListingUI extends React.Component {
     navigation: PropTypes.object.isRequired
   }
 
-  componentDidMount () {
-    const {
-      fetchData
-    } = this.props
+  componentDidMount = () => this.props.fetchData()
 
-    fetchData()
-  }
-
-  render () {
-    const {
-      listingState
-    } = this.props
-
-    return this.renderList(this.createFlatListViewModel(listingState))
-  }
+  render = () => this.renderList(
+    this.createFlatListViewModel(this.props.listingState))
 
   renderList = (flatListViewModel) => <FlatList
     style={styles.listing}
@@ -114,28 +103,10 @@ class ListingUI extends React.Component {
       renderItem: (row) => this.renderRow(row),
       onRefresh: () => {},
       loadMore: () => {},
-      renderFooter: () => this.renderLoadingMoreFailedFooter(),
+      renderFooter: () => <FetchingFailure
+        onRetryButtonTouched={() => this.props.loadMoreData()} />,
       renderEmpty: () => false
     }
-  }
-
-  renderLoadingMoreFailedFooter = () => {
-    return (
-      <View style={{
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}>
-        <Text>Error on fetch data</Text>
-        <Text>Veify your internet connection and try gain</Text>
-        <TouchableHighlight
-          underlayColor='#dddddd'
-          style={{padding: 10, backgroundColor: '#48BBEC'}}>
-          <Text>Retry</Text>
-        </TouchableHighlight>
-      </View>
-    )
   }
 
   createItemsFlatListViewModel = (items) => {

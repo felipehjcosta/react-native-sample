@@ -2562,7 +2562,7 @@ exports[`Listing Component should display loading more failure correctly 1`] = `
           allowFontScaling={true}
           ellipsizeMode="tail"
         >
-          Veify your internet connection and try gain
+          Verify your internet connection and try gain
         </Text>
         <View
           accessibilityComponentType={undefined}
