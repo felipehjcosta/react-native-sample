@@ -44,44 +44,44 @@ matrix:
         - detox build --configuration ios.sim.release
         - detox test --configuration ios.sim.release --cleanup
         
-#    - language: android
-#      sudo: required
-#      jdk: oraclejdk8
-#      android:
-#        components:
-#          - tools
-#          - build-tools-25.0.2
-#          - platform-tools
-#          - tools
-#      cache:
-#        directories:
-#          - $HOME/.yarn-cache
-#          - $HOME/.gradle/caches/
-#          - $HOME/.gradle/wrapper/
-#          - $HOME/.android/build-cache
-#      before_install:
-#        - nvm install $NODE_VERSION
-#        - nvm use $NODE_VERSION
-#        - node --version
-#        - npm install -g yarn
-#      install:
-#        - npm install -g react-native-cli
-#        - npm install -g detox-cli
-#
-#        - yarn install
-#
-#        - echo 'count=0' > /home/travis/.android/repositories.cfg
-#        - sdkmanager --list || true
-#        - echo yes | sdkmanager "tools" >/dev/null
-#        - echo yes | sdkmanager "extras;android;m2repository" >/dev/null
-#        - echo yes | sdkmanager "extras;google;m2repository" >/dev/null
-#        - echo yes | sdkmanager "system-images;android-25;google_apis;armeabi-v7a"
-#        - echo no | avdmanager create avd -n test -k "system-images;android-25;google_apis;armeabi-v7a" -f --abi "armeabi-v7a" --tag "google_apis"
-#        - emulator -avd test -engine classic -no-window -camera-back none -camera-front none -verbose -qemu -m 512 &
-#
-#      before_script:
-#        - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-#        - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
-#
-#        - android-wait-for-emulator
-#      script: .travis/run-android-ci.sh
+    - language: android
+      sudo: required
+      jdk: oraclejdk8
+      android:
+        components:
+          - tools
+          - build-tools-25.0.2
+          - platform-tools
+          - tools
+      cache:
+        directories:
+          - $HOME/.yarn-cache
+          - $HOME/.gradle/caches/
+          - $HOME/.gradle/wrapper/
+          - $HOME/.android/build-cache
+      before_install:
+        - nvm install $NODE_VERSION
+        - nvm use $NODE_VERSION
+        - node --version
+        - npm install -g yarn
+      install:
+        - npm install -g react-native-cli
+        - npm install -g detox-cli
+
+        - yarn install
+
+        - echo 'count=0' > /home/travis/.android/repositories.cfg
+        - sdkmanager --list || true
+        - echo yes | sdkmanager "tools" >/dev/null
+        - echo yes | sdkmanager "extras;android;m2repository" >/dev/null
+        - echo yes | sdkmanager "extras;google;m2repository" >/dev/null
+        - echo yes | sdkmanager "system-images;android-25;google_apis;armeabi-v7a"
+        - echo no | avdmanager create avd -n test -k "system-images;android-25;google_apis;armeabi-v7a" -f --abi "armeabi-v7a" --tag "google_apis"
+        - emulator -avd test -engine classic -no-window -camera-back none -camera-front none -verbose -qemu -m 512 &
+
+      before_script:
+        - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+        - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+        - android-wait-for-emulator
+      script: .travis/run-android-ci.sh
