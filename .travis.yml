@@ -55,11 +55,9 @@ matrix:
           - tools
 
           # The BuildTools version used by your project
-          - build-tools-27.0.3
+          - build-tools-23.0.1
 
           # The SDK version used to compile your project
-          - android-27
-          - android-26
           - android-23
           - android-21
 
