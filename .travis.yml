@@ -58,14 +58,14 @@ matrix:
           - build-tools-23.0.1
 
           # The SDK version used to compile your project
+          - android-25
           - android-23
-          - android-21
 
           # Additional components
           #- extra-google-google_play_services
           - extra-google-m2repository
           - extra-android-m2repository
-          - sys-img-armeabi-v7a-android-21
+          - sys-img-armeabi-v7a-android-25
       cache:
         directories:
           - $HOME/.yarn-cache
@@ -91,7 +91,7 @@ matrix:
 
         # Create and start an emulator for instrumentation tests.
         - android-update-sdk --components=sys-img-$ABI-$API --accept-licenses='android-sdk-license-[0-9a-f]{8}'
-        - echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a
+        - echo no | android create avd --force -n test -t android-25 --abi armeabi-v7a
         - emulator -avd test -no-skin -no-audio -no-window -gpu off &
         - android-wait-for-emulator
         - adb devices
