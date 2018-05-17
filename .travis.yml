@@ -73,7 +73,7 @@ matrix:
           - $HOME/.gradle/wrapper/
           - $HOME/.android/build-cache
       before_install:
-        - yes | sdkmanager "platforms;android-27"
+        - yes | sdkmanager "platforms;android-25"
         - nvm install $NODE_VERSION
         - nvm use $NODE_VERSION
         - node --version
@@ -91,7 +91,7 @@ matrix:
 
         # Create and start an emulator for instrumentation tests.
         - android-update-sdk --components=sys-img-$ABI-$API --accept-licenses='android-sdk-license-[0-9a-f]{8}'
-        - echo no | android create avd --force -n test -t android-25 --abi armeabi-v7a
+        - echo no | avdmanager create avd -n test -k "system-images;android-25;google_apis;armeabi-v7a" -f --abi "armeabi-v7a" --tag "google_apis"
         - emulator -avd test -no-skin -no-audio -no-window -gpu off &
         - android-wait-for-emulator
         - adb devices
