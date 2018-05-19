@@ -77,6 +77,9 @@ matrix:
           - $HOME/.gradle/wrapper/
           - $HOME/.android/build-cache
       before_install:
+        - echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-26
+        - yes | sdkmanager "platforms;android-26"
+        - android list targets
         - nvm install $NODE_VERSION
         - nvm use $NODE_VERSION
         - node --version
@@ -93,7 +96,5 @@ matrix:
         - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 
         # Create an emulator for instrumentation tests.
-        - android list targets
-        - android-update-sdk --components=sys-img-armeabi-v7a-android-26 --accept-licenses='android-sdk-license-[0-9a-f]{8}'
         - echo no | android create avd --force -n test -t android-26 --abi armeabi-v7a
       script: .travis/run-android-ci.sh
