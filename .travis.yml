@@ -55,17 +55,17 @@ matrix:
           - tools
 
           # The BuildTools version used by your project
-          - build-tools-23.0.1
+          - build-tools-27.0.3
 
           # The SDK version used to compile your project
-          - android-25
-          - android-23
+          - android-26
+          - android-21
 
           # Additional components
           #- extra-google-google_play_services
           - extra-google-m2repository
           - extra-android-m2repository
-          - sys-img-armeabi-v7a-android-25
+          - sys-img-armeabi-v7a-android-26
       cache:
         directories:
           - $HOME/.yarn-cache
@@ -73,7 +73,6 @@ matrix:
           - $HOME/.gradle/wrapper/
           - $HOME/.android/build-cache
       before_install:
-        - yes | sdkmanager "platforms;android-25"
         - nvm install $NODE_VERSION
         - nvm use $NODE_VERSION
         - node --version
@@ -89,13 +88,6 @@ matrix:
         - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
         - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 
-        # Create and start an emulator for instrumentation tests.
-        - android-update-sdk --components=sys-img-$ABI-$API --accept-licenses='android-sdk-license-[0-9a-f]{8}'
-        - echo no | avdmanager create avd -n test -k "system-images;android-25;google_apis;armeabi-v7a" -f --abi "armeabi-v7a" --tag "google_apis"
-        - emulator -avd test -no-skin -no-audio -no-window -gpu off &
-        - android-wait-for-emulator
-        - adb devices
-        - adb shell input keyevent 82 &
-
-        - android-wait-for-emulator
+        # Create an emulator for instrumentation tests.
+        - echo no | android create avd --force -n test -t android-26 --abi armeabi-v7a
       script: .travis/run-android-ci.sh
