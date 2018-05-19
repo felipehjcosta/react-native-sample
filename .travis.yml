@@ -65,7 +65,7 @@ matrix:
           #- extra-google-google_play_services
           - extra-google-m2repository
           - extra-android-m2repository
-          - sys-img-armeabi-v7a-android-26
+          - sys-img-armeabi-v7a-android-21
         licenses:
           - 'android-sdk-preview-license-52d11cd2'
           - 'android-sdk-license-.+'
@@ -77,8 +77,6 @@ matrix:
           - $HOME/.gradle/wrapper/
           - $HOME/.android/build-cache
       before_install:
-        - echo y | android update sdk --no-ui --all --filter sys-img-armeabi-v7a-android-26
-        - yes | sdkmanager "platforms;android-26"
         - android list targets
         - nvm install $NODE_VERSION
         - nvm use $NODE_VERSION
@@ -96,5 +94,5 @@ matrix:
         - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 
         # Create an emulator for instrumentation tests.
-        - echo no | android create avd --force -n test -t android-26 --abi armeabi-v7a
+        - echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a
       script: .travis/run-android-ci.sh
