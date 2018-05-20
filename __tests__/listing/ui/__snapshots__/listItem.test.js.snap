@@ -10,18 +10,29 @@ exports[`LoadingItem Component renders correctly 1`] = `
       }
     }
   >
-    <Image
-      source={
-        Object {
-          "uri": "https://imgs.nestimg.com/casa_300_m2_108811252799247473.jpg",
-        }
-      }
+    <ActivityIndicator
+      animating={true}
+      color="#999999"
+      hidesWhenStopped={true}
+      size="small"
       style={
-        Object {
-          "height": 80,
-          "marginRight": 10,
-          "width": 80,
-        }
+        Array [
+          Array [
+            Object {
+              "height": 80,
+              "marginRight": 10,
+              "width": 80,
+            },
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "justifyContent": "center",
+            },
+          ],
+          Object {
+            "backgroundColor": "transparent",
+          },
+        ]
       }
     />
     <View

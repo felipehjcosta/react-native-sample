@@ -1,6 +1,6 @@
 import React from 'react'
-import { Image, ScrollView, Text } from 'react-native'
-
+import { ScrollView, Text } from 'react-native'
+import { CachedImage } from 'react-native-cached-image'
 import { configure, shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import { expect } from 'chai'
@@ -67,7 +67,7 @@ describe('<DetailUI>', () => {
 
   it('should render the image', () => {
     expect(
-      wrapper.containsMatchingElement(<Image source={{uri: data.img_url}}/>)).
+      wrapper.containsMatchingElement(<CachedImage source={{uri: data.img_url}}/>)).
       to.
       equal(true)
   })

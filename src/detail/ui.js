@@ -1,5 +1,6 @@
 import React from 'react'
-import { Image, ScrollView, Text, View } from 'react-native'
+import { ScrollView, Text, View } from 'react-native'
+import { CachedImage } from 'react-native-cached-image'
 import PropTypes from 'prop-types'
 import styles from './styles.js'
 
@@ -29,7 +30,7 @@ class DetailUI extends React.Component {
     return (
       <ScrollView styles={{backgroundColor: '#ffffff'}}>
         <View style={styles.container}>
-          <Image style={styles.image} source={{uri: property.img_url}} />
+          <CachedImage style={styles.image} source={{uri: property.img_url}} />
           <View style={styles.heading}>
             <Text style={styles.price}>{price}</Text>
             <Text style={styles.title}>{property.title}</Text>
