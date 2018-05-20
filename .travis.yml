@@ -98,4 +98,4 @@ matrix:
 
         # Create an emulator for instrumentation tests.
         - echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a
-      script: .travis/run-android-ci.sh
+#      script: .travis/run-android-ci.sh
