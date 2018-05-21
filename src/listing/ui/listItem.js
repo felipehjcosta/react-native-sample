@@ -6,13 +6,11 @@ import styles from './styles'
 
 const ListItem = ({item}) => {
   return (
-    <View>
-      <View style={styles.rowContainer}>
-        <CachedImage style={styles.thumb} source={{uri: item.img_url}} />
-        <View style={styles.textContainer}>
-          <Text style={styles.price}>{item.price_formatted}</Text>
-          <Text style={styles.title} numberOfLines={1}>{item.title}</Text>
-        </View>
+    <View stye={styles.itemContainer}>
+      <CachedImage style={styles.itemImage} source={{uri: item.img_url}} />
+      <View style={styles.contentContainer}>
+        <Text style={styles.contentPrice}>{item.price_formatted}</Text>
+        <Text style={styles.contentTitle} numberOfLines={1}>{item.title}</Text>
       </View>
     </View>
   )

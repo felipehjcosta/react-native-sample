@@ -35,10 +35,7 @@ class ListingUI extends React.Component {
     onEndReached={() => flatListViewModel.loadMore()}
     onEndReachedThreshold={0.5}
     ListFooterComponent={() => flatListViewModel.renderFooter()}
-    ListEmptyComponent={() => flatListViewModel.renderEmpty()}
-    ItemSeparatorComponent={this.renderSeparator} />
-
-  renderSeparator = () => <View style={styles.separator} />
+    ListEmptyComponent={() => flatListViewModel.renderEmpty()} />
 
   createFlatListViewModel = (listingState) => {
     if (listingState.isLoading) {

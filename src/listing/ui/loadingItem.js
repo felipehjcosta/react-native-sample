@@ -5,11 +5,8 @@ import ShimmerPlaceHolder from 'react-native-shimmer-placeholder'
 
 const LoadingItem = () => {
   return (
-    <View>
-      <View style={styles.rowContainer}>
-        <ShimmerPlaceHolder autoRun style={styles.imageShimmerPlaceHolder} />
-        <ShimmerPlaceHolder autoRun style={styles.contentShimmerPlaceHolder} />
-      </View>
+    <View style={styles.itemContainer}>
+      <ShimmerPlaceHolder autoRun style={styles.shimmerPlaceHolder} />
     </View>
   )
 }

@@ -1,76 +1,78 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LoadingItem Component renders correctly 1`] = `
-<View>
+<View
+  stye={
+    Object {
+      "flex": 1,
+      "flexDirection": "column",
+    }
+  }
+>
+  <ActivityIndicator
+    animating={true}
+    color="#999999"
+    hidesWhenStopped={true}
+    size="small"
+    style={
+      Array [
+        Array [
+          Object {
+            "height": 400.2,
+            "marginLeft": 8,
+            "marginRight": 8,
+            "marginTop": 8,
+          },
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "justifyContent": "center",
+          },
+        ],
+        Object {
+          "backgroundColor": "transparent",
+        },
+      ]
+    }
+  />
   <View
     style={
       Object {
-        "flexDirection": "row",
-        "padding": 10,
+        "marginBottom": 8,
+        "marginLeft": 16,
+        "marginRight": 16,
+        "marginTop": 8,
       }
     }
   >
-    <ActivityIndicator
-      animating={true}
-      color="#999999"
-      hidesWhenStopped={true}
-      size="small"
-      style={
-        Array [
-          Array [
-            Object {
-              "height": 80,
-              "marginRight": 10,
-              "width": 80,
-            },
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "transparent",
-              "justifyContent": "center",
-            },
-          ],
-          Object {
-            "backgroundColor": "transparent",
-          },
-        ]
-      }
-    />
-    <View
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
       style={
         Object {
-          "flex": 1,
+          "color": "#48BBEC",
+          "fontSize": 24,
+          "fontWeight": "bold",
         }
       }
     >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "color": "#48BBEC",
-            "fontSize": 25,
-            "fontWeight": "bold",
-          }
+      R$ 750.000
+    </Text>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      numberOfLines={1}
+      style={
+        Object {
+          "color": "#656565",
+          "fontSize": 20,
         }
-      >
-        R$ 750.000
-      </Text>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        numberOfLines={1}
-        style={
-          Object {
-            "color": "#656565",
-            "fontSize": 20,
-          }
-        }
-      >
-        Campo Grande,Rio de Janeiro,Rio De Janeiro
-      </Text>
-    </View>
+      }
+    >
+      Campo Grande,Rio de Janeiro,Rio De Janeiro
+    </Text>
   </View>
 </View>
 `;

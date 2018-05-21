@@ -1,47 +1,48 @@
 import { StyleSheet } from 'react-native'
+import Dimensions from 'Dimensions'
+
+const IMAGE_HEIGHT = Dimensions.get('screen').height * 0.30
+const SCREEN_WIDTH = Dimensions.get('screen').width
+const IMAGE_SHIMMER_WIDTH = SCREEN_WIDTH - 32
+const IMAGE_SHIMMER_HEIGHT = IMAGE_HEIGHT + 48
 
 export default StyleSheet.create({
-  thumb: {
-    width: 80,
-    height: 80,
-    marginRight: 10
+  itemImage: {
+    height: IMAGE_HEIGHT,
+    marginLeft: 8,
+    marginTop: 8,
+    marginRight: 8
   },
-  textContainer: {
-    flex: 1
+  contentContainer: {
+    marginLeft: 16,
+    marginRight: 16,
+    marginTop: 8,
+    marginBottom: 8
+  },
+  itemContainer: {
+    flex: 1,
+    flexDirection: 'column'
   },
   listing: {
     backgroundColor: '#ffffff'
   },
-  separator: {
-    height: 1,
-    backgroundColor: '#dddddd'
-  },
-  price: {
-    fontSize: 25,
+  contentPrice: {
+    fontSize: 24,
     fontWeight: 'bold',
     color: '#48BBEC'
   },
-  title: {
+  contentTitle: {
     fontSize: 20,
     color: '#656565'
   },
-  rowContainer: {
-    flexDirection: 'row',
-    padding: 10
-  },
-  imageShimmerPlaceHolder: {
-    width: 80,
-    height: 80,
-    marginRight: 10
-  },
-  contentShimmerPlaceHolder: {
-    flex: 1,
-    height: 80,
-    marginRight: 10
+  shimmerPlaceHolder: {
+    width: IMAGE_SHIMMER_WIDTH,
+    height: IMAGE_SHIMMER_HEIGHT,
+    marginLeft: 16,
+    marginTop: 16,
+    marginBottom: 8
   },
   loadingMoreIndicatorContainer: {
-    paddingVertical: 20,
-    borderTopWidth: 1,
-    borderColor: '#CED0CE'
+    paddingVertical: 16
   }
 })
