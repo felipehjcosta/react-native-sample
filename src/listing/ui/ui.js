@@ -1,7 +1,6 @@
 import {
   ActivityIndicator,
   FlatList,
-  Text,
   TouchableHighlight,
   View
 } from 'react-native'
@@ -61,8 +60,8 @@ class ListingUI extends React.Component {
       renderItem: (row) => <LoadingItem />,
       onRefresh: () => {},
       loadMore: () => {},
-      renderFooter: () => false,
-      renderEmpty: () => false
+      renderFooter: () => null,
+      renderEmpty: () => null
     }
   }
 
@@ -72,7 +71,7 @@ class ListingUI extends React.Component {
       renderItem: (row) => <LoadingItem />,
       onRefresh: () => {},
       loadMore: () => {},
-      renderFooter: () => false,
+      renderFooter: () => null,
       renderEmpty: () => <FetchingFailure
         onRetryButtonTouched={() => this.props.fetchData()} />
     }
@@ -85,7 +84,7 @@ class ListingUI extends React.Component {
       onRefresh: () => {},
       loadMore: () => {},
       renderFooter: () => this.renderLoadingMoreFooter(),
-      renderEmpty: () => false
+      renderEmpty: () => null
     }
   }
 
@@ -105,7 +104,7 @@ class ListingUI extends React.Component {
       loadMore: () => {},
       renderFooter: () => <FetchingFailure
         onRetryButtonTouched={() => this.props.loadMoreData()} />,
-      renderEmpty: () => false
+      renderEmpty: () => null
     }
   }
 
@@ -115,8 +114,8 @@ class ListingUI extends React.Component {
       renderItem: (row) => this.renderRow(row),
       onRefresh: () => this.props.updateData(),
       loadMore: () => this.props.loadMoreData(),
-      renderFooter: () => false,
-      renderEmpty: () => false
+      renderFooter: () => null,
+      renderEmpty: () => null
     }
   }
 
