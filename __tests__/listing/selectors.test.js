@@ -1,4 +1,3 @@
-// @flow
 import { createListProps } from '../../src/listing/selectors'
 
 describe('Listing selectors', () => {

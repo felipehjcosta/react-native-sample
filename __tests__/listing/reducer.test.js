@@ -1,4 +1,3 @@
-// @flow
 import reducer from '../../src/listing/reducer'
 import {
   ERROR_ON_FETCHING_ITEMS,
