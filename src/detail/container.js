@@ -1,13 +1,11 @@
 import { connect } from 'react-redux'
+import { getSelectedProperty } from './selectors'
 
 import Detail from './ui'
 
-const mapStateToProps = (state, props) => {
-  return {
-    detailState: state.listing.items.find(
-      item => item.lister_url === props.navigation.state.params.itemId)
-  }
-}
+const mapStateToProps = (state, props) => ({
+  detailState: getSelectedProperty(props.navigation.state.params.itemId, state.listing.items)
+})
 
 const mapDispatchToProps = (dispatch) => {
   return {}
