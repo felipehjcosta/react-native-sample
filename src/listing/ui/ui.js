@@ -1,9 +1,4 @@
-import {
-  ActivityIndicator,
-  FlatList,
-  TouchableHighlight,
-  View
-} from 'react-native'
+import { ActivityIndicator, FlatList, TouchableHighlight, View } from 'react-native'
 import PropTypes from 'prop-types'
 import React from 'react'
 import LoadingItem from './loadingItem'
@@ -12,7 +7,6 @@ import styles from './styles'
 import FetchingFailure from './fetchingFailure'
 
 class ListingUI extends React.Component {
-
   static propTypes = {
     fetchData: PropTypes.func.isRequired,
     onItemSelected: PropTypes.func.isRequired,
@@ -22,8 +16,7 @@ class ListingUI extends React.Component {
 
   componentDidMount = () => this.props.fetchData()
 
-  render = () => this.renderList(
-    this.createFlatListViewModel(this.props.listingState))
+  render = () => this.renderList(this.createFlatListViewModel(this.props.listingState))
 
   renderList = (flatListViewModel) => <FlatList
     style={styles.listing}
