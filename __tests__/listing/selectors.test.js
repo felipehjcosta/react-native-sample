@@ -6,14 +6,22 @@ describe('Listing selectors', () => {
     const state = {
       isLoading: false,
       isLoadingFailed: true,
-      items: []
+      items: [
+        {lister_url: '1'},
+        {lister_url: '2'}
+      ]
     }
 
-    const oldState = {
-      listing: state
+    const listingState = {
+      isLoading: false,
+      isLoadingFailed: true,
+      itemsById: {
+        '1': {lister_url: '1'},
+        '2': {lister_url: '2'}
+      }
     }
 
     const newState = state
-    expect(createListProps(oldState)).toBe(newState)
+    expect(createListProps(listingState)).toEqual(newState)
   })
 })

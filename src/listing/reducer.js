@@ -17,7 +17,10 @@ const fetching = (payload) => state => Object.assign(
 const receivedItems = (payload) => state => Object.assign(
   {},
   state,
-  {isLoading: false, items: payload.items}
+  {
+    isLoading: false,
+    itemsById: payload.items.reduce((accumulator, target) => ({...accumulator, [target.lister_url]: target}), {})
+  }
 )
 
 const errorOnFetchingItems = (payload) => state => Object.assign(
@@ -38,7 +41,10 @@ const receivedMoreItems = (payload) => state => Object.assign(
   {
     isLoadingMore: false,
     page: payload.newPage,
-    items: [...state.items, ...payload.items]
+    itemsById: payload.items.reduce((accumulator, target) => ({
+      ...accumulator,
+      [target.lister_url]: target
+    }), state.itemsById)
   }
 )
 
@@ -53,7 +59,7 @@ const initialState = {
   isLoadingFailed: false,
   isLoadingMore: false,
   isLoadingMoreFailed: false,
-  items: [],
+  itemsById: {},
   page: 1
 }
 

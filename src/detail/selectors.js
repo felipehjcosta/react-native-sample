@@ -1,1 +1,1 @@
-export const getSelectedProperty = (itemListerUrl, items) => (items.find(item => item.lister_url === itemListerUrl))
+export const getSelectedProperty = (itemId, itemsById) => (itemsById[itemId])

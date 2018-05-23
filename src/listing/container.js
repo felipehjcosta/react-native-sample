@@ -4,7 +4,7 @@ import { fetchItems, loadMoreItems } from './actions/actionCreators'
 import { createListProps } from './selectors'
 
 const mapStateToProps = (state) => ({
-  listingState: createListProps(state)
+  listingState: createListProps(state.listing)
 })
 
 const actionCreators = {

@@ -9,7 +9,6 @@ import {
 } from '../../src/listing/actions/types'
 
 describe('Reducer', () => {
-
   it('should return the initial state', () => {
     const action = {}
     const newState = {
@@ -17,7 +16,7 @@ describe('Reducer', () => {
       isLoadingFailed: false,
       isLoadingMore: false,
       isLoadingMoreFailed: false,
-      items: [],
+      itemsById: {},
       page: 1
     }
     expect(reducer(undefined, action)).toEqual(newState)
@@ -29,7 +28,7 @@ describe('Reducer', () => {
       isLoadingFailed: false,
       isLoadingMore: false,
       isLoadingMoreFailed: false,
-      items: [],
+      itemsById: {},
       page: 1
     }
     const action = {type: FETCHING_ITEMS}
@@ -38,7 +37,7 @@ describe('Reducer', () => {
       isLoadingFailed: false,
       isLoadingMore: false,
       isLoadingMoreFailed: false,
-      items: [],
+      itemsById: {},
       page: 1
     }
     expect(reducer(state, action)).toEqual(newState)
@@ -50,7 +49,7 @@ describe('Reducer', () => {
       isLoadingFailed: true,
       isLoadingMore: false,
       isLoadingMoreFailed: false,
-      items: [],
+      itemsById: {},
       page: 1
     }
     const action = {type: FETCHING_ITEMS}
@@ -59,7 +58,7 @@ describe('Reducer', () => {
       isLoadingFailed: false,
       isLoadingMore: false,
       isLoadingMoreFailed: false,
-      items: [],
+      itemsById: {},
       page: 1
     }
     expect(reducer(state, action)).toEqual(newState)
@@ -71,13 +70,15 @@ describe('Reducer', () => {
       isLoadingFailed: false,
       isLoadingMore: false,
       isLoadingMoreFailed: false,
-      items: [],
+      itemsById: {},
       page: 1
     }
     const action = {
       type: RECEIVED_ITEMS,
       payload: {
-        items: [{id: 1}]
+        items: [{
+          lister_url: '1'
+        }]
       }
     }
     const newState = {
@@ -85,7 +86,9 @@ describe('Reducer', () => {
       isLoadingFailed: false,
       isLoadingMore: false,
       isLoadingMoreFailed: false,
-      items: [{id: 1}],
+      itemsById: {
+        '1': {lister_url: '1'}
+      },
       page: 1
     }
     expect(reducer(state, action)).toEqual(newState)
@@ -97,7 +100,7 @@ describe('Reducer', () => {
       isLoadingFailed: false,
       isLoadingMore: false,
       isLoadingMoreFailed: false,
-      items: [],
+      itemsById: {},
       page: 1
     }
     const action = {
@@ -108,7 +111,7 @@ describe('Reducer', () => {
       isLoadingFailed: true,
       isLoadingMore: false,
       isLoadingMoreFailed: false,
-      items: [],
+      itemsById: {},
       page: 1
     }
     expect(reducer(state, action)).toEqual(newState)
@@ -120,7 +123,9 @@ describe('Reducer', () => {
       isLoadingFailed: false,
       isLoadingMore: false,
       isLoadingMoreFailed: false,
-      items: [{id: 1}],
+      itemsById: {
+        '1': {lister_url: '1'}
+      },
       page: 1
     }
     const action = {type: FETCHING_ITEMS}
@@ -129,7 +134,7 @@ describe('Reducer', () => {
       isLoadingFailed: false,
       isLoadingMore: false,
       isLoadingMoreFailed: false,
-      items: [],
+      itemsById: {},
       page: 1
     }
     expect(reducer(state, action)).toEqual(newState)
@@ -141,7 +146,9 @@ describe('Reducer', () => {
       isLoadingFailed: false,
       isLoadingMore: false,
       isLoadingMoreFailed: false,
-      items: [{id: 1}],
+      itemsById: {
+        '1': {lister_url: '1'}
+      },
       page: 1
     }
     const action = {type: FETCHING_MORE_ITEMS}
@@ -150,7 +157,9 @@ describe('Reducer', () => {
       isLoadingFailed: false,
       isLoadingMore: true,
       isLoadingMoreFailed: false,
-      items: [{id: 1}],
+      itemsById: {
+        '1': {lister_url: '1'}
+      },
       page: 1
     }
     expect(reducer(state, action)).toEqual(newState)
@@ -162,7 +171,9 @@ describe('Reducer', () => {
       isLoadingFailed: false,
       isLoadingMore: false,
       isLoadingMoreFailed: true,
-      items: [{id: 1}],
+      itemsById: {
+        '1': {lister_url: '1'}
+      },
       page: 1
     }
     const action = {type: FETCHING_MORE_ITEMS}
@@ -171,7 +182,9 @@ describe('Reducer', () => {
       isLoadingFailed: false,
       isLoadingMore: true,
       isLoadingMoreFailed: false,
-      items: [{id: 1}],
+      itemsById: {
+        '1': {lister_url: '1'}
+      },
       page: 1
     }
     expect(reducer(state, action)).toEqual(newState)
@@ -183,14 +196,16 @@ describe('Reducer', () => {
       isLoadingFailed: false,
       isLoadingMore: true,
       isLoadingMoreFailed: false,
-      items: [{id: 1}],
+      itemsById: {
+        '1': {lister_url: '1'}
+      },
       page: 1
     }
     const action = {
       type: RECEIVED_MORE_ITEMS,
       payload: {
         newPage: 2,
-        items: [{id: 2}]
+        items: [{lister_url: '2'}]
       }
     }
     const newState = {
@@ -198,7 +213,10 @@ describe('Reducer', () => {
       isLoadingFailed: false,
       isLoadingMore: false,
       isLoadingMoreFailed: false,
-      items: [{id: 1}, {id: 2}],
+      itemsById: {
+        '1': {lister_url: '1'},
+        '2': {lister_url: '2'}
+      },
       page: 2
     }
     expect(reducer(state, action)).toEqual(newState)
@@ -210,7 +228,9 @@ describe('Reducer', () => {
       isLoadingFailed: false,
       isLoadingMore: true,
       isLoadingMoreFailed: false,
-      items: [{id: 1}],
+      itemsById: {
+        '1': {lister_url: '1'}
+      },
       page: 1
     }
     const action = {
@@ -221,10 +241,11 @@ describe('Reducer', () => {
       isLoadingFailed: false,
       isLoadingMore: false,
       isLoadingMoreFailed: true,
-      items: [{id: 1}],
+      itemsById: {
+        '1': {lister_url: '1'}
+      },
       page: 1
     }
     expect(reducer(state, action)).toEqual(newState)
   })
-
 })
