@@ -12,12 +12,12 @@
     "chai": "4.1.2",
     "native-base": "2.3.9",
     "prop-types": "15.6.0",
-    "react": "16.3.1",
-    "react-dom": "16.0.0",
-    "react-native": "0.55.4",
+    "react": "16.6.3",
+    "react-dom": "16.6.3",
+    "react-native": "0.57.8",
     "react-native-cached-image": "1.4.3",
     "react-native-fetch-blob": "0.10.8",
-    "react-native-linear-gradient": "2.4.0",
+    "react-native-linear-gradient": "2.5.3",
     "react-native-shimmer-placeholder": "1.0.26",
     "react-navigation": "1.0.0-beta.23",
     "react-navigation-redux-helpers": "1.0.5",
@@ -30,7 +30,7 @@
     "babel-jest": "21.2.0",
     "babel-preset-flow": "6.23.0",
     "babel-preset-react-native": "4.0.0",
-    "detox": "6.0.4",
+    "detox": "10.0.12",
     "enzyme": "3.2.0",
     "enzyme-adapter-react-16": "1.1.0",
     "eslint-plugin-flowtype": "2.46.1",
@@ -38,10 +38,11 @@
     "ignore-styles": "5.0.1",
     "jest": "21.2.1",
     "jest-cli": "21.2.1",
+    "metro-react-native-babel-preset": "0.53.0",
     "mocha": "4.0.1",
     "moxios": "0.4.0",
     "react-addons-test-utils": "15.6.2",
-    "react-test-renderer": "16.3.2",
+    "react-test-renderer": "16.6.3",
     "redux-mock-store": "1.5.1",
     "standard": "11.0.0"
   },
@@ -61,7 +62,8 @@
     ],
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|react-navigation)"
-    ]
+    ],
+    "transform": { "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js" }
   },
   "detox": {
     "configurations": {

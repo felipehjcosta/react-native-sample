@@ -14,6 +14,10 @@ class ListingUI extends React.Component {
     navigation: PropTypes.object.isRequired
   }
 
+  constructor(props) {
+    super(props)
+  }
+
   componentDidMount = () => this.props.fetchData()
 
   render = () => this.renderList(this.createFlatListViewModel(this.props.listingState))

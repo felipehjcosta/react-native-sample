@@ -38,7 +38,6 @@ exports[`LoadingItem Component renders correctly 1`] = `
       }
     >
       <View
-        collapsable={undefined}
         style={
           Object {
             "flex": 1,
@@ -51,6 +50,8 @@ exports[`LoadingItem Component renders correctly 1`] = `
         }
       >
         <BVLinearGradient
+          angle={undefined}
+          angleCenter={undefined}
           colors={
             Array [
               4293651435,
@@ -82,6 +83,7 @@ exports[`LoadingItem Component renders correctly 1`] = `
               "flex": 1,
             }
           }
+          useAngle={undefined}
         />
       </View>
       <View

@@ -10,6 +10,8 @@ import DetailUI from '../../src/detail/ui'
 configure({adapter: new Adapter()})
 
 describe('<DetailUI>', () => {
+  var data
+  var wrapper
   beforeEach(() => {
     data = {
       'bathroom_number': 2,

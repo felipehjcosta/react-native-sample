@@ -59,15 +59,8 @@ exports[`Listing Component should display list correctly 1`] = `
       style={null}
     >
       <View
-        accessibilityComponentType={undefined}
-        accessibilityLabel={undefined}
-        accessibilityTraits={undefined}
         accessible={true}
-        hasTVPreferredFocus={undefined}
-        hitSlop={undefined}
         isTVSelectable={true}
-        nativeID={undefined}
-        onLayout={undefined}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -75,8 +68,6 @@ exports[`Listing Component should display list correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={null}
-        testID={undefined}
-        tvParallaxProperties={undefined}
       >
         <View
           stye={
@@ -123,9 +114,6 @@ exports[`Listing Component should display list correctly 1`] = `
             }
           >
             <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
               style={
                 Object {
                   "color": "#48BBEC",
@@ -137,9 +125,6 @@ exports[`Listing Component should display list correctly 1`] = `
               R$ 750.000
             </Text>
             <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
               numberOfLines={1}
               style={
                 Object {
@@ -156,7 +141,6 @@ exports[`Listing Component should display list correctly 1`] = `
     </View>
     <View
       onLayout={[Function]}
-      style={null}
     />
   </View>
 </RCTScrollView>
@@ -261,7 +245,6 @@ exports[`Listing Component should display loading correctly 1`] = `
             }
           >
             <View
-              collapsable={undefined}
               style={
                 Object {
                   "flex": 1,
@@ -274,6 +257,8 @@ exports[`Listing Component should display loading correctly 1`] = `
               }
             >
               <BVLinearGradient
+                angle={undefined}
+                angleCenter={undefined}
                 colors={
                   Array [
                     4293651435,
@@ -305,6 +290,7 @@ exports[`Listing Component should display loading correctly 1`] = `
                     "flex": 1,
                   }
                 }
+                useAngle={undefined}
               />
             </View>
             <View
@@ -360,7 +346,6 @@ exports[`Listing Component should display loading correctly 1`] = `
             }
           >
             <View
-              collapsable={undefined}
               style={
                 Object {
                   "flex": 1,
@@ -373,6 +358,8 @@ exports[`Listing Component should display loading correctly 1`] = `
               }
             >
               <BVLinearGradient
+                angle={undefined}
+                angleCenter={undefined}
                 colors={
                   Array [
                     4293651435,
@@ -404,6 +391,7 @@ exports[`Listing Component should display loading correctly 1`] = `
                     "flex": 1,
                   }
                 }
+                useAngle={undefined}
               />
             </View>
             <View
@@ -459,7 +447,6 @@ exports[`Listing Component should display loading correctly 1`] = `
             }
           >
             <View
-              collapsable={undefined}
               style={
                 Object {
                   "flex": 1,
@@ -472,6 +459,8 @@ exports[`Listing Component should display loading correctly 1`] = `
               }
             >
               <BVLinearGradient
+                angle={undefined}
+                angleCenter={undefined}
                 colors={
                   Array [
                     4293651435,
@@ -503,6 +492,7 @@ exports[`Listing Component should display loading correctly 1`] = `
                     "flex": 1,
                   }
                 }
+                useAngle={undefined}
               />
             </View>
             <View
@@ -558,7 +548,6 @@ exports[`Listing Component should display loading correctly 1`] = `
             }
           >
             <View
-              collapsable={undefined}
               style={
                 Object {
                   "flex": 1,
@@ -571,6 +560,8 @@ exports[`Listing Component should display loading correctly 1`] = `
               }
             >
               <BVLinearGradient
+                angle={undefined}
+                angleCenter={undefined}
                 colors={
                   Array [
                     4293651435,
@@ -602,6 +593,7 @@ exports[`Listing Component should display loading correctly 1`] = `
                     "flex": 1,
                   }
                 }
+                useAngle={undefined}
               />
             </View>
             <View
@@ -657,7 +649,6 @@ exports[`Listing Component should display loading correctly 1`] = `
             }
           >
             <View
-              collapsable={undefined}
               style={
                 Object {
                   "flex": 1,
@@ -670,6 +661,8 @@ exports[`Listing Component should display loading correctly 1`] = `
               }
             >
               <BVLinearGradient
+                angle={undefined}
+                angleCenter={undefined}
                 colors={
                   Array [
                     4293651435,
@@ -701,6 +694,7 @@ exports[`Listing Component should display loading correctly 1`] = `
                     "flex": 1,
                   }
                 }
+                useAngle={undefined}
               />
             </View>
             <View
@@ -756,7 +750,6 @@ exports[`Listing Component should display loading correctly 1`] = `
             }
           >
             <View
-              collapsable={undefined}
               style={
                 Object {
                   "flex": 1,
@@ -769,6 +762,8 @@ exports[`Listing Component should display loading correctly 1`] = `
               }
             >
               <BVLinearGradient
+                angle={undefined}
+                angleCenter={undefined}
                 colors={
                   Array [
                     4293651435,
@@ -800,6 +795,7 @@ exports[`Listing Component should display loading correctly 1`] = `
                     "flex": 1,
                   }
                 }
+                useAngle={undefined}
               />
             </View>
             <View
@@ -855,7 +851,6 @@ exports[`Listing Component should display loading correctly 1`] = `
             }
           >
             <View
-              collapsable={undefined}
               style={
                 Object {
                   "flex": 1,
@@ -868,6 +863,8 @@ exports[`Listing Component should display loading correctly 1`] = `
               }
             >
               <BVLinearGradient
+                angle={undefined}
+                angleCenter={undefined}
                 colors={
                   Array [
                     4293651435,
@@ -899,6 +896,7 @@ exports[`Listing Component should display loading correctly 1`] = `
                     "flex": 1,
                   }
                 }
+                useAngle={undefined}
               />
             </View>
             <View
@@ -954,7 +952,6 @@ exports[`Listing Component should display loading correctly 1`] = `
             }
           >
             <View
-              collapsable={undefined}
               style={
                 Object {
                   "flex": 1,
@@ -967,6 +964,8 @@ exports[`Listing Component should display loading correctly 1`] = `
               }
             >
               <BVLinearGradient
+                angle={undefined}
+                angleCenter={undefined}
                 colors={
                   Array [
                     4293651435,
@@ -998,6 +997,7 @@ exports[`Listing Component should display loading correctly 1`] = `
                     "flex": 1,
                   }
                 }
+                useAngle={undefined}
               />
             </View>
             <View
@@ -1053,7 +1053,6 @@ exports[`Listing Component should display loading correctly 1`] = `
             }
           >
             <View
-              collapsable={undefined}
               style={
                 Object {
                   "flex": 1,
@@ -1066,6 +1065,8 @@ exports[`Listing Component should display loading correctly 1`] = `
               }
             >
               <BVLinearGradient
+                angle={undefined}
+                angleCenter={undefined}
                 colors={
                   Array [
                     4293651435,
@@ -1097,6 +1098,7 @@ exports[`Listing Component should display loading correctly 1`] = `
                     "flex": 1,
                   }
                 }
+                useAngle={undefined}
               />
             </View>
             <View
@@ -1152,7 +1154,6 @@ exports[`Listing Component should display loading correctly 1`] = `
             }
           >
             <View
-              collapsable={undefined}
               style={
                 Object {
                   "flex": 1,
@@ -1165,6 +1166,8 @@ exports[`Listing Component should display loading correctly 1`] = `
               }
             >
               <BVLinearGradient
+                angle={undefined}
+                angleCenter={undefined}
                 colors={
                   Array [
                     4293651435,
@@ -1196,6 +1199,7 @@ exports[`Listing Component should display loading correctly 1`] = `
                     "flex": 1,
                   }
                 }
+                useAngle={undefined}
               />
             </View>
             <View
@@ -1212,7 +1216,6 @@ exports[`Listing Component should display loading correctly 1`] = `
     </View>
     <View
       onLayout={[Function]}
-      style={null}
     />
   </View>
 </RCTScrollView>
@@ -1264,72 +1267,46 @@ exports[`Listing Component should display loading failure correctly 1`] = `
   <RCTRefreshControl />
   <View>
     <View
-      onLayout={[Function]}
-      style={null}
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "flexDirection": "column",
+          "justifyContent": "center",
+        }
+      }
     >
+      <Text>
+        Error on fetch data
+      </Text>
+      <Text>
+        Verify your internet connection and try gain
+      </Text>
       <View
+        accessible={true}
+        isTVSelectable={true}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
           Object {
-            "alignItems": "center",
-            "flex": 1,
-            "flexDirection": "column",
-            "justifyContent": "center",
+            "backgroundColor": "#48BBEC",
+            "padding": 10,
           }
         }
       >
         <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
+          style={null}
         >
-          Error on fetch data
+          Retry
         </Text>
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
-        >
-          Verify your internet connection and try gain
-        </Text>
-        <View
-          accessibilityComponentType={undefined}
-          accessibilityLabel={undefined}
-          accessibilityTraits={undefined}
-          accessible={true}
-          hasTVPreferredFocus={undefined}
-          hitSlop={undefined}
-          isTVSelectable={true}
-          nativeID={undefined}
-          onLayout={undefined}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "backgroundColor": "#48BBEC",
-              "padding": 10,
-            }
-          }
-          testID={undefined}
-          tvParallaxProperties={undefined}
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={null}
-          >
-            Retry
-          </Text>
-        </View>
       </View>
     </View>
     <View
       onLayout={[Function]}
-      style={null}
     />
   </View>
 </RCTScrollView>
@@ -1394,15 +1371,8 @@ exports[`Listing Component should display loading more correctly 1`] = `
       style={null}
     >
       <View
-        accessibilityComponentType={undefined}
-        accessibilityLabel={undefined}
-        accessibilityTraits={undefined}
         accessible={true}
-        hasTVPreferredFocus={undefined}
-        hitSlop={undefined}
         isTVSelectable={true}
-        nativeID={undefined}
-        onLayout={undefined}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -1410,8 +1380,6 @@ exports[`Listing Component should display loading more correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={null}
-        testID={undefined}
-        tvParallaxProperties={undefined}
       >
         <View
           stye={
@@ -1458,9 +1426,6 @@ exports[`Listing Component should display loading more correctly 1`] = `
             }
           >
             <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
               style={
                 Object {
                   "color": "#48BBEC",
@@ -1472,9 +1437,6 @@ exports[`Listing Component should display loading more correctly 1`] = `
               R$ 750.000
             </Text>
             <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
               numberOfLines={1}
               style={
                 Object {
@@ -1491,7 +1453,6 @@ exports[`Listing Component should display loading more correctly 1`] = `
     </View>
     <View
       onLayout={[Function]}
-      style={null}
     >
       <View
         style={
@@ -1571,15 +1532,8 @@ exports[`Listing Component should display loading more failure correctly 1`] = `
       style={null}
     >
       <View
-        accessibilityComponentType={undefined}
-        accessibilityLabel={undefined}
-        accessibilityTraits={undefined}
         accessible={true}
-        hasTVPreferredFocus={undefined}
-        hitSlop={undefined}
         isTVSelectable={true}
-        nativeID={undefined}
-        onLayout={undefined}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -1587,8 +1541,6 @@ exports[`Listing Component should display loading more failure correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={null}
-        testID={undefined}
-        tvParallaxProperties={undefined}
       >
         <View
           stye={
@@ -1635,9 +1587,6 @@ exports[`Listing Component should display loading more failure correctly 1`] = `
             }
           >
             <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
               style={
                 Object {
                   "color": "#48BBEC",
@@ -1649,9 +1598,6 @@ exports[`Listing Component should display loading more failure correctly 1`] = `
               R$ 750.000
             </Text>
             <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
               numberOfLines={1}
               style={
                 Object {
@@ -1668,7 +1614,6 @@ exports[`Listing Component should display loading more failure correctly 1`] = `
     </View>
     <View
       onLayout={[Function]}
-      style={null}
     >
       <View
         style={
@@ -1680,30 +1625,15 @@ exports[`Listing Component should display loading more failure correctly 1`] = `
           }
         }
       >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
-        >
+        <Text>
           Error on fetch data
         </Text>
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
-        >
+        <Text>
           Verify your internet connection and try gain
         </Text>
         <View
-          accessibilityComponentType={undefined}
-          accessibilityLabel={undefined}
-          accessibilityTraits={undefined}
           accessible={true}
-          hasTVPreferredFocus={undefined}
-          hitSlop={undefined}
           isTVSelectable={true}
-          nativeID={undefined}
-          onLayout={undefined}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
           onResponderRelease={[Function]}
@@ -1716,13 +1646,8 @@ exports[`Listing Component should display loading more failure correctly 1`] = `
               "padding": 10,
             }
           }
-          testID={undefined}
-          tvParallaxProperties={undefined}
         >
           <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
             style={null}
           >
             Retry

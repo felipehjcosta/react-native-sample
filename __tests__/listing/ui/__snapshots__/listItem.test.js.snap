@@ -46,9 +46,6 @@ exports[`LoadingItem Component renders correctly 1`] = `
     }
   >
     <Text
-      accessible={true}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
       style={
         Object {
           "color": "#48BBEC",
@@ -60,9 +57,6 @@ exports[`LoadingItem Component renders correctly 1`] = `
       R$ 750.000
     </Text>
     <Text
-      accessible={true}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
       numberOfLines={1}
       style={
         Object {
