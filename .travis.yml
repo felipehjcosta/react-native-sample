@@ -1,11 +1,11 @@
 branches:
   only:
     - master
-    
+
 env:
   global:
     - NODE_VERSION=stable
-  
+
 matrix:
   include:
     - language: node_js
@@ -16,12 +16,12 @@ matrix:
         - curl -o- -L https://yarnpkg.com/install.sh | bash
         - export PATH="$HOME/.yarn/bin:$PATH"
       install:
-        - yarn install
+        - yarn install --frozen-lockfile
         - yarn add codecov --dev
       script:
-        - yarn install
+        - yarn install --frozen-lockfile
         - yarn test && codecov
-        
+
     - language: objective-c
       os: osx
       osx_image: xcode9.3
@@ -38,12 +38,12 @@ matrix:
       install:
         - npm install -g react-native-cli
         - npm install -g detox-cli
-        
-        - yarn install
+
+        - yarn install --frozen-lockfile
       script:
         - detox build --configuration ios.sim.release
         - detox test --configuration ios.sim.release --cleanup
-        
+
     - language: android
       sudo: required
       jdk: oraclejdk8
@@ -89,7 +89,7 @@ matrix:
         - npm install -g react-native-cli
         - npm install -g detox-cli
 
-        - yarn install
+        - yarn install --frozen-lockfile
 
       before_script:
         # Do not cache a few Gradle files/directories (see https://docs.travis-ci.com/user/languages/java/#Caching)
