@@ -1,6 +1,5 @@
 import React from 'react'
 import { ScrollView, Text } from 'react-native'
-import { CachedImage } from 'react-native-cached-image'
 import { configure, shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import { expect } from 'chai'

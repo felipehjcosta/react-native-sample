@@ -1,5 +1,4 @@
-import { Text, View } from 'react-native'
-import { CachedImage } from 'react-native-cached-image'
+import { Text, View, Image } from 'react-native'
 import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './styles'
@@ -7,7 +6,7 @@ import styles from './styles'
 const ListItem = ({item}) => {
   return (
     <View stye={styles.itemContainer}>
-      <CachedImage style={styles.itemImage} source={{uri: item.img_url}} />
+      <Image style={styles.itemImage} source={{uri: item.img_url}} />
       <View style={styles.contentContainer}>
         <Text style={styles.contentPrice}>{item.price_formatted}</Text>
         <Text style={styles.contentTitle} numberOfLines={1}>{item.title}</Text>
