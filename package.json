@@ -7,7 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "axios": "0.18.0",
+    "axios": "0.21.1",
     "babel-polyfill": "6.26.0",
     "chai": "4.1.2",
     "native-base": "2.3.9",
